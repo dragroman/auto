@@ -1,15 +1,12 @@
-import Link from "next/link"
+import { Navigation } from "./Navigation"
+import { Logo } from "./Logo"
 
 export const Header = () => {
   return (
     <header>
       <div className="container flex items-center justify-between py-6 mx-auto">
-        <Link href="/" className="text-2xl font-semibold no-underline">
-          Next.js for Drupal
-        </Link>
-        <Link href="/" className="hover:text-blue-600">
-          Read the docs
-        </Link>
+        <Logo />
+        <Navigation />
       </div>
     </header>
   )

@@ -1,7 +1,9 @@
-import { DraftAlert } from "@shared/misc/DraftAlert"
-import { Header } from "@widgets/header"
 import type { Metadata } from "next"
 import type { ReactNode } from "react"
+import { DraftAlert } from "@shared/misc/DraftAlert"
+
+import { Header } from "@widgets/header"
+import { Footer } from "@widgets/footer"
 
 import "@shared/styles/globals.css"
 
@@ -30,6 +32,7 @@ export default function RootLayout({
         <div className="max-w-(--breakpoint-md) px-6 mx-auto">
           <Header />
           <main className="container py-10 mx-auto">{children}</main>
+          <Footer />
         </div>
       </body>
     </html>
