@@ -27,7 +27,7 @@ export function DraftAlertClient({
       <p className="mb-0">
         This page is a draft.
         <button
-          className="inline-block ml-3 rounded border px-1.5 hover:bg-white hover:text-black active:bg-gray-200 active:text-gray-500"
+          className="inline-block ml-3 rounded-sm border px-1.5 hover:bg-white hover:text-black active:bg-gray-200 active:text-gray-500"
           onClick={buttonHandler}
         >
           Exit draft mode
