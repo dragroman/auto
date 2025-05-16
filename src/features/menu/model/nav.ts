@@ -6,6 +6,7 @@ export const nav = [
   {
     title: t.header.nav.more,
     href: "",
+    footer: false,
     children: [
       {
         title: t.header.nav.contacts,
@@ -19,12 +20,13 @@ export const nav = [
         title: t.header.nav.news,
         href: "/news",
       },
+      {
+        title: t.header.nav.auction,
+        href: "/auction",
+      },
     ],
   },
-  {
-    title: t.header.nav.auction,
-    href: "/auction",
-  },
+
   {
     title: t.header.nav.new,
     href: "/new",

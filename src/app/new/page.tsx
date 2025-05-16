@@ -1,14 +1,10 @@
 import { drupal } from "@shared/lib/drupal"
-import { DrupalJsonApiParams } from "drupal-jsonapi-params"
-import { DrupalNode } from "next-drupal"
 
 export default async function NewCarsPage() {
-  const apiParams = new DrupalJsonApiParams()
-  const request = await drupal.getResourceCollection<DrupalNode[]>(
+  const nodes = await drupal.getResource(
     "node--car",
-    {
-      params: apiParams.getQueryObject(),
-    }
+    "214855f6-a153-422a-b697-994ea04ecd59"
   )
+  console.log(nodes)
   return <h1>New Page</h1>
 }
