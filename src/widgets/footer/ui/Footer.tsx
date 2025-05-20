@@ -1,4 +1,4 @@
-import { nav } from "@features/menu"
+import { nav } from "@shared/config/nav"
 import { locale } from "@shared/config/i18n/messages/ru"
 import { Instagram, Telegram, Whatsapp } from "@shared/icons"
 import Link from "next/link"

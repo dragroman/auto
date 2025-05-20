@@ -29,10 +29,10 @@ export const nav = [
 
   {
     title: t.header.nav.new,
-    href: "/new",
+    href: "/cars/new",
   },
   {
     title: t.header.nav.used,
-    href: "/used",
+    href: "/cars/used",
   },
 ]

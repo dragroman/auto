@@ -5,9 +5,6 @@ const config: Config = {
   theme: {
     extend: {},
   },
-  variants: {
-    extend: {},
-  },
   plugins: [require("@tailwindcss/typography")],
 }
 

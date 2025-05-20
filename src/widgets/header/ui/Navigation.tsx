@@ -11,7 +11,7 @@ import {
   NavigationMenuViewport,
 } from "@shared/ui/navigation-menu"
 import Link from "next/link"
-import { nav } from "@features/menu"
+import { nav } from "@shared/config/nav"
 
 export const Navigation = () => {
   const t = locale.header

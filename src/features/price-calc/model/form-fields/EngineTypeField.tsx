@@ -1,0 +1,110 @@
+"use client"
+
+import React from "react"
+import { Battery, Fuel, Zap } from "lucide-react"
+import { cn } from "@shared/lib/utils"
+import {
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@shared/ui/form"
+import { locale } from "@shared/config/i18n/messages/ru"
+import { FormValues, useCalculatorForm } from "../useFormContext"
+
+export const EngineTypeField = ({ name }: { name: keyof FormValues }) => {
+  const t = locale.form
+  const { control } = useCalculatorForm()
+
+  return (
+    <FormField
+      control={control}
+      name={name}
+      render={({ field }) => (
+        <FormItem className="space-y-3">
+          <FormLabel>{t.engine.label}</FormLabel>
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+            <div
+              className={cn(
+                "flex cursor-pointer flex-col items-center justify-center rounded-md border p-4 transition-colors",
+                field.value === "gas" && "border-2 border-primary bg-primary/5"
+              )}
+              onClick={() => field.onChange("gas")}
+            >
+              <div className="mb-2 flex h-10 w-10 items-center justify-center rounded-full bg-primary/10">
+                <Fuel
+                  className={cn(
+                    "h-6 w-6",
+                    field.value === "gas"
+                      ? "text-primary"
+                      : "text-muted-foreground/50"
+                  )}
+                />
+              </div>
+              <div className="text-center font-medium">
+                {t.engine.gas.title}
+              </div>
+              <FormDescription className="text-center">
+                {t.engine.gas.description}
+              </FormDescription>
+            </div>
+
+            <div
+              className={cn(
+                "flex cursor-pointer flex-col items-center justify-center rounded-md border p-4 transition-colors",
+                field.value === "hybrid" &&
+                  "border-2 border-primary bg-primary/5"
+              )}
+              onClick={() => field.onChange("hybrid")}
+            >
+              <div className="mb-2 flex h-10 w-10 items-center justify-center rounded-full bg-primary/10">
+                <Zap
+                  className={cn(
+                    "h-6 w-6",
+                    field.value === "hybrid"
+                      ? "text-primary"
+                      : "text-muted-foreground/50"
+                  )}
+                />
+              </div>
+              <div className="text-center font-medium">
+                {t.engine.hybrid.title}
+              </div>
+              <FormDescription className="text-center">
+                {t.engine.hybrid.description}
+              </FormDescription>
+            </div>
+
+            <div
+              className={cn(
+                "flex cursor-pointer flex-col items-center justify-center rounded-md border p-4 transition-colors",
+                field.value === "electric" &&
+                  "border-2 border-primary bg-primary/5"
+              )}
+              onClick={() => field.onChange("electric")}
+            >
+              <div className="mb-2 flex h-10 w-10 items-center justify-center rounded-full bg-primary/10">
+                <Battery
+                  className={cn(
+                    "h-6 w-6",
+                    field.value === "electric"
+                      ? "text-primary"
+                      : "text-muted-foreground/50"
+                  )}
+                />
+              </div>
+              <div className="text-center font-medium">
+                {t.engine.electric.title}
+              </div>
+              <FormDescription className="text-center">
+                {t.engine.electric.description}
+              </FormDescription>
+            </div>
+          </div>
+          <FormMessage />
+        </FormItem>
+      )}
+    />
+  )
+}
