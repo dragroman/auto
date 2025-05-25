@@ -10,11 +10,12 @@ import {
   FormLabel,
   FormMessage,
 } from "@shared/ui/form"
-import { locale } from "@shared/config/i18n/messages/ru"
+
 import { FormValues, useCalculatorForm } from "../useFormContext"
+import { useTranslations } from "next-intl"
 
 export const EngineTypeField = ({ name }: { name: keyof FormValues }) => {
-  const t = locale.form
+  const t = useTranslations("form.engine")
   const { control } = useCalculatorForm()
 
   return (
@@ -23,8 +24,8 @@ export const EngineTypeField = ({ name }: { name: keyof FormValues }) => {
       name={name}
       render={({ field }) => (
         <FormItem className="space-y-3">
-          <FormLabel>{t.engine.label}</FormLabel>
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+          <FormLabel>{t("label")}</FormLabel>
+          <div className="grid grid-cols-3 gap-4">
             <div
               className={cn(
                 "flex cursor-pointer flex-col items-center justify-center rounded-md border p-4 transition-colors",
@@ -32,7 +33,7 @@ export const EngineTypeField = ({ name }: { name: keyof FormValues }) => {
               )}
               onClick={() => field.onChange("gas")}
             >
-              <div className="mb-2 flex h-10 w-10 items-center justify-center rounded-full bg-primary/10">
+              <div className="mb-2 h-10 w-10 items-center justify-center rounded-full bg-primary/10 hidden md:flex">
                 <Fuel
                   className={cn(
                     "h-6 w-6",
@@ -42,11 +43,9 @@ export const EngineTypeField = ({ name }: { name: keyof FormValues }) => {
                   )}
                 />
               </div>
-              <div className="text-center font-medium">
-                {t.engine.gas.title}
-              </div>
-              <FormDescription className="text-center">
-                {t.engine.gas.description}
+              <div className="text-center font-medium">{t("gas.title")}</div>
+              <FormDescription className="text-center hidden md:flex">
+                {t("gas.description")}
               </FormDescription>
             </div>
 
@@ -58,7 +57,7 @@ export const EngineTypeField = ({ name }: { name: keyof FormValues }) => {
               )}
               onClick={() => field.onChange("hybrid")}
             >
-              <div className="mb-2 flex h-10 w-10 items-center justify-center rounded-full bg-primary/10">
+              <div className="mb-2 h-10 w-10 items-center justify-center rounded-full bg-primary/10 hidden md:flex">
                 <Zap
                   className={cn(
                     "h-6 w-6",
@@ -68,11 +67,9 @@ export const EngineTypeField = ({ name }: { name: keyof FormValues }) => {
                   )}
                 />
               </div>
-              <div className="text-center font-medium">
-                {t.engine.hybrid.title}
-              </div>
-              <FormDescription className="text-center">
-                {t.engine.hybrid.description}
+              <div className="text-center font-medium">{t("hybrid.title")}</div>
+              <FormDescription className="text-center hidden md:flex">
+                {t("hybrid.description")}
               </FormDescription>
             </div>
 
@@ -84,7 +81,7 @@ export const EngineTypeField = ({ name }: { name: keyof FormValues }) => {
               )}
               onClick={() => field.onChange("electric")}
             >
-              <div className="mb-2 flex h-10 w-10 items-center justify-center rounded-full bg-primary/10">
+              <div className="mb-2 h-10 w-10 items-center justify-center rounded-full bg-primary/10 hidden md:flex">
                 <Battery
                   className={cn(
                     "h-6 w-6",
@@ -95,10 +92,10 @@ export const EngineTypeField = ({ name }: { name: keyof FormValues }) => {
                 />
               </div>
               <div className="text-center font-medium">
-                {t.engine.electric.title}
+                {t("electric.title")}
               </div>
-              <FormDescription className="text-center">
-                {t.engine.electric.description}
+              <FormDescription className="text-center hidden md:flex">
+                {t("electric.description")}
               </FormDescription>
             </div>
           </div>

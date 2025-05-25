@@ -1,14 +1,13 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
-import {
-  PriceCalculatorFormData,
-  PriceCalculationResults,
-} from "../model/types"
+import { PriceCalculatorFormData } from "../model/types"
+import { TNodeCalculationTeaser } from "@entities/node-calculation"
+import { useRouter } from "next/navigation"
 
 export const useCalculator = () => {
   const [calculationResults, setCalculationResults] =
-    useState<PriceCalculationResults | null>(null)
+    useState<TNodeCalculationTeaser | null>(null)
   const [isCalculating, setIsCalculating] = useState(false)
   const [calculationError, setCalculationError] = useState<string | undefined>(
     undefined
@@ -22,6 +21,8 @@ export const useCalculator = () => {
   // Константы лимитов
   const MAX_REQUESTS = 3 // максимум 3 запросов
   const LIMIT_PERIOD = 60 * 1000 // за 1 минуту
+
+  const router = useRouter()
 
   // Сбрасываем счетчик по истечении заданного времени
   useEffect(() => {
@@ -82,6 +83,8 @@ export const useCalculator = () => {
       }
 
       const data = await response.json()
+      router.refresh()
+
       setCalculationResults(data)
     } catch (error) {
       console.error("Error calculating price:", error)

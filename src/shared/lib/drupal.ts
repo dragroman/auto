@@ -6,10 +6,10 @@ const clientSecret = process.env.DRUPAL_CLIENT_SECRET as string
 
 export const drupal = new NextDrupal(baseUrl, {
   // Enable to use authentication
-  // auth: {
-  //   clientId,
-  //   clientSecret,
-  // },
-  // withAuth: true,
+  auth: {
+    clientId,
+    clientSecret,
+  },
+  // withAuth: false,
   debug: true,
 })

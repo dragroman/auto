@@ -1,4 +1,4 @@
-import { locale } from "@shared/config/i18n/messages/ru"
+import { getMenu } from "@entities/menu"
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -10,13 +10,14 @@ import {
   navigationMenuTriggerStyle,
   NavigationMenuViewport,
 } from "@shared/ui/navigation-menu"
+import { getTranslations } from "next-intl/server"
 import Link from "next/link"
-import { nav } from "@shared/config/nav"
 
-export const Navigation = () => {
-  const t = locale.header
+export const DesktopNavigation = async () => {
+  const nav = await getMenu()
+  const t = await getTranslations("header")
   return (
-    <NavigationMenu>
+    <NavigationMenu className="hidden md:block">
       <NavigationMenuList>
         {nav.map((item) => (
           <NavigationMenuItem key={item.href}>

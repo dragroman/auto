@@ -14,6 +14,10 @@ export function formatDate(input: string): string {
   })
 }
 
+export const formatNumber = (num: number) => {
+  return new Intl.NumberFormat("ru-RU").format(Math.round(num))
+}
+
 export function absoluteUrl(input: string) {
   if (input.startsWith("http://") || input.startsWith("https://")) {
     return input

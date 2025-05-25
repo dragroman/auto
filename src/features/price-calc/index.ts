@@ -1,5 +1,2 @@
 export { PriceCalc } from "./ui/PriceCalc"
-export type {
-  PriceCalculatorFormData,
-  PriceCalculationResults,
-} from "./model/types"
+export type { PriceCalculatorFormData } from "./model/types"

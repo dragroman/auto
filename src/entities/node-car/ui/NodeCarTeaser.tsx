@@ -1,12 +1,13 @@
 import { absoluteUrl } from "@shared/lib/utils"
 import { NodeCarTeaserType } from "../model/types"
 import Image from "next/image"
-import { locale } from "@shared/config/i18n/messages/ru"
+
 import { CalendarArrowDownIcon } from "lucide-react"
 import { Card, CardContent, CardHeader, CardTitle } from "@shared/ui/card"
+import { getTranslations } from "next-intl/server"
 
 export const NodeCarTeaser = async ({ node }: { node: NodeCarTeaserType }) => {
-  const t = locale.carTeaser
+  const t = await getTranslations("carTeaser")
   const rawImageUrl =
     node.field_images?.[0]?.field_media_image?.uri?.url ??
     node.field_car_info?.field_images?.[0]?.field_media_image?.uri?.url
@@ -18,7 +19,7 @@ export const NodeCarTeaser = async ({ node }: { node: NodeCarTeaserType }) => {
         {imageSrc ? (
           <Image
             src={imageSrc}
-            alt={node.title || t.noTitle}
+            alt={node.title || t("noTitle")}
             fill
             style={{ objectFit: "cover" }}
             className="transition-transform duration-300 group-hover:scale-105"
@@ -27,13 +28,13 @@ export const NodeCarTeaser = async ({ node }: { node: NodeCarTeaserType }) => {
           />
         ) : (
           <div className="w-full h-full bg-gray-200 flex items-center justify-center">
-            <span className="text-muted-foreground">{t.noPhoto}</span>
+            <span className="text-muted-foreground">{t("noPhoto")}</span>
           </div>
         )}
       </div>
       <CardHeader>
         <CardTitle>
-          <div className="text-lg">{node.title || t.noTitle}</div>
+          <div className="text-lg">{node.title || t("noTitle")}</div>
         </CardTitle>
       </CardHeader>
       <CardContent className="flex flex-col">
@@ -54,7 +55,7 @@ export const NodeCarTeaser = async ({ node }: { node: NodeCarTeaserType }) => {
           {node.variations?.[0]?.price?.number &&
           node.variations[0]?.price?.currency_code
             ? `${Number(node.variations[0].price.number).toLocaleString("ru-RU")} ${node.variations[0].price.currency_code}`
-            : t.noPrice}
+            : t("noPrice")}
         </div>
       </CardContent>
     </Card>

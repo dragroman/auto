@@ -11,22 +11,20 @@ import {
   FormLabel,
   FormMessage,
 } from "@shared/ui/form"
-import { locale } from "@shared/config/i18n/messages/ru"
 import { useFormContext } from "react-hook-form"
 import { FormValues } from "../useFormContext"
+import { useTranslations } from "next-intl"
 
 export const VehicleConditionField = ({ name }: { name: keyof FormValues }) => {
   const { control } = useFormContext()
-
-  const t = locale.form
-
+  const t = useTranslations("form.vehicle")
   return (
     <FormField
       control={control}
       name={name}
       render={({ field }) => (
         <FormItem className="space-y-4">
-          <FormLabel>{t.vehicle.condition.label}</FormLabel>
+          <FormLabel>{t("condition.label")}</FormLabel>
           <div className="flex gap-4">
             <div
               className={cn(
@@ -35,7 +33,7 @@ export const VehicleConditionField = ({ name }: { name: keyof FormValues }) => {
               )}
               onClick={() => field.onChange(true)}
             >
-              <div className="mb-2 flex h-10 w-10 items-center justify-center rounded-full bg-primary/10">
+              <div className="hidden md:flex mb-2 h-10 w-10 items-center justify-center rounded-full bg-primary/10">
                 <CheckCircle
                   className={cn(
                     "h-6 w-6",
@@ -46,10 +44,10 @@ export const VehicleConditionField = ({ name }: { name: keyof FormValues }) => {
                 />
               </div>
               <div className="text-center font-medium">
-                {t.vehicle.condition.new.title}
+                {t("condition.new.title")}
               </div>
-              <FormDescription className="text-center">
-                {t.vehicle.condition.new.description}
+              <FormDescription className="text-center hidden md:flex">
+                {t("condition.new.description")}
               </FormDescription>
             </div>
 
@@ -60,7 +58,7 @@ export const VehicleConditionField = ({ name }: { name: keyof FormValues }) => {
               )}
               onClick={() => field.onChange(false)}
             >
-              <div className="mb-2 flex h-10 w-10 items-center justify-center rounded-full bg-primary/10">
+              <div className="hidden md:flex mb-2 h-10 w-10 items-center justify-center rounded-full bg-primary/10">
                 <Car
                   className={cn(
                     "h-6 w-6",
@@ -71,10 +69,10 @@ export const VehicleConditionField = ({ name }: { name: keyof FormValues }) => {
                 />
               </div>
               <div className="text-center font-medium">
-                {t.vehicle.condition.used.title}
+                {t("condition.used.title")}
               </div>
-              <FormDescription className="text-center">
-                {t.vehicle.condition.used.description}
+              <FormDescription className="text-center hidden md:flex">
+                {t("condition.used.description")}
               </FormDescription>
             </div>
           </div>

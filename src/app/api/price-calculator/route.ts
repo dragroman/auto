@@ -1,8 +1,7 @@
 import { NextResponse } from "next/server"
-import {
-  PriceCalculatorFormData,
-  PriceCalculationResults,
-} from "@features/price-calc"
+import { PriceCalculatorFormData } from "@features/price-calc"
+import { revalidateTag } from "next/cache"
+import { TNodeCalculationFull } from "@entities/node-calculation"
 
 export async function POST(request: Request) {
   try {
@@ -38,7 +37,10 @@ export async function POST(request: Request) {
       )
     }
 
-    const data = (await response.json()) as PriceCalculationResults
+    const data = (await response.json()) as TNodeCalculationFull
+
+    console.log(data)
+    revalidateTag("calculations")
     return NextResponse.json(data)
   } catch (error) {
     console.error("Error in price calculator API:", error)

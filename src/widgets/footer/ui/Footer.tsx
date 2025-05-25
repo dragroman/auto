@@ -1,10 +1,11 @@
-import { nav } from "@shared/config/nav"
-import { locale } from "@shared/config/i18n/messages/ru"
+import { getMenu } from "@entities/menu"
 import { Instagram, Telegram, Whatsapp } from "@shared/icons"
+import { getTranslations } from "next-intl/server"
 import Link from "next/link"
 
-export function Footer() {
-  const t = locale.footer
+export async function Footer() {
+  const t = await getTranslations("footer")
+  const nav = await getMenu()
   return (
     <footer className="block">
       {/* Container */}
@@ -46,7 +47,9 @@ export function Footer() {
               <Whatsapp className="w-5 h-5" />
             </a>
           </div>
-          <p className="text-sm sm:text-base">{t.copyright}</p>
+          <p className="text-sm sm:text-base">
+            2023-{new Date().getFullYear()} {t("copyright")}
+          </p>
         </div>
       </div>
     </footer>

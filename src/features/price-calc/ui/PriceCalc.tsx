@@ -1,8 +1,8 @@
 "use client"
 
 import { PriceCalculatorForm } from "./PriceCalculatorForm"
-import { PriceCalculatorResults } from "./PriceCalculatorResults"
 import { useCalculator } from "../api/useCalculator"
+import { NodeCalculationFull } from "@entities/node-calculation"
 
 export const PriceCalc = () => {
   const {
@@ -38,15 +38,6 @@ export const PriceCalc = () => {
           error={calculationError}
           disabled={isLimited}
         />
-      </div>
-      <div>
-        {calculationResults ? (
-          <PriceCalculatorResults results={calculationResults} />
-        ) : (
-          <p className="text-muted-foreground">
-            Заполните форму для расчета стоимости
-          </p>
-        )}
       </div>
     </div>
   )

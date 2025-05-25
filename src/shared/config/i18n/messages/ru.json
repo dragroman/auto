@@ -1,0 +1,269 @@
+{
+  "header": {
+    "nav": {
+      "auction": "Аукцион",
+      "new": "Без пробега",
+      "used": "С пробегом",
+      "contacts": "Контакты",
+      "about": "О нас",
+      "news": "Новости",
+      "faq": "Вопросы и ответы",
+      "more": "Еще"
+    }
+  },
+  "footer": {
+    "copyright": "© China Auto. Все права защищены"
+  },
+  "contact": {
+    "phone": "+7(914)700-88-48",
+    "phoneClear": "79147008848",
+    "email": "info@86007auto.com",
+    "addressChina": "КНР, г. Харбин, ул. Фушуйлу 99-5",
+    "addressRussia": "Россия, г. Владивосток, ул. Дальзаводская 4,оф.530"
+  },
+  "social": {
+    "instagram": {
+      "title": "Instagram",
+      "url": "https://www.instagram.com/auto86007/"
+    },
+    "youtube": {
+      "title": "Youtube",
+      "url": "https://www.youtube.com/channel/UCzA-HhJ7NYj7novx8RKX7Hw/about"
+    },
+    "telegram": {
+      "title": "telegram",
+      "url": "https://t.me/auto86007"
+    }
+  },
+  "formRequest": {
+    "title": "Оставьте заявку",
+    "button": "Отправить",
+    "success": "Заявка успешно отправлена",
+    "fields": {
+      "price": {
+        "label": "Стоимость автомобиля",
+        "placeholder": "Например, 1 500 000 ₽",
+        "error": "Введите стоимость автомобиля",
+        "help": "Укажите примерную стоимость автомобиля"
+      },
+      "name": {
+        "label": "Имя",
+        "placeholder": "Иван Иванов",
+        "error": "Введите имя",
+        "help": "Введите имя"
+      },
+      "phone": {
+        "label": "Телефон для связи",
+        "placeholder": "+7 (999) 123-45-67",
+        "error": "Введите телефон",
+        "help": "Укажите номер для связи"
+      }
+    }
+  },
+  "pageNew": {
+    "title": "Без пробега",
+    "subtitle": "Купить новый автомобиль в Китае"
+  },
+  "pageUsed": {
+    "title": "С пробегом",
+    "subtitle": "Купить автомобиль с пробегом в Китае"
+  },
+  "carTeaser": {
+    "noPhoto": "Нет фото",
+    "noTitle": "Нет названия",
+    "noDescription": "Нет описания",
+    "noPrice": "Цена не указана",
+    "noYear": "Год не указан",
+    "noKm": "Пробег не указан",
+    "noEngine": "Двигатель не указан",
+    "noTransmission": "Коробка передач не указана"
+  },
+  "form": {
+    "error": "error",
+    "submitting": "Расчет...",
+    "submit": "Рассчитать",
+    "reset": "Сбросить",
+    "request": "Запрос",
+    "more": "Подробнее",
+
+    "vehicle": {
+      "condition": {
+        "label": "Состояние автомобиля",
+        "new": {
+          "title": "Без пробега",
+          "description": "Новый автомобиль"
+        },
+        "used": {
+          "title": "С пробегом",
+          "description": "Подержанный автомобиль"
+        }
+      },
+      "production_date": {
+        "label": "Дата производства",
+        "specify_date": "Уточнить дату производства",
+        "month_placeholder": "Выберите месяц",
+        "year_placeholder": "Выберите год",
+        "under3": "До 3 лет",
+        "from3to5": "От 3 до 5 лет",
+        "from5to7": "От 5 до 7 лет",
+        "use_range": "Указать диапазон дат",
+        "months": [
+          "Январь",
+          "Февраль",
+          "Март",
+          "Апрель",
+          "Май",
+          "Июнь",
+          "Июль",
+          "Август",
+          "Сентябрь",
+          "Октябрь",
+          "Ноябрь",
+          "Декабрь"
+        ]
+      }
+    },
+    "engine": {
+      "label": "Тип двигателя",
+      "gas": {
+        "title": "Бензин",
+        "description": "Классический двигатель внутреннего сгорания"
+      },
+      "hybrid": {
+        "title": "Гибрид",
+        "description": "Комбинация ДВС и электрического мотора"
+      },
+      "electric": {
+        "title": "Электро",
+        "description": "Полностью электрический двигатель"
+      },
+      "capacity": "Объем двигателя (мл)",
+      "power": "Мощность (л.с.)"
+    },
+    "price": {
+      "actual": "Цена автомобиля",
+      "retail": "Розничная цена",
+      "profit": "Комиссия",
+      "shipping": "Стоимость доставки",
+      "additional": "Дополнительные расходы"
+    }
+  },
+  "formResults": {
+    "finalPrice": {
+      "title": "Итоговая стоимость",
+      "description": "Рассчитанная цена автомобиля с учетом всех расходов",
+      "tooltip": "Стоимость автомобиля без учета комиссии и налогов"
+    },
+    "exactPrice": {
+      "title": "Точная стоимость"
+    },
+    "requiredPayments": {
+      "title": "Обязательные платежи"
+    },
+    "expenseItem": {
+      "title": "Статья расходов"
+    },
+    "amount": {
+      "title": "Сумма"
+    },
+    "carCost": {
+      "title": "Стоимость автомобиля"
+    },
+    "commission": {
+      "title": "Услуга по выкупу автомобиля"
+    },
+    "taxChina": {
+      "title": "Таможенные пошлины в Китае",
+      "tooltip": "Включает в себя таможенную очистку в Китае"
+    },
+    "taxRussia": {
+      "title": "Таможенные пошлины в России"
+    },
+    "customsDeclaration": {
+      "title": "Таможенное декларирование"
+    },
+    "customsClearance": {
+      "title": "Таможенная очистка"
+    },
+
+    "domesticShippingChina": {
+      "title": "Доставка по Китаю",
+      "tooltip": "Стоимость"
+    },
+    "additionalExpenses": {
+      "title": "Дополнительные расходы"
+    },
+    "additionalInfo": {
+      "title": "Дополнительная информация"
+    },
+    "exchangeRates": {
+      "title": "Курсы валют"
+    },
+    "cnyRub": {
+      "title": "CNY/RUB"
+    },
+    "eurRub": {
+      "title": "EUR/RUB"
+    },
+    "taxRefund": {
+      "title": "Налоговый возврат"
+    },
+    "refundAmount": {
+      "title": "Сумма возврата"
+    },
+    "overallProfit": {
+      "title": "Общая прибыль"
+    },
+    "costInDifferentCurrencies": {
+      "title": "Стоимость в разных валютах"
+    },
+
+    "priceRmb": {
+      "title": "Цена (RMB)"
+    },
+    "priceRub": {
+      "title": "Цена (RUB)"
+    },
+    "retailPriceEur": {
+      "title": "Розничная цена (EUR)"
+    },
+    "vehicleInfo": {
+      "title": "Информация о транспортном средстве"
+    },
+    "vehicleAge": {
+      "title": "Возраст (лет)"
+    },
+    "insurance": {
+      "title": "Страховка"
+    },
+    "employeeTravelCost": {
+      "title": "Расходы на командировку сотрудников"
+    },
+    "brokerFee": {
+      "title": "Комиссия брокера"
+    },
+    "inspection": {
+      "title": "Инспекция"
+    }
+  },
+
+  "nodeCalculation": {
+    "carType": {
+      "sedan": "Седан",
+      "hatchback": "Хэтчбек",
+      "suv": "Внедорожник",
+      "coupe": "Купе"
+    },
+    "newCondition": {
+      "new": "Новый",
+      "used": "Б/У",
+      "certified": "Сертифицированный"
+    },
+    "fields": {
+      "carType": "Тип автомобиля",
+      "newCondition": "Состояние",
+      "productionDate": "Год производства",
+      "totalPrice": "Общая стоимость"
+    }
+  }
+}

@@ -1,8 +1,9 @@
 import { NodeCarTeaserType } from "@entities/node-car"
-import { locale } from "@shared/config/i18n/messages/ru"
 import { drupal } from "@shared/lib/drupal"
 import { ViewsCar } from "@widgets/views-car"
 import { getBaseCarParams } from "../api/params"
+import { useTranslations } from "next-intl"
+import { getTranslations } from "next-intl/server"
 
 export default async function NewCarsPage() {
   const params = getBaseCarParams().addFilter("field_new", "1")
@@ -13,11 +14,11 @@ export default async function NewCarsPage() {
     }
   )
 
-  const t = locale.pageNew
+  const t = await getTranslations("pageNew")
 
   return (
     <>
-      <h1>{t.title}</h1>
+      <h1>{t("title")}</h1>
       <ViewsCar nodes={nodes} />
     </>
   )

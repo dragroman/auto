@@ -11,13 +11,14 @@ import { Alert, AlertDescription } from "@shared/ui/alert"
 import { Form } from "@shared/ui/form"
 import { PriceCalculatorFormData } from "../model/types"
 import { formSchema } from "../model/schema"
-import { locale } from "@shared/config/i18n/messages/ru"
 import {
   EngineTypeField,
   NumberInputField,
   ProductionDateField,
   VehicleConditionField,
 } from "../model/form-fields"
+import { defaultValues } from "../config/default-values"
+import { useTranslations } from "next-intl"
 
 interface PriceCalculatorFormProps {
   onSubmit: (data: PriceCalculatorFormData) => void
@@ -32,20 +33,7 @@ export const PriceCalculatorForm: React.FC<PriceCalculatorFormProps> = ({
   error,
   disabled = false,
 }) => {
-  const t = locale.form
-
-  // Определяем начальные значения строго типизированными
-  const defaultValues: z.infer<typeof formSchema> = {
-    new: true,
-    engine_type: "gas",
-    profit_rmb: 5000,
-    domestic_shipping_rmb: 0,
-    additional_expenses_rmb: 0,
-    price_actual_rmb: 0,
-    price_retail_rmb: 0,
-    capacity_ml: 0,
-    horsepower: 0,
-  }
+  const t = useTranslations("form")
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema) as Resolver<z.infer<typeof formSchema>>,
@@ -108,11 +96,11 @@ export const PriceCalculatorForm: React.FC<PriceCalculatorFormProps> = ({
         {/* Тип двигателя */}
         <EngineTypeField name="engine_type" />
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-start">
+        <div className="grid grid-cols-2 gap-4 items-start">
           {/* Цена автомобиля */}
           <NumberInputField
             name="price_actual_rmb"
-            label={t.price.actual}
+            label={t("price.actual")}
             min={0}
             step={10000}
             currency="¥"
@@ -121,7 +109,7 @@ export const PriceCalculatorForm: React.FC<PriceCalculatorFormProps> = ({
           {isNewVehicle && (
             <NumberInputField
               name="price_retail_rmb"
-              label={t.price.retail}
+              label={t("price.retail")}
               min={0}
               step={10000}
               currency="¥"
@@ -131,7 +119,7 @@ export const PriceCalculatorForm: React.FC<PriceCalculatorFormProps> = ({
           {(engineType === "gas" || engineType === "hybrid") && (
             <NumberInputField
               name="capacity_ml"
-              label={t.engine.capacity}
+              label={t("engine.capacity")}
               min={0}
               step={100}
             />
@@ -140,7 +128,7 @@ export const PriceCalculatorForm: React.FC<PriceCalculatorFormProps> = ({
           {(engineType === "electric" || engineType === "hybrid") && (
             <NumberInputField
               name="horsepower"
-              label={t.engine.power}
+              label={t("engine.power")}
               min={0}
               step={10}
             />
@@ -154,7 +142,7 @@ export const PriceCalculatorForm: React.FC<PriceCalculatorFormProps> = ({
             className="flex-1"
             disabled={isSubmitting || !isValid || disabled}
           >
-            {isSubmitting ? t.submitting : t.submit}
+            {isSubmitting ? t("submitting") : t("submit")}
           </Button>
 
           {/* Кнопка сброса - отображается только если форма изменена */}
@@ -166,7 +154,7 @@ export const PriceCalculatorForm: React.FC<PriceCalculatorFormProps> = ({
               className="flex items-center gap-2"
             >
               <RefreshCw className="h-4 w-4" />
-              {t.reset}
+              {t("reset")}
             </Button>
           )}
         </div>

@@ -20,6 +20,10 @@ export const formSchema = z
     }),
     capacity_ml: z.coerce.number().min(0).optional(),
     horsepower: z.coerce.number().min(0).optional(),
+    inspection: z.coerce.number().min(0).optional(),
+    insurance: z.coerce.number().min(0).optional(),
+    employeeTravelCost: z.coerce.number().min(0).optional(),
+    brokerFee: z.coerce.number().min(0).optional(),
     price_actual_rmb: z.coerce.number().min(1, {
       message: "Введите корректную цену",
     }),

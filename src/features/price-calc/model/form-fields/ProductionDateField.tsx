@@ -11,30 +11,35 @@ import {
 } from "@shared/ui/select"
 import { Button } from "@shared/ui/button"
 import { Check, Calendar } from "lucide-react"
-import { locale } from "@shared/config/i18n/messages/ru"
 import { FormValues, useCalculatorForm } from "../useFormContext"
+import { useTranslations } from "next-intl"
 
 export const ProductionDateField = ({ name }: { name: "production_date" }) => {
-  const t = locale.form
+  const t = useTranslations("form.vehicle.production_date")
   const { control } = useCalculatorForm()
   const [showDetailedDate, setShowDetailedDate] = useState(false)
   const currentYear = new Date().getFullYear()
+  const months = Array.from({ length: 12 }, (_, i) => {
+    const date = new Date(2024, i, 1)
+    const month = new Intl.DateTimeFormat("ru", { month: "long" }).format(date)
+    return month.charAt(0).toUpperCase() + month.slice(1)
+  })
 
   // Определение диапазонов возраста
   const ageRanges = [
     {
       id: "under3",
-      label: t.vehicle.production_date.under3,
+      label: t("under3"),
       years: 3,
     },
     {
       id: "3to5",
-      label: t.vehicle.production_date.from3to5,
+      label: t("from3to5"),
       years: 4,
     },
     {
       id: "5to7",
-      label: t.vehicle.production_date.from5to7,
+      label: t("from5to7"),
       years: 6,
     },
   ]
@@ -83,7 +88,7 @@ export const ProductionDateField = ({ name }: { name: "production_date" }) => {
 
         return (
           <FormItem className="flex flex-col space-y-3">
-            <FormLabel>{t.vehicle.production_date.label}</FormLabel>
+            <FormLabel>{t("label")}</FormLabel>
 
             {!showDetailedDate ? (
               <div className="space-y-4">
@@ -98,7 +103,7 @@ export const ProductionDateField = ({ name }: { name: "production_date" }) => {
                       onClick={() => setDateFromRange(range.id)}
                     >
                       <div className="flex items-start justify-between">
-                        <div className="font-medium">{range.label}</div>
+                        <div className="font-medium text-sm">{range.label}</div>
                         {selectedRange === range.id && (
                           <Check className="h-4 w-4 text-primary" />
                         )}
@@ -117,7 +122,7 @@ export const ProductionDateField = ({ name }: { name: "production_date" }) => {
                   onClick={() => setShowDetailedDate(true)}
                 >
                   <Calendar className="h-4 w-4" />
-                  {t.vehicle.production_date.specify_date}
+                  {t("specify_date")}
                 </Button>
               </div>
             ) : (
@@ -139,14 +144,10 @@ export const ProductionDateField = ({ name }: { name: "production_date" }) => {
                     ).toString()}
                   >
                     <SelectTrigger className="w-full">
-                      <SelectValue
-                        placeholder={
-                          t.vehicle.production_date.month_placeholder
-                        }
-                      />
+                      <SelectValue placeholder={t("month_placeholder")} />
                     </SelectTrigger>
                     <SelectContent>
-                      {t.vehicle.production_date.months.map((month, index) => (
+                      {months.map((month, index) => (
                         <SelectItem
                           key={index + 1}
                           value={(index + 1).toString()}
@@ -173,9 +174,7 @@ export const ProductionDateField = ({ name }: { name: "production_date" }) => {
                     ).toString()}
                   >
                     <SelectTrigger className="w-full">
-                      <SelectValue
-                        placeholder={t.vehicle.production_date.year_placeholder}
-                      />
+                      <SelectValue placeholder={t("year_placeholder")} />
                     </SelectTrigger>
                     <SelectContent>
                       {Array.from({ length: 7 }, (_, i) => {
@@ -196,7 +195,7 @@ export const ProductionDateField = ({ name }: { name: "production_date" }) => {
                   className="flex items-center gap-2 w-full"
                   onClick={() => setShowDetailedDate(false)}
                 >
-                  {t.vehicle.production_date.use_range}
+                  {t("use_range")}
                 </Button>
               </div>
             )}
