@@ -2,12 +2,11 @@ import type { Metadata, Viewport } from "next"
 import type { ReactNode } from "react"
 import { DraftAlert } from "@shared/misc/DraftAlert"
 
-import { Header } from "@widgets/header"
-import { Footer } from "@widgets/footer"
-
 import "@shared/styles/globals.css"
 import { NextIntlClientProvider } from "next-intl"
 import { getLocale } from "next-intl/server"
+import { Providers } from "@features/auth/session"
+import { Toaster } from "@shared/ui/sonner"
 
 export const metadata: Metadata = {
   title: {
@@ -38,14 +37,13 @@ export default async function RootLayout({
   return (
     <html lang={locale}>
       <body>
-        <DraftAlert />
-        <div className="max-w-(--breakpoint-md) px-4 mx-auto">
-          <Header />
-          <main className="container mx-auto">
-            <NextIntlClientProvider>{children}</NextIntlClientProvider>
-          </main>
-          <Footer />
-        </div>
+        <Providers>
+          <NextIntlClientProvider>
+            <DraftAlert />
+            {children}
+            <Toaster position="top-center" />
+          </NextIntlClientProvider>
+        </Providers>
       </body>
     </html>
   )

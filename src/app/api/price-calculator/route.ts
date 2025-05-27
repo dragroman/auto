@@ -39,7 +39,6 @@ export async function POST(request: Request) {
 
     const data = (await response.json()) as TNodeCalculationFull
 
-    console.log(data)
     revalidateTag("calculations")
     return NextResponse.json(data)
   } catch (error) {

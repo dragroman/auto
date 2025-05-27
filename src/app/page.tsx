@@ -1,4 +1,5 @@
 import { TNodeCalculationTeaser } from "@entities/node-calculation"
+import { User } from "@entities/user"
 import { drupal } from "@shared/lib/drupal"
 import { buttonVariants } from "@shared/ui/button"
 import { HomeHero } from "@widgets/home-hero"
@@ -12,8 +13,11 @@ export const metadata: Metadata = {
 
 export default async function Home() {
   return (
-    <Link className={buttonVariants({ variant: "outline" })} href="/calc">
-      calculator
-    </Link>
+    <>
+      <Link className={buttonVariants({ variant: "outline" })} href="/calc">
+        calculator
+      </Link>
+      <User />
+    </>
   )
 }

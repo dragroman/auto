@@ -13,11 +13,15 @@ import {
 import { getTranslations } from "next-intl/server"
 import Link from "next/link"
 
-export const DesktopNavigation = async () => {
+export const DesktopNavigation = async ({
+  className,
+}: {
+  className?: string
+}) => {
   const nav = await getMenu()
   const t = await getTranslations("header")
   return (
-    <NavigationMenu className="hidden md:block">
+    <NavigationMenu className={className}>
       <NavigationMenuList>
         {nav.map((item) => (
           <NavigationMenuItem key={item.href}>
