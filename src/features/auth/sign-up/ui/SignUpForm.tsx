@@ -36,7 +36,6 @@ export function SignUpForm({
   })
 
   const password = watch("password")
-  const username = watch("username")
 
   // Password strength indicator
   const getPasswordStrength = (password: string) => {
@@ -90,26 +89,6 @@ export function SignUpForm({
         </div>
         {errors.email && (
           <p className="text-sm text-destructive">{errors.email.message}</p>
-        )}
-      </div>
-
-      {/* Username Field */}
-      <div className="space-y-2">
-        <Label htmlFor="username">Имя пользователя</Label>
-        <div className="relative">
-          <User className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
-          <Input
-            id="username"
-            {...register("username")}
-            placeholder="username"
-            className="pl-10 pr-10"
-          />
-          {username && !errors.username && (
-            <UserCheck className="absolute right-3 top-3 h-4 w-4 text-green-500" />
-          )}
-        </div>
-        {errors.username && (
-          <p className="text-sm text-destructive">{errors.username.message}</p>
         )}
       </div>
 
