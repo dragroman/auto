@@ -13,16 +13,12 @@ export const getMenu = async () => {
           href: "/contacts",
         },
         {
-          title: t("about"),
-          href: "/about",
+          title: t("document"),
+          href: "/document",
         },
         {
-          title: t("news"),
-          href: "/news",
-        },
-        {
-          title: t("auction"),
-          href: "/auction",
+          title: t("howtobuy"),
+          href: "/howtobuy",
         },
       ],
     },
