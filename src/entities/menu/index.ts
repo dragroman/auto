@@ -27,13 +27,13 @@ export const getMenu = async () => {
       ],
     },
 
-    {
-      title: t("new"),
-      href: "/cars/new",
-    },
-    {
-      title: t("used"),
-      href: "/cars/used",
-    },
+    // {
+    //   title: t("new"),
+    //   href: "/cars/new",
+    // },
+    // {
+    //   title: t("used"),
+    //   href: "/cars/used",
+    // },
   ]
 }

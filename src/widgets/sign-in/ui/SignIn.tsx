@@ -1,19 +1,18 @@
-import { SignInForm } from "@features/auth"
-import { Button } from "@shared/ui/button"
+import { SignInForm } from "@features/auth/sign-in"
 import { PageTitle } from "@shared/ui/page-title"
-import { ArrowLeft } from "lucide-react"
 import Link from "next/link"
 
-export const SignIn = ({ title }: { title: string }) => {
+export const SignIn = () => {
   return (
     <>
-      <div className="text-center">
-        <PageTitle title={title} />
-      </div>
       <SignInForm />
-      <hr className="separator my-6" />
-      <div className="text-center">
-        Нет аккаунта? <Link href="/signup">Зарегистрироваться</Link>
+      <div className="mt-4 text-center">
+        <Link
+          href="/signup"
+          className="text-sm text-muted-foreground hover:text-primary underline-offset-4 hover:underline"
+        >
+          Создать аккаунт
+        </Link>
       </div>
     </>
   )

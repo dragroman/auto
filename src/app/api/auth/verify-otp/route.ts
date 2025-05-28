@@ -33,6 +33,7 @@ export async function POST(
         userId: user.id,
         email: user.email,
         username: user.username,
+        phone: user.phone,
       },
     })
   } catch (error) {

@@ -18,8 +18,15 @@ import { formatNumber } from "@shared/lib/utils"
 import { Badge } from "@shared/ui/badge"
 import { useTranslations } from "next-intl"
 import { createTranslationMapper } from "../utils/translations"
+import { DrupalUser } from "next-drupal"
 
-export const NodeCalculation = ({ node }: { node: TNodeCalculationTeaser }) => {
+export const NodeCalculationTeaser = ({
+  node,
+  currentUserID,
+}: {
+  node: TNodeCalculationTeaser
+  currentUserID?: string
+}) => {
   const t = useTranslations()
   const mapper = createTranslationMapper(t)
 
@@ -27,10 +34,13 @@ export const NodeCalculation = ({ node }: { node: TNodeCalculationTeaser }) => {
     <Card className="gap-2">
       <CardHeader>
         <CardTitle className="flex justify-between items-center">
-          <div>
+          <div className="flex gap-2">
             <Badge variant="default">
               {formatNumber(node.field_price_actual)} {"RMB"}
             </Badge>
+            {currentUserID === node.uid.id && (
+              <Badge variant="outline">{t("nodeCalculation.my")}</Badge>
+            )}
           </div>
           <div className="flex items-center gap-2">
             <Calendar className="w-3 h-3" />

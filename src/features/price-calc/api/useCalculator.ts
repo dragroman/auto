@@ -19,7 +19,7 @@ export const useCalculator = () => {
   const timeoutRef = useRef<NodeJS.Timeout | null>(null)
 
   // Константы лимитов
-  const MAX_REQUESTS = 3 // максимум 3 запросов
+  const MAX_REQUESTS = 10 // максимум 3 запросов
   const LIMIT_PERIOD = 60 * 1000 // за 1 минуту
 
   const router = useRouter()

@@ -1,52 +1,11 @@
-"use client"
+import { PageTitle } from "@shared/ui/page-title"
+import { SignUp } from "@widgets/sign-up"
 
-import {
-  useRegistration,
-  RegistrationForm,
-  OtpForm,
-  SuccessScreen,
-} from "@features/auth/sign-up"
-
-export default function RegisterPage() {
-  const {
-    step,
-    isLoading,
-    error,
-    registrationData,
-    otpInfo,
-    sendOtp,
-    verifyOtp,
-    resendOtp,
-    goBack,
-  } = useRegistration()
-
+export default function SignUpPage() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4">
-      <div className="w-full max-w-md">
-        {step === "form" && (
-          <RegistrationForm
-            onSubmit={sendOtp}
-            isLoading={isLoading}
-            error={error}
-          />
-        )}
-
-        {step === "otp" && registrationData && (
-          <OtpForm
-            email={registrationData.email}
-            onSubmit={verifyOtp}
-            onResend={resendOtp}
-            onBack={goBack}
-            isLoading={isLoading}
-            error={error}
-            otpInfo={otpInfo}
-          />
-        )}
-
-        {step === "success" && registrationData && (
-          <SuccessScreen email={registrationData.email} />
-        )}
-      </div>
-    </div>
+    <>
+      <PageTitle title="Вход в систему" />
+      <SignUp />
+    </>
   )
 }

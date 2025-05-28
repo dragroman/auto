@@ -10,8 +10,8 @@ export const Header = () => {
       <div className="container flex items-center justify-between py-4 mx-auto">
         <Logo />
         <div className="flex gap-2 items-center">
-          <DesktopNavigation className="hidden md:block" />
-          <MobileNavigation className="block md:hidden" />
+          <DesktopNavigation className="" />
+          {/* <MobileNavigation className="block md:hidden" /> */}
           <Link href="/dashboard">
             <User2 className="w-5 h-5 bg-primary rounded-full p-2 box-content hover:bg-primary/80" />
           </Link>

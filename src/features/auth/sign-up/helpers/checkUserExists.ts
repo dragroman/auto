@@ -19,8 +19,6 @@ export async function checkUserExists(
       return { exists: true, field: "email" }
     }
 
-    console.log(usersByEmail)
-
     // Проверяем существование пользователя по username
     const usersByUsername = await drupal.getResourceCollection("user--user", {
       params: {

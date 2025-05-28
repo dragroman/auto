@@ -2,7 +2,9 @@ import { DrupalNode } from "next-drupal"
 
 export interface TNodeCalculationTeaser extends DrupalNode {
   body?: string
-  uid: string | number
+  uid: {
+    id: string
+  }
   field_total_price_round: number
   field_car_type: string
   field_new: string

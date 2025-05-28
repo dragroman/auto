@@ -248,6 +248,7 @@
   },
 
   "nodeCalculation": {
+    "my": "Мой",
     "carType": {
       "sedan": "Седан",
       "hatchback": "Хэтчбек",

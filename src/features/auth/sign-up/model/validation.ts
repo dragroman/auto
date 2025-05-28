@@ -10,6 +10,7 @@ export const registrationSchema = z.object({
   password: z.string().min(6, "Пароль должен содержать минимум 6 символов"),
   firstName: z.string().optional(),
   lastName: z.string().optional(),
+  phone: z.string(),
 })
 
 export const otpSchema = z.object({

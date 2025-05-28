@@ -14,7 +14,6 @@ export const authOptions: NextAuthOptions = {
         password: { label: "Пароль", type: "password" },
       },
       async authorize(credentials) {
-        // Код не меняется
         const formData = new URLSearchParams()
         formData.append("grant_type", "password")
         formData.append("client_id", process.env.DRUPAL_USER_CLIENT_ID || "")

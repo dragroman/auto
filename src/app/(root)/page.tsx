@@ -17,7 +17,6 @@ export default async function Home() {
       <Link className={buttonVariants({ variant: "outline" })} href="/calc">
         calculator
       </Link>
-      <User />
     </>
   )
 }
