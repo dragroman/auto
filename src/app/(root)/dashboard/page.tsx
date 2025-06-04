@@ -23,7 +23,6 @@ export default async function Dashboard() {
     "node--calculation",
     {
       params: api.getQueryObject(),
-      withAuth: true,
       next: { revalidate: 3600, tags: ["calculations"] },
     }
   )

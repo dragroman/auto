@@ -11,7 +11,7 @@ export default async function CalcPage() {
     "node--calculation",
     {
       params: { sort: "-created" },
-      withAuth: true,
+      // withAuth: true,
       next: { revalidate: 3600, tags: ["calculations"] },
     }
   )

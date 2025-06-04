@@ -113,7 +113,6 @@ export function OtpForm({
           value={otpCode}
           onChange={(value) => setOtpCode(value)}
           disabled={isLoading}
-          className="text-2xl"
         >
           <InputOTPGroup>
             <InputOTPSlot index={0} />

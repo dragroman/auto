@@ -10,10 +10,10 @@ import { Toaster } from "@shared/ui/sonner"
 
 export const metadata: Metadata = {
   title: {
-    default: "Next.js for Drupal",
-    template: "%s | Next.js for Drupal",
+    default: "86007auto",
+    template: "%s | 86007auto",
   },
-  description: "A Next.js site powered by a Drupal backend.",
+  description: "Выкупи и поиск автомобиля в Китае",
   icons: {
     icon: "/favicon.ico",
   },

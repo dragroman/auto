@@ -1,5 +1,6 @@
 import { getMenu } from "@entities/menu"
 import { Instagram, Telegram, Whatsapp } from "@shared/icons"
+import { Separator } from "@shared/ui/separator"
 import { getTranslations } from "next-intl/server"
 import Link from "next/link"
 
@@ -26,26 +27,29 @@ export async function Footer() {
                 )
             )}
           </div>
-          <div className="mb-8 mt-8 border-b border-gray-300 w-48"></div>
-          <div className="mb-12 grid-cols-4 grid-flow-col grid max-w-52 gap-8 mx-auto">
-            <a
-              href="#"
+          <Separator className="my-8" />
+          <div className="mb-12 grid-cols-3 grid-flow-col grid max-w-52 gap-8">
+            <Link
+              target="_blank"
+              href="https://www.instagram.com/auto86007"
               className="mx-auto flex-col flex max-w-6 items-center justify-center text-black"
             >
               <Instagram className="w-5 h-5" />
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link
+              target="_blank"
+              href="https://t.me/auto86007"
               className="mx-auto flex-col flex max-w-6 items-center justify-center text-black"
             >
               <Telegram className="w-5 h-5" />
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link
+              target="_blank"
+              href="https://api.whatsapp.com/send/?phone=79147008848"
               className="mx-auto flex-col flex max-w-6 items-center justify-center text-black"
             >
               <Whatsapp className="w-5 h-5" />
-            </a>
+            </Link>
           </div>
           <p className="text-sm sm:text-base">
             2023-{new Date().getFullYear()} {t("copyright")}
