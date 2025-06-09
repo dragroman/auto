@@ -19,4 +19,5 @@ export const getBaseCarParams = () => {
     .addFields("node--car", ["field_images"])
     .addFields("commerce_product_variation--car", ["price"])
     .addSort("created", "DESC")
+    .addPageLimit(15)
 }

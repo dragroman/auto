@@ -10,7 +10,7 @@ export const getMenu = async () => {
       children: [
         {
           title: t("contacts"),
-          href: "/contacts",
+          href: "/contact",
         },
         {
           title: t("document"),
@@ -19,6 +19,10 @@ export const getMenu = async () => {
         {
           title: t("howtobuy"),
           href: "/howtobuy",
+        },
+        {
+          title: t("contract"),
+          href: "/contract",
         },
       ],
     },

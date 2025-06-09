@@ -2,15 +2,12 @@ import { getMenu } from "@entities/menu"
 import {
   NavigationMenu,
   NavigationMenuContent,
-  NavigationMenuIndicator,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
-  NavigationMenuViewport,
 } from "@shared/ui/navigation-menu"
-import { getTranslations } from "next-intl/server"
 import Link from "next/link"
 
 export const DesktopNavigation = async ({
@@ -19,7 +16,6 @@ export const DesktopNavigation = async ({
   className?: string
 }) => {
   const nav = await getMenu()
-  const t = await getTranslations("header")
   return (
     <NavigationMenu className={className}>
       <NavigationMenuList>

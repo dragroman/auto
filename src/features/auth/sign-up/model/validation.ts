@@ -2,6 +2,7 @@ import { z } from "zod"
 
 export const registrationSchema = z.object({
   email: z.string().email("Неверный формат email"),
+  username: z.string(),
   password: z.string().min(6, "Пароль должен содержать минимум 6 символов"),
   firstName: z.string().optional(),
   lastName: z.string().optional(),

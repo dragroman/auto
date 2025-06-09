@@ -12,7 +12,7 @@ export default async function MainLayout({
     <div className="max-w-(--breakpoint-md) px-4 mx-auto">
       <Header />
       <Toaster position="top-right" />
-      <main className="container mx-auto">{children}</main>
+      <main className="container mx-auto py-6">{children}</main>
       <Footer />
     </div>
   )

@@ -23,6 +23,14 @@ interface CalcDrawerProps {
   onClose: () => void
 }
 
+export const Spinner = () => {
+  return (
+    <div className="flex justify-center items-center py-12">
+      <div className="h-10 w-10 animate-spin rounded-full border-4 border-gray-300 border-t-primary" />
+    </div>
+  )
+}
+
 export function NodeCalculationDrawer({
   id,
   isOpen,
@@ -65,13 +73,13 @@ export function NodeCalculationDrawer({
 
   return (
     <Drawer open={isOpen} onOpenChange={onClose}>
-      <DrawerContent className="max-w-[500px] mx-auto">
+      <DrawerContent className="max-w-[500px] mx-auto ">
         <DrawerHeader>
           <DrawerTitle className="text-sm">{calc?.title}</DrawerTitle>
           <DrawerDescription>{calc?.drupal_internal__nid}</DrawerDescription>
         </DrawerHeader>
         {loading ? (
-          <div>Загрузка...</div>
+          <Spinner />
         ) : error ? (
           <div>Ошибка: {error}</div>
         ) : calc ? (

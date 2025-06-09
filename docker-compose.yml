@@ -1,0 +1,36 @@
+services:
+  auto_next:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - DRUPAL_URL=${NEXT_PUBLIC_DRUPAL_BASE_URL:-https://drupal.86007auto.com}
+        - NEXT_IMAGE_DOMAIN=${IMAGE_DOMAIN:-img.chinq.ru}
+        - NEXT_PUBLIC_GTM_ID=${NEXT_PUBLIC_GTM_ID:-GTM-XXXXXX}
+    image: registry.gitlab.com/86007/auto-next:latest
+    environment:
+      - NEXT_PUBLIC_DRUPAL_BASE_URL=${NEXT_PUBLIC_DRUPAL_BASE_URL}
+      - NEXT_IMAGE_DOMAIN=${IMAGE_DOMAIN}
+      - DRUPAL_CLIENT_ID=${DRUPAL_CLIENT_SECRET}
+      - DRUPAL_CLIENT_SECRET=${DRUPAL_CLIENT_SECRET}
+      - NEXTAUTH_SECRET=${NEXTAUTH_SECRET}
+      - DRUPAL_USER_CLIENT_ID=${DRUPAL_USER_CLIENT_ID}
+      - DRUPAL_USER_CLIENT_SECRET=${DRUPAL_USER_CLIENT_SECRET}
+      - SMTP_HOST=${SMTP_HOST}
+      - SMTP_PORT=465
+      - SMTP_SECURE=true
+      - SMTP_USER=${SMTP_USER}
+      - SMTP_PASSWORD=${SMTP_PASSWORD}
+      - NEXT_PUBLIC_GTM_ID=${NEXT_PUBLIC_GTM_ID}
+      - REDIS_URL=redis://shared-redis:6379
+    container_name: auto-next
+    platform: linux/amd64
+    networks:
+      - redis-network
+    ports:
+      - "3003:3000"
+      
+networks:
+  redis-network:
+    external: true
+    name: redis-network

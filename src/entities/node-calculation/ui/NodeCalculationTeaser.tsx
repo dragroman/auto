@@ -9,8 +9,8 @@ import { TNodeCalculationTeaser } from "../model/types"
 import { buttonVariants } from "@shared/ui/button"
 import {
   Calendar,
+  ChartCandlestick,
   ChevronRightIcon,
-  CurrencyIcon,
   FileEdit,
 } from "lucide-react"
 import Link from "next/link"
@@ -31,7 +31,7 @@ export const NodeCalculationTeaser = ({
   const mapper = createTranslationMapper(t)
 
   return (
-    <Card className="gap-2">
+    <Card className="gap-2 bg-white">
       <CardHeader>
         <CardTitle className="flex justify-between items-center">
           <div className="flex gap-2">
@@ -59,7 +59,7 @@ export const NodeCalculationTeaser = ({
             {formatNumber(node.field_total_price_round)} ₽
           </div>
           <div className="text-muted-foreground text-sm">
-            <CurrencyIcon className="inline-block w-4 h-4 mr-2" />
+            <ChartCandlestick className="inline-block w-4 h-4 mr-2" />
             {node.field_cny_rub} ₽
           </div>
         </div>

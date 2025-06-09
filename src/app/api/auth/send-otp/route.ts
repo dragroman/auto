@@ -37,9 +37,9 @@ export async function POST(
       validatedData
     )
 
-    // await emailService.sendOtpEmail(validatedData.email, otpCode)
+    await emailService.sendOtpEmail(validatedData.email, otpCode)
 
-    console.log("OTP sent:", otpCode)
+    // console.log("OTP sent:", otpCode)
 
     return NextResponse.json({
       success: true,
