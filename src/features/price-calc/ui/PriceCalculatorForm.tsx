@@ -1,3 +1,4 @@
+// ui/PriceCalculatorForm.tsx
 "use client"
 
 import React, { useEffect } from "react"
@@ -18,13 +19,22 @@ import {
   VehicleConditionField,
 } from "../model/form-fields"
 import { defaultValues } from "../config/default-values"
+import { RateLimitAlert } from "./RateLimitAlert"
 import { useTranslations } from "next-intl"
+
+interface CalculatorError {
+  type: "general" | "rate_limit"
+  message: string
+  userType?: "anonymous" | "registered" | "premium"
+  resetTime?: string
+}
 
 interface PriceCalculatorFormProps {
   onSubmit: (data: PriceCalculatorFormData) => void
   isSubmitting: boolean
-  error?: string
+  error?: CalculatorError
   disabled?: boolean
+  onClearError?: () => void
 }
 
 export const PriceCalculatorForm: React.FC<PriceCalculatorFormProps> = ({
@@ -32,6 +42,7 @@ export const PriceCalculatorForm: React.FC<PriceCalculatorFormProps> = ({
   isSubmitting,
   error,
   disabled = false,
+  onClearError,
 }) => {
   const t = useTranslations("form")
 
@@ -93,6 +104,11 @@ export const PriceCalculatorForm: React.FC<PriceCalculatorFormProps> = ({
   const { isDirty, isValid } = form.formState
 
   const handleSubmit = (values: z.infer<typeof formSchema>) => {
+    // Очищаем ошибку перед новым запросом
+    if (onClearError) {
+      onClearError()
+    }
+
     // Convert the form values to match API expected format
     const formData: PriceCalculatorFormData = {
       ...values,
@@ -113,14 +129,22 @@ export const PriceCalculatorForm: React.FC<PriceCalculatorFormProps> = ({
   // Добавляем функцию сброса формы
   const resetForm = () => {
     form.reset(defaultValues)
+    if (onClearError) {
+      onClearError()
+    }
   }
 
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-6">
-        {error && (
+        {/* Обработка разных типов ошибок */}
+        {error && error.type === "rate_limit" && (
+          <RateLimitAlert userType={error.userType || "anonymous"} />
+        )}
+
+        {error && error.type === "general" && (
           <Alert variant="destructive">
-            <AlertDescription>{error}</AlertDescription>
+            <AlertDescription>{error.message}</AlertDescription>
           </Alert>
         )}
 
@@ -181,7 +205,12 @@ export const PriceCalculatorForm: React.FC<PriceCalculatorFormProps> = ({
           <Button
             type="submit"
             className="flex-1"
-            disabled={isSubmitting || !isValid || disabled}
+            disabled={
+              isSubmitting ||
+              !isValid ||
+              disabled ||
+              error?.type === "rate_limit"
+            }
           >
             {isSubmitting ? t("submitting") : t("submit")}
           </Button>
