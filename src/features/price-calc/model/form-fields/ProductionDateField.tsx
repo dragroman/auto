@@ -25,6 +25,16 @@ export const ProductionDateField = ({ name }: { name: "production_date" }) => {
     return month.charAt(0).toUpperCase() + month.slice(1)
   })
 
+  const getCategoryByDate = (date: Date) => {
+    const yearDiff = currentYear - date.getFullYear()
+
+    if (yearDiff < 3) return ageRanges[0] // "under3"
+    if (yearDiff >= 3 && yearDiff < 5) return ageRanges[1] // "3to5"
+    if (yearDiff >= 5 && yearDiff <= 7) return ageRanges[2] // "5to7"
+
+    return null
+  }
+
   // Определение диапазонов возраста
   const ageRanges = [
     {
@@ -88,7 +98,15 @@ export const ProductionDateField = ({ name }: { name: "production_date" }) => {
 
         return (
           <FormItem className="flex flex-col space-y-3">
-            <FormLabel>{t("label")}</FormLabel>
+            <FormLabel>
+              {t("label")}{" "}
+              {!showDetailedDate ||
+                (field.value && (
+                  <span className="text-muted-foreground">
+                    {getCategoryByDate(field.value)?.label || t("out_of_range")}
+                  </span>
+                ))}
+            </FormLabel>
 
             {!showDetailedDate ? (
               <div className="space-y-4">

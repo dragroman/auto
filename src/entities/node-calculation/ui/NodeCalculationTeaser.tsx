@@ -37,11 +37,6 @@ export const NodeCalculationTeaser = ({
             <Badge variant="default">
               {formatNumber(node.field_price_actual)} {"RMB"}
             </Badge>
-            {node.field_vehicle_age && (
-              <Badge variant="outline">
-                {mapper.vehicleAge(node.field_vehicle_age)}
-              </Badge>
-            )}
             {currentUserID === node.uid.id && (
               <Badge variant="outline">{t("nodeCalculation.my")}</Badge>
             )}
@@ -71,7 +66,12 @@ export const NodeCalculationTeaser = ({
           <Badge variant="outline">
             {mapper.engineType(node.field_car_type)}
           </Badge>
-          <Badge variant="outline">{mapper.isNew(node.field_new)}</Badge>
+          <Badge variant="outline">
+            {node.field_new
+              ? mapper.isNew(node.field_new)
+              : node.field_vehicle_age &&
+                mapper.vehicleAge(node.field_vehicle_age)}
+          </Badge>
           {node.field_capacity_ml != 0 && (
             <Badge variant="outline">
               {node.field_capacity_ml} {"ml"}

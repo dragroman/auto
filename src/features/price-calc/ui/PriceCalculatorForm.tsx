@@ -45,6 +45,37 @@ export const PriceCalculatorForm: React.FC<PriceCalculatorFormProps> = ({
   const engineType = form.watch("engine_type")
   const priceActual = form.watch("price_actual_rmb")
 
+  // Очистка поля production_date при переключении на новый автомобиль
+  useEffect(() => {
+    if (isNewVehicle) {
+      form.setValue("production_date", undefined, {
+        shouldValidate: true,
+        shouldDirty: true,
+      })
+    }
+  }, [isNewVehicle, form])
+
+  // Очистка полей при изменении типа двигателя
+  useEffect(() => {
+    // Если выбран электро двигатель - очищаем объем двигателя
+    if (engineType === "electric") {
+      form.setValue("capacity_ml", undefined, {
+        shouldValidate: true,
+        shouldDirty: true,
+      })
+    }
+
+    // Если выбран бензиновый двигатель - очищаем мощность
+    if (engineType === "gas") {
+      form.setValue("horsepower", undefined, {
+        shouldValidate: true,
+        shouldDirty: true,
+      })
+    }
+
+    // Для гибрида не очищаем ничего, так как используются оба поля
+  }, [engineType, form])
+
   useEffect(() => {
     if (
       form.formState.isDirty &&
@@ -65,9 +96,15 @@ export const PriceCalculatorForm: React.FC<PriceCalculatorFormProps> = ({
     // Convert the form values to match API expected format
     const formData: PriceCalculatorFormData = {
       ...values,
-      production_date: values.production_date
-        ? format(values.production_date, "yyyy-MM-dd")
-        : undefined,
+      // Очищаем поля в зависимости от типа двигателя перед отправкой
+      capacity_ml: engineType === "electric" ? undefined : values.capacity_ml,
+      horsepower: engineType === "gas" ? undefined : values.horsepower,
+      // Очищаем дату производства для новых автомобилей
+      production_date: isNewVehicle
+        ? undefined
+        : values.production_date
+          ? format(values.production_date, "yyyy-MM-dd")
+          : undefined,
     }
 
     onSubmit(formData)

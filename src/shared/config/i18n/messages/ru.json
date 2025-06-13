@@ -116,6 +116,7 @@
       "production_date": {
         "label": "Дата производства",
         "specify_date": "Уточнить дату производства",
+        "category_vehicle_age": "Категория автомобиля",
         "month_placeholder": "Выберите месяц",
         "year_placeholder": "Выберите год",
         "under3": "До 3 лет",
