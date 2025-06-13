@@ -18,7 +18,6 @@ import { formatNumber } from "@shared/lib/utils"
 import { Badge } from "@shared/ui/badge"
 import { useTranslations } from "next-intl"
 import { createTranslationMapper } from "../utils/translations"
-import { DrupalUser } from "next-drupal"
 
 export const NodeCalculationTeaser = ({
   node,
@@ -38,6 +37,11 @@ export const NodeCalculationTeaser = ({
             <Badge variant="default">
               {formatNumber(node.field_price_actual)} {"RMB"}
             </Badge>
+            {node.field_vehicle_age && (
+              <Badge variant="outline">
+                {mapper.vehicleAge(node.field_vehicle_age)}
+              </Badge>
+            )}
             {currentUserID === node.uid.id && (
               <Badge variant="outline">{t("nodeCalculation.my")}</Badge>
             )}

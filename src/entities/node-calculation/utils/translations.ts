@@ -18,4 +18,12 @@ export const createTranslationMapper = (
     }
     return map[type] || type
   },
+  vehicleAge: (type: string) => {
+    const map: Record<string, string> = {
+      under_3: t("form.vehicle.production_date.under3"),
+      between_3_5: t("form.vehicle.production_date.from3to5"),
+      between_5_7: t("form.vehicle.production_date.from5to7"),
+    }
+    return map[type.toLowerCase()] || type
+  },
 })

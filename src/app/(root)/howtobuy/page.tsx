@@ -82,15 +82,15 @@ export default async function HowToBuy() {
       <div className="container max-w-5xl py-6 mx-auto space-y-4">
         <h1 className="text-4xl font-bold">Как купить</h1>
         <h2 className="text-2xl font-bold mb-10">Процесс оформления</h2>
-        <div className="">
+        <div>
           {steps.map((step, index) => (
             <div key={index} className="flex flex-row space-y-0 relative">
               <div className="flex flex-col items-center mr-3">
-                <div className="w-8 h-8 flex items-center justify-center rounded-full bg-white border-2 border-gray-400 text-lg font-bold z-10">
+                <div className="w-8 h-8 flex items-center justify-center rounded-full bg-primary/40 border-2 border-primary text-lg font-bold z-10 mt-2">
                   {index + 1}
                 </div>
                 <div
-                  className={`w-1 flex-grow bg-gray-400 ${index === steps.length - 1 ? "invisible" : ""}`}
+                  className={`w-1 flex-grow bg-primary ${index === steps.length - 1 ? "invisible" : ""}`}
                   style={{ minHeight: "calc(100% - 2rem)" }}
                 ></div>
               </div>
