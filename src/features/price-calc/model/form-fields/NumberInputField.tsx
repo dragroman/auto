@@ -11,16 +11,20 @@ import {
 import { Input } from "@shared/ui/input"
 import { useFormContext } from "react-hook-form"
 import { FormValues } from "../useFormContext"
+import { Popover, PopoverTrigger, PopoverContent } from "@shared/ui/popover"
+import { Button } from "@shared/ui/button"
 
 export const NumberInputField = ({
   name,
   label,
+  description,
   min = 0,
   step = 0,
   currency = "",
 }: {
   name: keyof FormValues
   label: string
+  description: string
   min: number
   step: number
   currency?: string
@@ -33,7 +37,17 @@ export const NumberInputField = ({
       name={name}
       render={({ field }) => (
         <FormItem>
-          <FormLabel>{label}</FormLabel>
+          <FormLabel>
+            {label}
+            <Popover>
+              <PopoverTrigger asChild>
+                <Button variant="outline">?</Button>
+              </PopoverTrigger>
+              <PopoverContent className="w-80">
+                <div className="grid gap-4">{description}</div>
+              </PopoverContent>
+            </Popover>
+          </FormLabel>
           <FormControl>
             <div className="relative">
               <Input

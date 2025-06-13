@@ -137,7 +137,8 @@ export const PriceCalculatorForm: React.FC<PriceCalculatorFormProps> = ({
           {/* Цена автомобиля */}
           <NumberInputField
             name="price_actual_rmb"
-            label={t("price.actual")}
+            label={t("price.actual.title")}
+            description={t("price.actual.description")}
             min={0}
             step={10000}
             currency="¥"
@@ -146,7 +147,8 @@ export const PriceCalculatorForm: React.FC<PriceCalculatorFormProps> = ({
           {isNewVehicle && (
             <NumberInputField
               name="price_retail_rmb"
-              label={t("price.retail")}
+              label={t("price.retail.title")}
+              description={t("price.retail.description")}
               min={0}
               step={10000}
               currency="¥"
@@ -156,7 +158,8 @@ export const PriceCalculatorForm: React.FC<PriceCalculatorFormProps> = ({
           {(engineType === "gas" || engineType === "hybrid") && (
             <NumberInputField
               name="capacity_ml"
-              label={t("engine.capacity")}
+              label={t("engine.capacity.title")}
+              description={t("engine.capacity.description")}
               min={0}
               step={100}
             />
@@ -165,7 +168,8 @@ export const PriceCalculatorForm: React.FC<PriceCalculatorFormProps> = ({
           {(engineType === "electric" || engineType === "hybrid") && (
             <NumberInputField
               name="horsepower"
-              label={t("engine.power")}
+              label={t("engine.power.title")}
+              description={t("engine.power.description")}
               min={0}
               step={10}
             />
