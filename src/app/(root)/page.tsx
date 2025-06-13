@@ -1,4 +1,5 @@
 import { Button, buttonVariants } from "@shared/ui/button"
+import { Card, CardContent, CardHeader, CardTitle } from "@shared/ui/card"
 import type { Metadata } from "next"
 import Link from "next/link"
 
@@ -72,13 +73,13 @@ export default async function Home() {
   return (
     <>
       {/* Hero Section */}
-      <section className="container mx-auto px-6 py-12">
+      <section className="container mx-auto px-6 py-8 md:py-12">
         <div className="text-center mb-16">
-          <h1 className="text-5xl md:text-6xl font-black leading-tight text-gray-900 mb-6">
+          <h1 className="text-3xl md:text-5xl font-black leading-tight text-gray-900 mb-6">
             Покупка автомобилей
             <span className="block text-primary">из Китая напрямую</span>
           </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-md md:text-xl text-gray-600 max-w-3xl mx-auto">
             Хотите купить автомобиль из Китая напрямую? Мы даём вам такую
             возможность. Полный сервис от поиска до доставки в г. Уссурийск.
           </p>
@@ -87,59 +88,65 @@ export default async function Home() {
         {/* Steps Section */}
         <div className="flex flex-col gap-8 mb-16">
           {/* Шаг 1 */}
-          <div className="bg-white rounded-2xl p-8 shadow-md">
-            <div className="flex items-center mb-6">
-              <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-xl">
-                1
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center">
+                <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-xl">
+                  1
+                </div>
+                <h3 className="text-2xl font-bold text-gray-900 ml-4">
+                  Поиск автомобиля
+                </h3>
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-gray-600 mb-6">
+                Найдите подходящий автомобиль на популярных площадках в Китае
+              </p>
+              <div className="space-y-3">
+                <h4 className="font-semibold text-gray-800 mb-3">
+                  Популярные площадки:
+                </h4>
+                <div className="grid grid-cols-2 gap-2">
+                  {platformList.map((item) => (
+                    <Button variant="outline" key={item.url} asChild>
+                      <Link href={item.url}>{item.title_ru}</Link>
+                    </Button>
+                  ))}
+                </div>
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 ml-4">
-                Поиск автомобиля
-              </h3>
-            </div>
-            <p className="text-gray-600 mb-6">
-              Найдите подходящий автомобиль на популярных площадках в Китае
-            </p>
-
-            <div className="space-y-3">
-              <h4 className="font-semibold text-gray-800 mb-3">
-                Популярные площадки:
-              </h4>
-              <div className="grid grid-cols-2 gap-2">
-                {platformList.map((item) => (
-                  <Button variant="outline" key={item.url} asChild>
-                    <Link href={item.url}>{item.title_ru}</Link>
-                  </Button>
-                ))}
-              </div>
-            </div>
-          </div>
+            </CardContent>
+          </Card>
 
           {/* Шаг 2 */}
-          <div className="bg-white rounded-2xl p-8 shadow-md">
-            <div className="flex items-center mb-6">
-              <div className="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center text-white font-bold text-xl">
-                2
-              </div>
-              <h3 className="text-2xl font-bold text-gray-900 ml-4">
-                Расчёт стоимости
-              </h3>
-            </div>
-            <p className="text-gray-600 mb-6">
-              Воспользуйтесь нашим калькулятором для полного расчёта стоимости с
-              доставкой до г. Уссурийск
-            </p>
-
-            <div className="bg-gradient-to-r from-amber-500 to-yellow-200 rounded-xl p-6 text-black text-center">
-              <div className="text-3xl font-bold mb-2">🧮</div>
-              <h4 className="font-semibold mb-2">Калькулятор стоимости</h4>
-              <p className="text-sm opacity-90 mb-4">
-                Узнайте точную стоимость с учётом всех расходов
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center">
+                <div className="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center text-white font-bold text-xl">
+                  2
+                </div>
+                <h3 className="text-2xl font-bold text-gray-900 ml-4">
+                  Расчёт стоимости
+                </h3>
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-gray-600 mb-6">
+                Воспользуйтесь нашим калькулятором для полного расчёта стоимости
+                с доставкой до г. Уссурийск
               </p>
-              <Button variant="outline" asChild>
-                <Link href="/calc">Рассчитать →</Link>
-              </Button>
-            </div>
-          </div>
+              <div className="bg-gradient-to-r from-amber-500 to-yellow-200 rounded-xl p-6 text-black text-center">
+                <div className="text-3xl font-bold mb-2">🧮</div>
+                <h4 className="font-semibold mb-2">Калькулятор стоимости</h4>
+                <p className="text-sm opacity-90 mb-4">
+                  Узнайте точную стоимость с учётом всех расходов
+                </p>
+                <Button variant="white" asChild>
+                  <Link href="/calc">Рассчитать →</Link>
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
 
           {/* Шаг 3 */}
           <div className="bg-white rounded-2xl p-8 shadow-md">

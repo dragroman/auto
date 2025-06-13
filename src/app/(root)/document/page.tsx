@@ -11,6 +11,14 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@shared/ui/alert-dialog"
+import Image from "next/image"
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@shared/ui/card"
 
 export default async function Document() {
   return (
@@ -24,64 +32,80 @@ export default async function Document() {
           предоставить документы:
         </h2>
         <ul className="space-y-6">
-          <li className="rounded-xl shadow p-6 flex flex-col gap-2 border">
-            <span className="font-semibold">Скан паспорт гражданина РФ</span>
-            <span className="text-gray-600 text-sm">
-              Сканированная копия основной страницы паспорта гражданина
-              Российской Федерации с информацией о владельце.
-            </span>
+          <li>
+            <Card>
+              <CardHeader>
+                <CardTitle>Скан паспорт гражданина РФ</CardTitle>
+              </CardHeader>
+              <CardContent>
+                Сканированная копия основной страницы паспорта гражданина
+                Российской Федерации с информацией о владельце.
+              </CardContent>
+            </Card>
           </li>
-          <li className="rounded-xl shadow p-6 flex flex-col gap-2 border">
-            <span className="font-semibold">Скан страницы прописки</span>
-            <span className="text-sm">
-              Сканированная копия страницы паспорта с информацией о месте
-              прописки в Российской Федерации.
-            </span>
+          <li>
+            <Card>
+              <CardHeader>
+                <CardTitle>Скан страницы прописки</CardTitle>
+              </CardHeader>
+              <CardContent>
+                Сканированная копия страницы паспорта с информацией о месте
+                прописки в Российской Федерации.
+              </CardContent>
+            </Card>
           </li>
-          <li className="rounded-xl shadow p-6 flex flex-col gap-2 border">
-            <span className="font-semibold">
-              Идентификационный номер налогоплательщика (ИНН)
-            </span>
-            <span className="text-sm">
-              Укажите свой индивидуальный идентификационный номер
-              налогоплательщика для оформления сделки.
-            </span>
-            <AlertDialog>
-              <AlertDialogTrigger asChild>
-                <span className="text-blue-600 underline cursor-pointer">
-                  Смотреть образец
+          <li>
+            <Card>
+              <CardHeader>
+                <CardTitle>
+                  Идентификационный номер налогоплательщика (ИНН)
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                Укажите свой индивидуальный идентификационный номер
+                налогоплательщика для оформления сделки.
+              </CardContent>
+              <CardFooter>
+                <AlertDialog>
+                  <AlertDialogTrigger>Смотреть образец</AlertDialogTrigger>
+                  <AlertDialogContent>
+                    <Image
+                      src="/ИНН_образец.jpg"
+                      alt="ИНН образец"
+                      width={800}
+                      height={600}
+                    />
+                  </AlertDialogContent>
+                </AlertDialog>
+              </CardFooter>
+            </Card>
+          </li>
+          <li>
+            <Card>
+              <CardHeader>
+                <CardTitle>
+                  Страховой Номер Индивидуального Лицевого Счета (СНИЛС)
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <span className="text-sm">
+                  Укажите свой СНИЛС для дополнительной идентификации.
                 </span>
-              </AlertDialogTrigger>
-              <AlertDialogContent>
-                <img
-                  src="ИНН_образец.jpg"
-                  alt="ИНН образец"
-                  className="max-w-full h-auto rounded shadow"
-                />
-              </AlertDialogContent>
-            </AlertDialog>
-          </li>
-          <li className="rounded-xl shadow p-6 flex flex-col gap-2 border">
-            <span className="font-semibold">
-              Страховой Номер Индивидуального Лицевого Счета (СНИЛС)
-            </span>
-            <span className="text-sm">
-              Укажите свой СНИЛС для дополнительной идентификации.
-            </span>
-            <AlertDialog>
-              <AlertDialogTrigger asChild>
-                <span className="text-blue-600 underline cursor-pointer">
-                  Смотреть образец
-                </span>
-              </AlertDialogTrigger>
-              <AlertDialogContent>
-                <img
-                  src="Снилс_образец.jpg"
-                  alt="СНИЛС образец"
-                  className="max-w-full h-auto rounded shadow"
-                />
-              </AlertDialogContent>
-            </AlertDialog>
+              </CardContent>
+              <CardFooter>
+                <AlertDialog>
+                  <AlertDialogTrigger>Смотреть образец</AlertDialogTrigger>
+                  <AlertDialogContent>
+                    <Image
+                      src="/Снилс_образец.jpg"
+                      alt="СНИЛС образец"
+                      width={800}
+                      height={600}
+                    />
+                  </AlertDialogContent>
+                </AlertDialog>
+              </CardFooter>
+            </Card>
           </li>
         </ul>
         <Alert variant="info">
