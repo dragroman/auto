@@ -140,7 +140,7 @@ export function SignUpForm({
         )}
 
         {/* Password Strength Indicator */}
-        {password && (
+        {/* {password && (
           <div className="space-y-2">
             <div className="flex space-x-1">
               {[1, 2, 3, 4, 5].map((level) => (
@@ -158,7 +158,7 @@ export function SignUpForm({
               Надежность пароля: {passwordStrength.label}
             </p>
           </div>
-        )}
+        )} */}
       </div>
 
       {/* Optional Fields */}

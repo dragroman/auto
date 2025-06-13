@@ -2,7 +2,7 @@ import { drupal } from "@shared/lib/drupal"
 
 export async function checkUserExists(
   email: string,
-  username: string
+  username?: string
 ): Promise<{ exists: boolean; field?: string }> {
   try {
     // Проверяем существование пользователя по email
