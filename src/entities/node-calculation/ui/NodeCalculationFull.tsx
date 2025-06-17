@@ -47,6 +47,7 @@ export const NodeCalculationFull = ({
             <ResultsTableRow
               title={t("carCost.title")}
               results={results.field_price_actual * results.field_cny_rub}
+              tooltip={t("carCost.tooltip")}
               currency="₽"
             />
             <ResultsTableRow
@@ -57,18 +58,19 @@ export const NodeCalculationFull = ({
             <ResultsTableRow
               title={t("taxChina.title")}
               results={results.field_tax_china}
-              tooltip={t("taxChina.tooltip")}
               currency="₽"
             />
 
             <ResultsTableRow
               title={t("customsDeclaration.title")}
               results={results.field_declaration_rmb * results.field_cny_rub}
+              tooltip={t("customsDeclaration.tooltip")}
               currency="₽"
             />
 
             <ResultsTableRow
               title={t("customsClearance.title")}
+              tooltip={t("customsClearance.tooltip")}
               results={results.field_clearance_rub}
               currency="₽"
             />
@@ -81,11 +83,13 @@ export const NodeCalculationFull = ({
             />
             <ResultsTableRow
               title={t("insurance.title")}
+              tooltip={t("insurance.tooltip")}
               results={results.field_insurance * results.field_cny_rub}
               currency="₽"
             />
             <ResultsTableRow
               title={t("employeeTravelCost.title")}
+              tooltip={t("employeeTravelCost.tooltip")}
               results={
                 results.field_employee_travel_cost * results.field_cny_rub
               }
@@ -94,10 +98,12 @@ export const NodeCalculationFull = ({
             <ResultsTableRow
               title={t("brokerFee.title")}
               results={results.field_broker_fee * results.field_tax_russia}
+              tooltip={t("brokerFee.tooltip")}
               currency="₽"
             />
             <ResultsTableRow
               title={t("inspection.title")}
+              tooltip={t("inspection.tooltip")}
               results={results.field_inspection * results.field_cny_rub}
               currency="₽"
             />
