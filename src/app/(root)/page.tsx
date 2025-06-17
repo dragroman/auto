@@ -10,6 +10,20 @@ export const metadata: Metadata = {
 
 const platformList = [
   {
+    title: "人人车",
+    title_ru: "Жэньжэньчэ",
+    url: "https://www.renrenche.com/",
+    description: "Популярный сервис для покупки б/у автомобилей.",
+    tags: "с пробегом",
+  },
+  {
+    title: "Taocheche",
+    title_ru: "Таочхэчхэ",
+    url: "https://m.taocheche.com/",
+    description: "Платформа с проверенными автомобилями, есть аукционы.",
+    tags: "с пробегом",
+  },
+  {
     title: "懂车帝",
     title_ru: "Донгчэди",
     url: "https://www.dongchedi.com/",
@@ -40,13 +54,6 @@ const platformList = [
     tags: "с пробегом",
   },
   {
-    title: "人人车",
-    title_ru: "Жэньжэньчэ",
-    url: "https://www.renrenche.com/",
-    description: "Популярный сервис для покупки б/у автомобилей.",
-    tags: "с пробегом",
-  },
-  {
     title: "优信二手车",
     title_ru: "Юсинь",
     url: "https://www.xin.com/",
@@ -59,13 +66,6 @@ const platformList = [
     url: "https://www.58.com/",
     description: "Аналог Avito в Китае, много частных объявлений.",
     tags: "новые, с пробегом",
-  },
-  {
-    title: "Taocheche",
-    title_ru: "Таочхэчхэ",
-    url: "https://m.taocheche.com/",
-    description: "Платформа с проверенными автомобилями, есть аукционы.",
-    tags: "с пробегом",
   },
 ]
 
