@@ -17,21 +17,23 @@ export const DesktopNavigation = async ({
 }) => {
   const nav = await getMenu()
   return (
-    <NavigationMenu className={className}>
+    <NavigationMenu className={className} viewport={false}>
       <NavigationMenuList>
         {nav.map((item) => (
           <NavigationMenuItem key={item.href}>
             {item.children && item.children.length > 0 ? (
               <>
-                <NavigationMenuTrigger className="">
-                  {item.title}
-                </NavigationMenuTrigger>
+                <NavigationMenuTrigger>{item.title}</NavigationMenuTrigger>
                 <NavigationMenuContent>
-                  {item.children.map((child) => (
-                    <NavigationMenuLink asChild key={child.href}>
-                      <Link href={child.href}>{child.title}</Link>
-                    </NavigationMenuLink>
-                  ))}
+                  <ul className="grid w-[130px] gap-1">
+                    {item.children.map((child) => (
+                      <ListItem
+                        key={child.title}
+                        title={child.title}
+                        href={child.href}
+                      ></ListItem>
+                    ))}
+                  </ul>
                 </NavigationMenuContent>
               </>
             ) : (
@@ -46,5 +48,25 @@ export const DesktopNavigation = async ({
         ))}
       </NavigationMenuList>
     </NavigationMenu>
+  )
+}
+
+function ListItem({
+  title,
+  children,
+  href,
+  ...props
+}: React.ComponentPropsWithoutRef<"li"> & { href: string }) {
+  return (
+    <li {...props}>
+      <NavigationMenuLink asChild>
+        <Link href={href}>
+          <div className="text-sm leading-none font-medium">{title}</div>
+          <p className="text-muted-foreground line-clamp-2 text-sm leading-snug">
+            {children}
+          </p>
+        </Link>
+      </NavigationMenuLink>
+    </li>
   )
 }
