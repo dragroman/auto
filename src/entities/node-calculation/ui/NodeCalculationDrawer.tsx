@@ -1,6 +1,5 @@
 "use client"
 
-import { useRouter } from "next/navigation"
 import {
   Drawer,
   DrawerContent,
@@ -10,81 +9,49 @@ import {
   DrawerFooter,
 } from "@shared/ui/drawer"
 import { Button } from "@shared/ui/button"
-import { useEffect, useState } from "react"
+import { Spinner } from "@shared/ui/spinner"
+import { ReactNode } from "react"
 import {
   NodeCalculationFull,
   type TNodeCalculationFull,
 } from "@entities/node-calculation"
 import { ArrowLeft } from "lucide-react"
 
-interface CalcDrawerProps {
-  id: string
+interface NodeCalculationDrawerProps {
+  calc: TNodeCalculationFull | null
+  loading: boolean
+  error: string | null
   isOpen: boolean
   onClose: () => void
-}
-
-export const Spinner = () => {
-  return (
-    <div className="flex justify-center items-center py-12">
-      <div className="h-10 w-10 animate-spin rounded-full border-4 border-gray-300 border-t-primary" />
-    </div>
-  )
+  actions?: ReactNode
 }
 
 export function NodeCalculationDrawer({
-  id,
+  calc,
+  loading,
+  error,
   isOpen,
   onClose,
-}: CalcDrawerProps) {
-  const [loading, setLoading] = useState(true)
-  const [calc, setCalc] = useState<TNodeCalculationFull | null>(null)
-  const [error, setError] = useState<string | null>(null)
-
-  useEffect(() => {
-    if (!isOpen || !id) return
-
-    const fetchCalcData = async () => {
-      try {
-        setLoading(true)
-        setError(null)
-
-        const response = await fetch(`/api/price-calculator/calc/${id}`)
-
-        if (!response.ok) {
-          throw new Error(`Ошибка при получении товара: ${response.status}`)
-        }
-
-        const calcData = await response.json()
-        setCalc(calcData)
-      } catch (error) {
-        console.error("Error fetching calc:", error)
-        setError(error instanceof Error ? error.message : "Неизвестная ошибка")
-      } finally {
-        setLoading(false)
-      }
-    }
-
-    fetchCalcData()
-  }, [id, isOpen])
-
-  if (!calc && !loading) {
-    return null
-  }
-
+  actions,
+}: NodeCalculationDrawerProps) {
   return (
     <Drawer open={isOpen} onOpenChange={onClose}>
-      <DrawerContent className="max-w-[500px] mx-auto ">
+      <DrawerContent className="max-w-[500px] mx-auto">
         <DrawerHeader>
           <DrawerTitle className="text-sm">{calc?.title}</DrawerTitle>
           <DrawerDescription>{calc?.drupal_internal__nid}</DrawerDescription>
         </DrawerHeader>
+
         {loading ? (
           <Spinner />
         ) : error ? (
-          <div>Ошибка: {error}</div>
+          <div className="p-4 text-center text-red-500">Ошибка: {error}</div>
         ) : calc ? (
-          <NodeCalculationFull results={calc} />
-        ) : null}
+          <NodeCalculationFull scroll={true} results={calc} />
+        ) : (
+          <div className="p-4 text-center text-gray-500">Данные не найдены</div>
+        )}
+
         <DrawerFooter>
           <div className="flex gap-4">
             <div className="flex-1">
@@ -92,9 +59,7 @@ export function NodeCalculationDrawer({
                 <ArrowLeft />
               </Button>
             </div>
-            <div className="flex w-full">
-              <Button className="w-full">Запрос</Button>
-            </div>
+            <div className="flex w-full">{actions}</div>
           </div>
         </DrawerFooter>
       </DrawerContent>

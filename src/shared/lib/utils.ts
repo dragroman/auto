@@ -25,3 +25,10 @@ export function absoluteUrl(input: string) {
 
   return `${process.env.NEXT_PUBLIC_DRUPAL_BASE_URL}${input}`
 }
+
+export const isOwner = (
+  entityUserId: string,
+  currentUserId: string
+): boolean => {
+  return entityUserId === currentUserId
+}
