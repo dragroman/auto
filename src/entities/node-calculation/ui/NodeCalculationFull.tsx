@@ -19,6 +19,7 @@ import { Separator } from "@shared/ui/separator"
 import { TNodeCalculationFull } from "../model/types"
 import { ResultsTableRow } from "./ResultsTableRow"
 import { formatNumber } from "@shared/lib/utils"
+import { Help_text } from "@shared/config/constans"
 
 // Translation keys object (should be imported from your i18n setup)
 
@@ -48,10 +49,24 @@ export const NodeCalculationFull = ({
               title={t("carCost.title")}
               results={results.field_price_actual * results.field_cny_rub}
               tooltip={t("carCost.tooltip")}
+              info={t("carCost.info")}
               currency="₽"
             />
             <ResultsTableRow
               title={t("taxRussia.title")}
+              tooltip={t("taxRussia.tooltip")}
+              info={t("taxRussia.info")}
+              url_name={[
+                t("taxRussia.url_name1"),
+                t("taxRussia.url_name2"),
+                t("taxRussia.url_name3"),
+              ]}
+              url={[
+                Help_text.сustomsВutiesRussia,
+                Help_text.сustomsRecyclingeRussia,
+                Help_text.сustomsRecyclingeRussia1,
+              ]}
+              document={true}
               results={results.field_tax_russia}
               currency="₽"
             />
@@ -60,36 +75,42 @@ export const NodeCalculationFull = ({
               results={results.field_tax_china}
               currency="₽"
             />
-
             <ResultsTableRow
               title={t("customsDeclaration.title")}
               results={results.field_declaration_rmb * results.field_cny_rub}
               tooltip={t("customsDeclaration.tooltip")}
+              info={t("customsDeclaration.info")}
               currency="₽"
             />
-
             <ResultsTableRow
               title={t("customsClearance.title")}
               tooltip={t("customsClearance.tooltip")}
+              info={t("customsClearance.info")}
               results={results.field_clearance_rub}
               currency="₽"
             />
-
             <ResultsTableRow
               title={t("domesticShippingChina.title")}
               tooltip={t("domesticShippingChina.tooltip")}
+              info={t("domesticShippingChina.info")}
+              url_name={t("domesticShippingChina.url_name")}
+              url={Help_text.googleMapsTransfer}
               results={results.field_domestic_shipping * results.field_cny_rub}
               currency="₽"
             />
             <ResultsTableRow
               title={t("insurance.title")}
               tooltip={t("insurance.tooltip")}
+              info={t("insurance.info")}
               results={results.field_insurance * results.field_cny_rub}
               currency="₽"
             />
             <ResultsTableRow
               title={t("employeeTravelCost.title")}
               tooltip={t("employeeTravelCost.tooltip")}
+              info={t("employeeTravelCost.info")}
+              url_name={t("employeeTravelCost.url_name")}
+              url={Help_text.googleMapsOfficeChina}
               results={
                 results.field_employee_travel_cost * results.field_cny_rub
               }
@@ -104,6 +125,7 @@ export const NodeCalculationFull = ({
             <ResultsTableRow
               title={t("inspection.title")}
               tooltip={t("inspection.tooltip")}
+              info={t("inspection.info")}
               results={results.field_inspection * results.field_cny_rub}
               currency="₽"
             />
