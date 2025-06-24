@@ -53,7 +53,10 @@ export const ResultsTableRow = ({
             <DialogTrigger>
               <HelpCircle className="w-4 h-4" />
             </DialogTrigger>
-            <DialogContent className="bg-transparent shadow-none border-none rounded-none">
+            <DialogContent
+              showCloseButton={false}
+              className="bg-transparent shadow-none border-none rounded-none"
+            >
               <DialogTitle className="sr-only">Подсказка</DialogTitle>
               <div className="flex justify-end">
                 <DialogClose className="text-white hover:opacity-60 transition-opacity">
