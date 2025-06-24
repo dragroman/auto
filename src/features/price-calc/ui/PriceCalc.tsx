@@ -2,7 +2,7 @@
 
 import { PriceCalculatorForm } from "./PriceCalculatorForm"
 import { useCalculator } from "../api/useCalculator"
-import { NodeCalculationFull } from "@entities/node-calculation"
+import { NodeCalculationDrawer } from "@entities/node-calculation"
 
 export const PriceCalc = () => {
   const {
@@ -13,6 +13,9 @@ export const PriceCalc = () => {
     isLimited,
     requestCount,
     maxRequests,
+    // Новые состояния для Drawer
+    showResultsDrawer,
+    closeResultsDrawer,
   } = useCalculator()
 
   return (
@@ -20,16 +23,6 @@ export const PriceCalc = () => {
       <h1 className="text-2xl font-bold mb-6">
         Калькулятор стоимости автомобиля
       </h1>
-
-      {/* Информация о лимите запросов
-      <div className="mb-4">
-        <p
-          className={`text-sm ${isLimited ? "text-red-500" : "text-muted-foreground"}`}
-        >
-          Доступно запросов: {maxRequests - requestCount} из {maxRequests}
-          {isLimited && " (лимит исчерпан, подождите некоторое время)"}
-        </p>
-      </div> */}
 
       <div>
         <PriceCalculatorForm
@@ -39,6 +32,23 @@ export const PriceCalc = () => {
           disabled={isLimited}
         />
       </div>
+
+      {/* Drawer с результатами расчета */}
+      {calculationResults && (
+        <NodeCalculationDrawer
+          calc={calculationResults}
+          loading={false}
+          error={null}
+          isOpen={showResultsDrawer}
+          onClose={closeResultsDrawer}
+          actions={
+            // Можно добавить кнопку "Сохранить расчет" или другие действия
+            <div className="text-sm text-muted-foreground">
+              Расчет выполнен успешно!
+            </div>
+          }
+        />
+      )}
     </div>
   )
 }
