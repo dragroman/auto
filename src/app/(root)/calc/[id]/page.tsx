@@ -4,6 +4,7 @@ import { Button } from "@shared/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@shared/ui/card"
 import { ArrowLeft } from "lucide-react"
 import { getResource } from "next-drupal"
+import { notFound } from "next/navigation"
 import Link from "next/link"
 
 export default async function CalcFullPage({
@@ -13,13 +14,15 @@ export default async function CalcFullPage({
 }) {
   const { id } = await params
 
-  const node = await getResource<TNodeCalculationFull>(
-    "node--calculation",
-    id,
-    {
+  let node: TNodeCalculationFull
+
+  try {
+    node = await getResource<TNodeCalculationFull>("node--calculation", id, {
       params: { withAuth: false },
-    }
-  )
+    })
+  } catch (error) {
+    notFound()
+  }
 
   return (
     <div>
