@@ -10,6 +10,20 @@ export const metadata: Metadata = {
 
 const platformList = [
   {
+    title: "人人车",
+    title_ru: "Жэньжэньчэ",
+    url: "https://www.renrenche.com/",
+    description: "Популярный сервис для покупки б/у автомобилей.",
+    tags: "с пробегом",
+  },
+  {
+    title: "Taocheche",
+    title_ru: "Таочхэчхэ",
+    url: "https://m.taocheche.com/",
+    description: "Платформа с проверенными автомобилями, есть аукционы.",
+    tags: "с пробегом",
+  },
+  {
     title: "懂车帝",
     title_ru: "Донгчэди",
     url: "https://www.dongchedi.com/",
@@ -25,10 +39,10 @@ const platformList = [
     tags: "новые",
   },
   {
-    title: "Alibaba (1688.com)",
-    title_ru: "Алибаба",
-    url: "https://www.1688.com/",
-    description: "B2B-платформа с оптовыми поставщиками и новыми авто.",
+    title: "Yiche",
+    title_ru: "Ичхэ",
+    url: "https://yiche.com/",
+    description: "Автомобильный портал с каталогами новых машин и дилерами.",
     tags: "новые",
   },
   {
@@ -37,13 +51,6 @@ const platformList = [
     url: "https://www.guazi.com/",
     description:
       "Одна из крупнейших площадок подержанных авто с проверкой истории.",
-    tags: "с пробегом",
-  },
-  {
-    title: "人人车",
-    title_ru: "Жэньжэньчэ",
-    url: "https://www.renrenche.com/",
-    description: "Популярный сервис для покупки б/у автомобилей.",
     tags: "с пробегом",
   },
   {
@@ -60,20 +67,13 @@ const platformList = [
     description: "Аналог Avito в Китае, много частных объявлений.",
     tags: "новые, с пробегом",
   },
-  {
-    title: "闲鱼",
-    title_ru: "Сяньюй",
-    url: "https://2.taobao.com/",
-    description: "Раздел подержанных товаров на Taobao, можно найти б/у авто.",
-    tags: "с пробегом",
-  },
 ]
 
 export default async function Home() {
   return (
     <>
       {/* Hero Section */}
-      <section className="container mx-auto px-6 py-8 md:py-12">
+      <section className="container mx-auto py-8 md:py-12">
         <div className="text-center mb-16">
           <h1 className="text-3xl md:text-5xl font-black leading-tight text-gray-900 mb-6">
             Покупка автомобилей
@@ -102,6 +102,8 @@ export default async function Home() {
             <CardContent>
               <p className="text-gray-600 mb-6">
                 Найдите подходящий автомобиль на популярных площадках в Китае
+                или отправьте запрос с характеристиками нашим менеджерам указав
+                модель и год
               </p>
               <div className="space-y-3">
                 <h4 className="font-semibold text-gray-800 mb-3">
@@ -110,7 +112,9 @@ export default async function Home() {
                 <div className="grid grid-cols-2 gap-2">
                   {platformList.map((item) => (
                     <Button variant="outline" key={item.url} asChild>
-                      <Link href={item.url}>{item.title_ru}</Link>
+                      <Link target="_blank" href={item.url}>
+                        {item.title_ru}
+                      </Link>
                     </Button>
                   ))}
                 </div>
@@ -149,29 +153,32 @@ export default async function Home() {
           </Card>
 
           {/* Шаг 3 */}
-          <div className="bg-white rounded-2xl p-8 shadow-md">
-            <div className="flex items-center mb-6">
-              <div className="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center text-white font-bold text-xl">
-                3
-              </div>
-              <h3 className="text-2xl font-bold text-gray-900 ml-4">
-                Оформление
-              </h3>
-            </div>
-            <p className="text-gray-600 mb-6">
-              Если требуются наши услуги по доставке автомобиля, нажмите кнопку
-              «Запрос». Дальше поработает наш менеджер.
-            </p>
-
-            <div className="space-y-4">
-              <button className="w-full bg-purple-600 hover:bg-purple-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors">
-                Отправить запрос
-              </button>
-              <p className="text-sm text-gray-500 text-center">
-                После этого менеджер свяжется с вами для уточнения данных
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center">
+                <div className="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center text-white font-bold text-xl">
+                  3
+                </div>
+                <h3 className="text-2xl font-bold text-gray-900 ml-4">
+                  Оформление
+                </h3>
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-gray-600 mb-6">
+                Если требуются наши услуги по доставке автомобиля, нажмите
+                кнопку «Запрос». Дальше поработает наш менеджер.
               </p>
-            </div>
-          </div>
+              <div className="space-y-4">
+                <button className="w-full bg-purple-600 hover:bg-purple-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors">
+                  Отправить запрос
+                </button>
+                <p className="text-sm text-gray-500 text-center">
+                  После этого менеджер свяжется с вами для уточнения данных
+                </p>
+              </div>
+            </CardContent>
+          </Card>
         </div>
 
         {/* CTA Section */}

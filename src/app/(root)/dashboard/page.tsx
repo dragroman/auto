@@ -19,6 +19,7 @@ export default async function Dashboard() {
   const api = new DrupalJsonApiParams()
     .addFilter("status", "1")
     .addFilter("uid.id", currentUser)
+    .addSort("-created")
   const nodes = await drupal.getResourceCollection<TNodeCalculationTeaser[]>(
     "node--calculation",
     {
@@ -30,7 +31,7 @@ export default async function Dashboard() {
     <div className="space-y-4">
       <PageTitle title="Личный кабинет" />
       <User user={session.user} />
-      <ViewsCalculation nodes={nodes} />
+      <ViewsCalculation nodes={nodes} currentUserID={currentUser} />
       <hr className="my-10" />
       <div className="text-center">
         {session ? (

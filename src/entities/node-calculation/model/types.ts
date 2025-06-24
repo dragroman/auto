@@ -13,9 +13,14 @@ export interface TNodeCalculationTeaser extends DrupalNode {
   field_horsepower: number
   field_price_actual: number
   field_cny_rub: number
+  field_status: string
 }
 
 export interface TNodeCalculationFull extends DrupalNode {
+  uid: {
+    id: string
+  }
+  body?: string
   field_car_type: string
   field_new: string
   field_production_date: string
@@ -40,4 +45,5 @@ export interface TNodeCalculationFull extends DrupalNode {
   field_total_price_round: number
   field_total_price: number
   field_customs_clear_rmb: number
+  field_status: string
 }

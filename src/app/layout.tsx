@@ -41,7 +41,6 @@ export default async function RootLayout({
           <NextIntlClientProvider>
             <DraftAlert />
             {children}
-            <Toaster position="top-center" />
           </NextIntlClientProvider>
         </Providers>
       </body>

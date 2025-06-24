@@ -2,8 +2,8 @@ import {
   NodeCalculationTeaser,
   type TNodeCalculationTeaser,
 } from "@entities/node-calculation"
+import { RequestCalc } from "@features/request-calc"
 import { Button } from "@shared/ui/button"
-import { DrupalUser } from "next-drupal"
 import Link from "next/link"
 
 export const ViewsCalculation = async ({
@@ -30,6 +30,8 @@ export const ViewsCalculation = async ({
             key={node.id}
             node={node}
             currentUserID={currentUserID}
+            owner={node.uid.id}
+            actions={<RequestCalc currentUserID={currentUserID} node={node} />}
           />
         ))
       )}

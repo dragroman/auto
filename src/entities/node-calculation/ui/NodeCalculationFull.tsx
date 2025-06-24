@@ -18,25 +18,28 @@ import {
 import { Separator } from "@shared/ui/separator"
 import { TNodeCalculationFull } from "../model/types"
 import { ResultsTableRow } from "./ResultsTableRow"
-import { formatNumber } from "@shared/lib/utils"
+import { cn, formatNumber } from "@shared/lib/utils"
 import { Help_text } from "@shared/config/constans"
 
 // Translation keys object (should be imported from your i18n setup)
 
 export const NodeCalculationFull = ({
   results,
+  scroll = false,
 }: {
   results: TNodeCalculationFull
+  scroll?: boolean
 }) => {
   const t = useTranslations("formResults")
+  console.log(results)
   return (
-    <div className="space-y-6 px-4">
-      <div>
-        <div className="text-4xl font-bold mb-2">
-          {formatNumber(results.field_total_price_round)} ₽
-        </div>
+    <div className="space-y-6">
+      <div className={cn(`text-4xl font-bold mb-2`, scroll && "px-4")}>
+        {formatNumber(results.field_total_price_round)} ₽
       </div>
-      <div className="max-h-[300px] overflow-y-auto overflow-x-hidden -mx-4">
+      <div
+        className={`${scroll ? "max-h-[300px] overflow-y-auto overflow-x-hidden" : "-mx-4"}`}
+      >
         <Table>
           <TableHeader>
             <TableRow>
@@ -136,78 +139,53 @@ export const NodeCalculationFull = ({
             />
           </TableBody>
         </Table>
-        <Card>
-          <CardHeader>
-            <CardTitle>{t("additionalInfo.title")}</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div>
-                <h3 className="text-sm font-medium mb-2">
-                  {t("exchangeRates.title")}
-                </h3>
-                <div className="grid grid-cols-2 gap-2 text-sm">
-                  <div>{t("cnyRub.title")}</div>
-                  <div className="text-right">{results.field_cny_rub}</div>
-                  <div>{t("eurRub.title")}</div>
-                  <div className="text-right">{results.field_eur_rub}</div>
-                </div>
-              </div>
-
-              <div>
-                <h3 className="text-sm font-medium mb-2">
-                  {t("taxRefund.title")}
-                </h3>
-                <div className="grid grid-cols-2 gap-2 text-sm">
-                  <div>{t("refundAmount.title")}</div>
-                  <div className="text-right">
-                    {formatNumber(results.field_tax_refund)} RMB
-                  </div>
-                  <div>{t("overallProfit.title")}</div>
-                  <div className="text-right">
-                    {formatNumber(results.field_overall_profit)} RMB
-                  </div>
-                </div>
-              </div>
+        <Separator className="my-4" />
+        <div className="px-4">
+          <div className="font-medium mb-4">{t("additionalInfo.title")}</div>
+          <div>
+            <h3 className="text-sm font-medium mb-2">
+              {t("exchangeRates.title")}
+            </h3>
+            <div className="grid grid-cols-2 gap-2 text-sm">
+              <div>{t("cnyRub.title")}</div>
+              <div className="text-right">{results.field_cny_rub}</div>
+              <div>{t("eurRub.title")}</div>
+              <div className="text-right">{results.field_eur_rub}</div>
+            </div>
+          </div>
+          <Separator className="my-4" />
+          <h3 className="text-sm font-medium mb-2">
+            {t("costInDifferentCurrencies.title")}
+          </h3>
+          <div className="grid grid-cols-2 gap-2 text-sm">
+            <div>{t("priceRmb.title")}</div>
+            <div className="text-right">
+              {formatNumber(results.field_total_price / results.field_cny_rub)}{" "}
+              RMB
+            </div>
+            <div>{t("priceRub.title")}</div>
+            <div className="text-right">
+              {formatNumber(results.field_total_price)} RUB
+            </div>
+            <div>{t("retailPriceEur.title")}</div>
+            <div className="text-right">
+              {formatNumber(results.field_total_price / results.field_eur_rub)}{" "}
+              EUR
             </div>
 
-            <Separator className="my-4" />
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {results.vehicle_age !== undefined && (
               <div>
                 <h3 className="text-sm font-medium mb-2">
-                  {t("costInDifferentCurrencies.title")}
+                  {t("vehicleInfo.title")}
                 </h3>
                 <div className="grid grid-cols-2 gap-2 text-sm">
-                  <div>{t("priceRmb.title")}</div>
-                  <div className="text-right">
-                    {formatNumber(results.price_actual_value_rmb)}
-                  </div>
-                  <div>{t("priceRub.title")}</div>
-                  <div className="text-right">
-                    {formatNumber(results.price_actual_value_rub)}
-                  </div>
-                  <div>{t("retailPriceEur.title")}</div>
-                  <div className="text-right">
-                    {formatNumber(results.price_retail_value_eur)}
-                  </div>
+                  <div>{t("vehicleAge.title")}</div>
+                  <div className="text-right">{results.vehicle_age}</div>
                 </div>
               </div>
-
-              {results.vehicle_age !== undefined && (
-                <div>
-                  <h3 className="text-sm font-medium mb-2">
-                    {t("vehicleInfo.title")}
-                  </h3>
-                  <div className="grid grid-cols-2 gap-2 text-sm">
-                    <div>{t("vehicleAge.title")}</div>
-                    <div className="text-right">{results.vehicle_age}</div>
-                  </div>
-                </div>
-              )}
-            </div>
-          </CardContent>
-        </Card>
+            )}
+          </div>
+        </div>
       </div>
     </div>
   )

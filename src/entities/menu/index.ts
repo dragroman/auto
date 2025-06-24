@@ -4,6 +4,14 @@ export const getMenu = async () => {
   const t = await getTranslations("header.nav")
   return [
     {
+      title: t("calc"),
+      href: "/calc",
+    },
+    {
+      title: t("callback"),
+      href: "/callback",
+    },
+    {
       title: t("more"),
       href: "",
       footer: false,
@@ -27,10 +35,6 @@ export const getMenu = async () => {
       ],
     },
 
-    // {
-    //   title: t("new"),
-    //   href: "/cars/new",
-    // },
     // {
     //   title: t("used"),
     //   href: "/cars/used",

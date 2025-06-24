@@ -41,16 +41,22 @@ export const ProductionDateField = ({ name }: { name: "production_date" }) => {
       id: "under3",
       label: t("under3"),
       years: 3,
+      min: currentYear - 3,
+      max: currentYear,
     },
     {
       id: "3to5",
       label: t("from3to5"),
       years: 4,
+      min: currentYear - 5,
+      max: currentYear - 3,
     },
     {
       id: "5to7",
       label: t("from5to7"),
       years: 6,
+      min: currentYear - 7,
+      max: currentYear - 5,
     },
   ]
 
@@ -127,7 +133,7 @@ export const ProductionDateField = ({ name }: { name: "production_date" }) => {
                         )}
                       </div>
                       <div className="text-sm text-gray-500 mt-1">
-                        {currentYear - range.years} г.
+                        {range.min} г. — {range.max} г.
                       </div>
                     </div>
                   ))}

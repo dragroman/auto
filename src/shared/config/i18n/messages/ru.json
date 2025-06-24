@@ -1,6 +1,8 @@
 {
   "header": {
     "nav": {
+      "callback": "Обратный звонок",
+      "calc": "Калькулятор",
       "auction": "Аукцион",
       "new": "Без пробега",
       "used": "С пробегом",
@@ -93,6 +95,9 @@
     "noEngine": "Двигатель не указан",
     "noTransmission": "Коробка передач не указана"
   },
+  "auth": {
+    "login": "Вход"
+  },
   "form": {
     "rateLimit": {
       "anonymous": {
@@ -118,6 +123,7 @@
     "submit": "Рассчитать",
     "reset": "Сбросить",
     "request": "Запрос",
+    "requested": "На рассмотрении",
     "more": "Подробнее",
 
     "vehicle": {
@@ -280,11 +286,14 @@
     "priceRmb": {
       "title": "Цена (RMB)"
     },
+    "priceUsd": {
+      "title": "Цена (USD)"
+    },
     "priceRub": {
       "title": "Цена (RUB)"
     },
     "retailPriceEur": {
-      "title": "Розничная цена (EUR)"
+      "title": "Цена (EUR)"
     },
     "vehicleInfo": {
       "title": "Информация о транспортном средстве"
@@ -316,6 +325,7 @@
 
   "nodeCalculation": {
     "my": "Мой",
+    "anonymous": "Аноним",
     "carType": {
       "sedan": "Седан",
       "hatchback": "Хэтчбек",

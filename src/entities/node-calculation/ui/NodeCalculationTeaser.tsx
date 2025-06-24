@@ -6,7 +6,7 @@ import {
   CardTitle,
 } from "@shared/ui/card"
 import { TNodeCalculationTeaser } from "../model/types"
-import { buttonVariants } from "@shared/ui/button"
+import { Button, buttonVariants } from "@shared/ui/button"
 import {
   Calendar,
   ChartCandlestick,
@@ -14,17 +14,22 @@ import {
   FileEdit,
 } from "lucide-react"
 import Link from "next/link"
-import { formatNumber } from "@shared/lib/utils"
+import { formatNumber, isOwner } from "@shared/lib/utils"
 import { Badge } from "@shared/ui/badge"
 import { useTranslations } from "next-intl"
 import { createTranslationMapper } from "../utils/translations"
+import { ReactNode } from "react"
 
 export const NodeCalculationTeaser = ({
   node,
   currentUserID,
+  owner,
+  actions,
 }: {
   node: TNodeCalculationTeaser
   currentUserID?: string
+  owner: string
+  actions?: ReactNode
 }) => {
   const t = useTranslations()
   const mapper = createTranslationMapper(t)
@@ -37,9 +42,11 @@ export const NodeCalculationTeaser = ({
             <Badge variant="default">
               {formatNumber(node.field_price_actual)} {"RMB"}
             </Badge>
-            {currentUserID === node.uid.id && (
-              <Badge variant="outline">{t("nodeCalculation.my")}</Badge>
-            )}
+            <Badge variant="outline">
+              {currentUserID && isOwner(owner, currentUserID)
+                ? t("nodeCalculation.my")
+                : t("nodeCalculation.anonymous")}
+            </Badge>
           </div>
           <div className="flex items-center gap-2">
             <Calendar className="w-3 h-3" />
@@ -86,15 +93,7 @@ export const NodeCalculationTeaser = ({
       </CardContent>
       <CardFooter>
         <div className="flex items-center justify-between w-full">
-          <div>
-            <Link
-              href=""
-              className={buttonVariants({ variant: "secondary", size: "sm" })}
-            >
-              <FileEdit />
-              {t("form.request")}
-            </Link>
-          </div>
+          <div>{actions}</div>
           <div>
             <Link
               href={`/calc/${node.id}`}

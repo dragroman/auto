@@ -32,16 +32,23 @@ export async function POST(request: Request) {
     if (!response.ok) {
       // Попытка получить сообщение об ошибке из ответа
       let errorMessage = `Ошибка API: ${response.status}`
+      let errorType = "general"
+      let userType = undefined
+      let resetTime = undefined
       try {
         const errorData = await response.json()
         errorMessage = errorData.message || errorMessage
+        errorType =
+          errorData.type || (response.status === 429 ? "rate_limit" : "general")
+        userType = errorData.userType
+        resetTime = errorData.resetTime
       } catch (e) {
         // Если не удалось распарсить JSON, используем стандартное сообщение
       }
 
       console.error("API Error:", errorMessage)
       return NextResponse.json(
-        { message: errorMessage },
+        { message: errorMessage, type: errorType, userType, resetTime },
         { status: response.status }
       )
     }
