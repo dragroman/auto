@@ -7,6 +7,7 @@ import {
   DrawerTitle,
   DrawerDescription,
   DrawerFooter,
+  DrawerClose,
 } from "@shared/ui/drawer"
 import { Button } from "@shared/ui/button"
 import { Spinner } from "@shared/ui/spinner"
@@ -39,7 +40,7 @@ export function NodeCalculationDrawer({
       <DrawerContent className="max-w-[500px] mx-auto">
         <DrawerHeader>
           <DrawerTitle className="text-sm">{calc?.title}</DrawerTitle>
-          <DrawerDescription>{calc?.drupal_internal__nid}</DrawerDescription>
+          <DrawerClose />
         </DrawerHeader>
 
         {loading ? (
