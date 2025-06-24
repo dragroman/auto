@@ -3,7 +3,7 @@
 
 import { useEffect, useRef, useState } from "react"
 import { PriceCalculatorFormData } from "../model/types"
-import { TNodeCalculationTeaser } from "@entities/node-calculation"
+import { TNodeCalculationFull } from "@entities/node-calculation"
 import { useRouter } from "next/navigation"
 
 interface RateLimitError {
@@ -22,7 +22,7 @@ interface CalculatorError {
 
 export const useCalculator = () => {
   const [calculationResults, setCalculationResults] =
-    useState<TNodeCalculationTeaser | null>(null)
+    useState<TNodeCalculationFull | null>(null)
   const [isCalculating, setIsCalculating] = useState(false)
   const [calculationError, setCalculationError] = useState<
     CalculatorError | undefined
@@ -32,6 +32,9 @@ export const useCalculator = () => {
   const [requestCount, setRequestCount] = useState(0)
   const [isLimited, setIsLimited] = useState(false)
   const timeoutRef = useRef<NodeJS.Timeout | null>(null)
+
+  // Новые состояния для Drawer
+  const [showResultsDrawer, setShowResultsDrawer] = useState(false)
 
   // Константы лимитов (локальные)
   const MAX_REQUESTS = 3 // максимум 3 запросов для неавторизованных
@@ -106,6 +109,8 @@ export const useCalculator = () => {
 
     setIsCalculating(true)
     setCalculationError(undefined)
+    // Закрываем предыдущий drawer если был открыт
+    setShowResultsDrawer(false)
 
     try {
       const response = await fetch("/api/price-calculator", {
@@ -124,7 +129,26 @@ export const useCalculator = () => {
       const data = await response.json()
       router.refresh()
 
-      setCalculationResults(data)
+      // Загружаем полные данные для Drawer
+      try {
+        const fullDataResponse = await fetch(
+          `/api/price-calculator/calc/${data.node_id}`
+        )
+        if (fullDataResponse.ok) {
+          const fullData = await fullDataResponse.json()
+          setCalculationResults(fullData)
+        } else {
+          // Fallback: используем базовые данные
+          setCalculationResults(data)
+        }
+      } catch (error) {
+        console.error("Ошибка загрузки полных данных:", error)
+        // Fallback: используем базовые данные
+        setCalculationResults(data)
+      }
+
+      // Открываем drawer с результатами
+      setShowResultsDrawer(true)
     } catch (error) {
       console.error("Error calculating price:", error)
 
@@ -142,6 +166,10 @@ export const useCalculator = () => {
     } finally {
       setIsCalculating(false)
     }
+  }
+
+  const closeResultsDrawer = () => {
+    setShowResultsDrawer(false)
   }
 
   const handleRegisterClick = () => {
@@ -169,5 +197,8 @@ export const useCalculator = () => {
     isLimited,
     requestCount,
     maxRequests: MAX_REQUESTS,
+    // Новые методы для Drawer
+    showResultsDrawer,
+    closeResultsDrawer,
   }
 }
