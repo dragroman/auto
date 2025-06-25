@@ -1,244 +1,304 @@
-import { Button, buttonVariants } from "@shared/ui/button"
+import { Button } from "@shared/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@shared/ui/card"
+import { Badge } from "@shared/ui/badge"
+import { Alert, AlertDescription } from "@shared/ui/alert"
 import type { Metadata } from "next"
 import Link from "next/link"
+import {
+  Calculator,
+  Search,
+  FileText,
+  Car,
+  Truck,
+  DollarSign,
+  Shield,
+  Clock,
+  CheckCircle,
+  ArrowRight,
+  Phone,
+  MapPin,
+  Star,
+  Zap,
+} from "lucide-react"
 
 export const metadata: Metadata = {
   title: "Автомобили из Китая",
-  description: "...",
+  description: "Покупка и доставка автомобилей из Китая напрямую",
 }
 
+const processSteps = [
+  {
+    step: "01",
+    title: "Выбор",
+    description: "Подберём автомобиль по вашим критериям",
+    time: "1 день",
+    icon: Search,
+    color: "bg-blue-500",
+  },
+  {
+    step: "02",
+    title: "Расчёт",
+    description: "Точная калькуляция всех расходов",
+    time: "30 мин",
+    icon: Calculator,
+    color: "bg-green-500",
+  },
+  {
+    step: "03",
+    title: "Договор",
+    description: "Оформление и предоплата 60к ₽",
+    time: "1 час",
+    icon: FileText,
+    color: "bg-orange-500",
+  },
+  {
+    step: "04",
+    title: "Доставка",
+    description: "Транспортировка до Уссурийска",
+    time: "7-14 дней",
+    icon: Truck,
+    color: "bg-purple-500",
+  },
+]
+
 const platformList = [
+  { title_ru: "Жэньжэньчэ", url: "https://www.renrenche.com/", hot: true },
+  { title_ru: "Таочхэчхэ", url: "https://m.taocheche.com/", hot: false },
+  { title_ru: "Донгчэди", url: "https://www.dongchedi.com/", hot: true },
+  { title_ru: "Аутохоум", url: "https://www.autohome.com.cn/", hot: false },
+  { title_ru: "Гуацзы", url: "https://www.guazi.com/", hot: true },
+  { title_ru: "58 Тунчэн", url: "https://www.58.com/", hot: false },
+]
+
+const features = [
   {
-    title: "人人车",
-    title_ru: "Жэньжэньчэ",
-    url: "https://www.renrenche.com/",
-    description: "Популярный сервис для покупки б/у автомобилей.",
-    tags: "с пробегом",
+    icon: Shield,
+    title: "Гарантия качества",
+    desc: "Проверка перед отправкой",
+    highlight: true,
   },
   {
-    title: "Taocheche",
-    title_ru: "Таочхэчхэ",
-    url: "https://m.taocheche.com/",
-    description: "Платформа с проверенными автомобилями, есть аукционы.",
-    tags: "с пробегом",
+    icon: DollarSign,
+    title: "Прозрачная цена",
+    desc: "Максимально приближенный расчет.",
+    highlight: false,
   },
   {
-    title: "懂车帝",
-    title_ru: "Донгчэди",
-    url: "https://www.dongchedi.com/",
-    description: "Агрегатор новых и подержанных авто с ценами от дилеров.",
-    tags: "новые, с пробегом",
+    icon: Truck,
+    title: "Быстрая доставка",
+    desc: "7-14 дней до Уссурийска",
+    highlight: true,
   },
   {
-    title: "Autohome",
-    title_ru: "Аутохоум",
-    url: "https://www.autohome.com.cn/",
-    description:
-      "Крупнейший автомобильный портал с каталогами новых машин и дилерами.",
-    tags: "новые",
-  },
-  {
-    title: "Yiche",
-    title_ru: "Ичхэ",
-    url: "https://yiche.com/",
-    description: "Автомобильный портал с каталогами новых машин и дилерами.",
-    tags: "новые",
-  },
-  {
-    title: "瓜子二手车",
-    title_ru: "Гуацзы",
-    url: "https://www.guazi.com/",
-    description:
-      "Одна из крупнейших площадок подержанных авто с проверкой истории.",
-    tags: "с пробегом",
-  },
-  {
-    title: "优信二手车",
-    title_ru: "Юсинь",
-    url: "https://www.xin.com/",
-    description: "Платформа с проверенными автомобилями, есть аукционы.",
-    tags: "с пробегом",
-  },
-  {
-    title: "58同城",
-    title_ru: "58 Тунчэн",
-    url: "https://www.58.com/",
-    description: "Аналог Avito в Китае, много частных объявлений.",
-    tags: "новые, с пробегом",
+    icon: Zap,
+    title: "Мгновенный расчет",
+    desc: "Расчет в пару кликов",
+    highlight: false,
   },
 ]
 
 export default async function Home() {
   return (
-    <>
-      {/* Hero Section */}
-      <section className="container mx-auto py-8 md:py-12">
-        <div className="text-center mb-16">
-          <h1 className="text-3xl md:text-5xl font-black leading-tight text-gray-900 mb-6">
-            Покупка автомобилей
-            <span className="block text-primary">из Китая напрямую</span>
-          </h1>
-          <p className="text-md md:text-xl text-gray-600 max-w-3xl mx-auto">
-            Хотите купить автомобиль из Китая напрямую? Мы даём вам такую
-            возможность. Полный сервис от поиска до доставки в г. Уссурийск.
-          </p>
-        </div>
+    <div className="min-h-screen bg-background">
+      {/* Compact Hero Section */}
+      <section className="px-4 py-4">
+        <div className="max-w-4xl mx-auto">
+          {/* Hero Header */}
+          <div className="text-center mb-6">
+            <div className="flex justify-center mb-4">
+              <Badge className="bg-primary/10 text-primary border-primary/20">
+                Прямые поставки из Китая
+              </Badge>
+            </div>
+            <h1 className="text-2xl md:text-4xl font-bold mb-2 leading-tight">
+              Автомобили из Китая
+              <span className="block text-primary">от 800 000 ₽</span>
+            </h1>
+          </div>
 
-        {/* Steps Section */}
-        <div className="flex flex-col gap-8 mb-16">
-          {/* Шаг 1 */}
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center">
-                <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-xl">
-                  1
-                </div>
-                <h3 className="text-2xl font-bold text-gray-900 ml-4">
-                  Поиск автомобиля
-                </h3>
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-gray-600 mb-6">
-                Найдите подходящий автомобиль на популярных площадках в Китае
-                или отправьте запрос с характеристиками нашим менеджерам указав
-                модель и год
-              </p>
-              <div className="space-y-3">
-                <h4 className="font-semibold text-gray-800 mb-3">
-                  Популярные площадки:
-                </h4>
-                <div className="grid grid-cols-2 gap-2">
-                  {platformList.map((item) => (
-                    <Button variant="outline" key={item.url} asChild>
-                      <Link target="_blank" href={item.url}>
-                        {item.title_ru}
-                      </Link>
-                    </Button>
-                  ))}
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Шаг 2 */}
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center">
-                <div className="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center text-white font-bold text-xl">
-                  2
-                </div>
-                <h3 className="text-2xl font-bold text-gray-900 ml-4">
-                  Расчёт стоимости
-                </h3>
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-gray-600 mb-6">
-                Воспользуйтесь нашим калькулятором для полного расчёта стоимости
-                с доставкой до г. Уссурийск
-              </p>
-              <div className="bg-gradient-to-r from-amber-500 to-yellow-200 rounded-xl p-6 text-black text-center">
-                <div className="text-3xl font-bold mb-2">🧮</div>
-                <h4 className="font-semibold mb-2">Калькулятор стоимости</h4>
-                <p className="text-sm opacity-90 mb-4">
-                  Узнайте точную стоимость с учётом всех расходов
-                </p>
-                <Button variant="white" asChild>
-                  <Link href="/calc">Рассчитать →</Link>
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Шаг 3 */}
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center">
-                <div className="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center text-white font-bold text-xl">
-                  3
-                </div>
-                <h3 className="text-2xl font-bold text-gray-900 ml-4">
-                  Оформление
-                </h3>
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-gray-600 mb-6">
-                Если требуются наши услуги по доставке автомобиля, нажмите
-                кнопку «Запрос». Дальше поработает наш менеджер.
-              </p>
-              <div className="space-y-4">
-                <button className="w-full bg-purple-600 hover:bg-purple-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors">
-                  Отправить запрос
-                </button>
-                <p className="text-sm text-gray-500 text-center">
-                  После этого менеджер свяжется с вами для уточнения данных
-                </p>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-
-        {/* CTA Section */}
-        <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 md:p-12 text-center text-white">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Готовы начать?
-          </h2>
-          <p className="text-xl opacity-90 mb-8 max-w-2xl mx-auto">
-            Получите персональную консультацию и узнайте, как мы можем помочь
-            вам купить автомобиль из Китая
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          {/* Primary CTA */}
+          <div className="space-y-3">
             <Button
-              size="lg"
-              variant="white"
-              className="text-muted-foreground"
               asChild
+              size="lg"
+              className="w-full h-12 text-base font-semibold"
             >
-              <Link href="/">Консультация</Link>
+              <Link href="/calc">
+                <Calculator className="mr-2 h-5 w-5" />
+                Рассчитать стоимость
+              </Link>
             </Button>
-            <Button size="lg" variant="outline" asChild>
-              <Link href="/">Связаться с нами</Link>
-            </Button>
-          </div>
-        </div>
-
-        {/* Features Section */}
-        <div className="mt-16 grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div className="text-center p-6">
-            <div className="text-4xl mb-4">🚗</div>
-            <h4 className="font-semibold text-gray-900 mb-2">
-              Прямые поставки
-            </h4>
-            <p className="text-gray-600 text-sm">
-              Работаем напрямую с производителями в Китае
-            </p>
-          </div>
-          <div className="text-center p-6">
-            <div className="text-4xl mb-4">💰</div>
-            <h4 className="font-semibold text-gray-900 mb-2">Лучшие цены</h4>
-            <p className="text-gray-600 text-sm">Без переплат посредникам</p>
-          </div>
-          <div className="text-center p-6">
-            <div className="text-4xl mb-4">🚚</div>
-            <h4 className="font-semibold text-gray-900 mb-2">
-              Полная логистика
-            </h4>
-            <p className="text-gray-600 text-sm">
-              Из любой точки Китая до г. Уссурийска
-            </p>
-          </div>
-          <div className="text-center p-6">
-            <div className="text-4xl mb-4">📋</div>
-            <h4 className="font-semibold text-gray-900 mb-2">Все документы</h4>
-            <p className="text-gray-600 text-sm">
-              Помощь в оформлении и растаможке
-            </p>
+            <div className="grid grid-cols-2 gap-2">
+              <Button variant="outline" asChild className="h-10">
+                <Link href="/callback">
+                  <Phone className="h-4 w-4" />
+                  Обратный звонок
+                </Link>
+              </Button>
+              <Button variant="outline" asChild className="h-10">
+                <Link href="/contact">
+                  <MapPin className="h-4 w-4" />
+                  Контакты
+                </Link>
+              </Button>
+            </div>
           </div>
         </div>
       </section>
-    </>
+
+      {/* Features Grid */}
+      <section className="px-4 py-6 bg-muted/30">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-lg font-bold text-center mb-4">
+            Наши преимущества
+          </h2>
+          <div className="grid grid-cols-2 gap-3">
+            {features.map((feature, index) => (
+              <Card
+                key={index}
+                className={`p-4 ${feature.highlight ? "border-primary bg-primary/5" : ""}`}
+              >
+                <div className="flex items-start space-x-3">
+                  <div
+                    className={`p-2 rounded-lg ${feature.highlight ? "bg-primary text-primary-foreground" : "bg-muted"}`}
+                  >
+                    <feature.icon className="h-4 w-4" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <h3 className="font-semibold text-sm leading-tight">
+                      {feature.title}
+                    </h3>
+                    <p className="text-xs text-muted-foreground mt-1">
+                      {feature.desc}
+                    </p>
+                  </div>
+                </div>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Platforms Grid */}
+      <section className="px-4 py-6">
+        <div className="max-w-4xl mx-auto">
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="text-lg font-bold">Площадки для поиска</h2>
+            <Badge variant="outline" className="text-xs">
+              Китай
+            </Badge>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
+            {platformList.map((platform, index) => (
+              <Button
+                key={index}
+                variant="outline"
+                asChild
+                className="h-12 relative justify-start text-left p-3"
+              >
+                <Link target="_blank" href={platform.url}>
+                  <div className="flex items-center w-full">
+                    <Search className="h-4 w-4 mr-2 text-muted-foreground" />
+                    <span className="text-sm font-medium">
+                      {platform.title_ru}
+                    </span>
+                    {platform.hot && (
+                      <Badge className="ml-auto bg-red-500 text-white text-xs py-0 px-1">
+                        HOT
+                      </Badge>
+                    )}
+                  </div>
+                </Link>
+              </Button>
+            ))}
+          </div>
+        </div>
+      </section>
+      {/* Compact Process Timeline */}
+      <section className="px-4 py-6 bg-muted/30">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-xl font-bold text-center mb-4">
+            Как это работает
+          </h2>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+            {processSteps.map((step, index) => (
+              <div key={index} className="relative">
+                <Card className="p-3 h-full">
+                  <div className="text-center">
+                    <div className="w-8 h-8 mx-auto mb-2 bg-primary rounded-full flex items-center justify-center">
+                      <step.icon className="h-4 w-4 text-primary-foreground" />
+                    </div>
+                    <div className="text-xs font-bold text-primary mb-1">
+                      {step.step}
+                    </div>
+                    <h3 className="font-semibold text-sm mb-1">{step.title}</h3>
+                    <p className="text-xs text-muted-foreground mb-2">
+                      {step.description}
+                    </p>
+                    <Badge variant="secondary" className="text-xs py-0">
+                      {step.time}
+                    </Badge>
+                  </div>
+                </Card>
+                {index < processSteps.length - 1 && (
+                  <ArrowRight className="hidden md:block absolute -right-4 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground z-10" />
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Contact CTA */}
+      <section className="px-4 py-6">
+        <div className="max-w-4xl mx-auto">
+          <Alert className="border-primary/20 bg-primary/5">
+            <CheckCircle className="h-5 w-5 text-primary" />
+            <AlertDescription>
+              <div className="flex items-center justify-between w-full gap-2">
+                <div>
+                  <div className="font-semibold mb-1">Готовы к покупке?</div>
+                  <div className="text-sm text-muted-foreground">
+                    Бесплатная консультация и расчёт
+                  </div>
+                </div>
+                <div>
+                  <Button asChild>
+                    <Link href="/callback">
+                      Начать
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Link>
+                  </Button>
+                </div>
+              </div>
+            </AlertDescription>
+          </Alert>
+        </div>
+      </section>
+
+      {/* Footer Info */}
+      <section className="px-4 py-4 border-t bg-muted/30">
+        <div className="max-w-4xl mx-auto text-center">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
+            <div>
+              <div className="font-semibold">Офис в России</div>
+              <div className="text-muted-foreground">Владивосток</div>
+            </div>
+            <div>
+              <div className="font-semibold">Офис в Китае</div>
+              <div className="text-muted-foreground">Харбин</div>
+            </div>
+            <div>
+              <div className="font-semibold">Телефон</div>
+              <div className="text-muted-foreground">+7(914)700-88-48</div>
+            </div>
+            <div>
+              <div className="font-semibold">Email</div>
+              <div className="text-muted-foreground">info@86007auto.com</div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
   )
 }
