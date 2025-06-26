@@ -1,4 +1,5 @@
 import { WebformCallback } from "@features/webform-callback"
+import { PageTitle } from "@shared/ui/page-title"
 import { Metadata } from "next"
 export const metadata: Metadata = {
   title: "CallBackPage",
@@ -7,7 +8,7 @@ export const metadata: Metadata = {
 export default async function CallBackPage() {
   return (
     <>
-      <h1>Обратный звонок</h1>
+      <PageTitle title="Обратный звонок" />
       <WebformCallback />
     </>
   )
