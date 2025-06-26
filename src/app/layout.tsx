@@ -10,8 +10,8 @@ import { Toaster } from "@shared/ui/sonner"
 
 export const metadata: Metadata = {
   title: {
-    default: "86007auto",
-    template: "%s | 86007auto",
+    default: "1xauto",
+    template: "%s | 1xAuto",
   },
   description: "Выкупи и поиск автомобиля в Китае",
   icons: {

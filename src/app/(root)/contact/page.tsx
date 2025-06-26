@@ -1,7 +1,14 @@
 import { PageTitle } from "@shared/ui/page-title"
 import { Mail, MapPinIcon, PhoneCall } from "lucide-react"
+import { Metadata } from "next"
 import { getTranslations } from "next-intl/server"
 import { ElementType, ReactElement } from "react"
+
+export const metadata: Metadata = {
+  title: "Контакты",
+  description:
+    "Свяжитесь с компанией 1xauto для импорта автомобилей из Китая. Наши специалисты помогут подобрать и доставить автомобиль. Офис в Владивостоке, работаем по всей России.",
+}
 
 const Item = ({
   icon: Icon,
