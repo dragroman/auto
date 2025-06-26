@@ -6,7 +6,7 @@ const nextConfig = {
   output: "standalone",
   reactStrictMode: true,
   images: {
-    domains: ["img.chinq.ru", "86007auto.com"],
+    domains: ["img.chinq.ru", "1xauto.ru"],
     remotePatterns: [
       {
         // protocol: 'https',

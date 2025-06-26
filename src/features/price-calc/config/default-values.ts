@@ -12,7 +12,7 @@ export const defaultValues: z.infer<typeof formSchema> = {
   price_retail_rmb: 0,
   capacity_ml: 0,
   horsepower: 0,
-  inspection: 600, // inspection report
+  inspection: 800, // inspection report
   insurance: 1500, // В зависимости от наличия страховки, без страховки продавать нельзя 0 - 2000
   employeeTravelCost: 1000, // Оплата стоимости проверки автомобиля 1000 - 5000
   brokerFee: 0.015, // Брокер 经纪人 russia_customs

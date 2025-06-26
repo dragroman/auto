@@ -1,5 +1,12 @@
+import Image from "next/image"
 import { Button } from "@shared/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@shared/ui/card"
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@shared/ui/card"
 import { Badge } from "@shared/ui/badge"
 import { Alert, AlertDescription } from "@shared/ui/alert"
 import type { Metadata } from "next"
@@ -19,7 +26,9 @@ import {
   MapPin,
   Star,
   Zap,
+  Link2,
 } from "lucide-react"
+import { cn } from "@shared/lib/utils"
 
 export const metadata: Metadata = {
   title: "Автомобили из Китая",
@@ -62,12 +71,44 @@ const processSteps = [
 ]
 
 const platformList = [
-  { title_ru: "Жэньжэньчэ", url: "https://www.renrenche.com/", hot: true },
-  { title_ru: "Таочхэчхэ", url: "https://m.taocheche.com/", hot: false },
-  { title_ru: "Донгчэди", url: "https://www.dongchedi.com/", hot: true },
-  { title_ru: "Аутохоум", url: "https://www.autohome.com.cn/", hot: false },
-  { title_ru: "Гуацзы", url: "https://www.guazi.com/", hot: true },
-  { title_ru: "58 Тунчэн", url: "https://www.58.com/", hot: false },
+  {
+    title_ru: "Жэньжэньчэ",
+    url: "https://www.renrenche.com/",
+    logo: "renrenche.png",
+    description: "Первая C2C площадка подержанных авто в Китае",
+  },
+  {
+    title_ru: "Таочхэчхэ",
+    url: "https://m.taocheche.com/",
+    logo: "taocheche.png",
+    logoBackgroundClass: "bg-blue-800",
+    description: "B2C маркетплейс б/у авто с ИИ-диагностикой",
+  },
+  {
+    title_ru: "Донгчэди",
+    url: "https://www.dongchedi.com/",
+    logo: "donchedi.svg",
+    description:
+      "Автомобильная медиаплатформа и ценами на автомобили у дилеров",
+  },
+  {
+    title_ru: "Аутохоум",
+    url: "https://www.autohome.com.cn/",
+    logo: "qichezhijia.png",
+    description: "Ведущая автомобильная экосистема Китая, 68М+ пользователей",
+  },
+  {
+    title_ru: "Гуацзы",
+    url: "https://www.guazi.com/",
+    logo: "guazi.png",
+    description: "Доминирует в онлайн-продажах б/у авто (80% рынка)",
+  },
+  {
+    title_ru: "Che168",
+    url: "https://www.che168.com/",
+    logo: "2sclogo@2x.png",
+    description: "B2B маркетплейс б/у авто для дилеров от Autohome",
+  },
 ]
 
 const features = [
@@ -80,7 +121,7 @@ const features = [
   {
     icon: DollarSign,
     title: "Прозрачная цена",
-    desc: "Максимально приближенный расчет.",
+    desc: "Точный расчет стоимости автомобиля.",
     highlight: false,
   },
   {
@@ -99,9 +140,9 @@ const features = [
 
 export default async function Home() {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background space-y-10">
       {/* Compact Hero Section */}
-      <section className="px-4 py-4">
+      <section>
         <div className="max-w-4xl mx-auto">
           {/* Hero Header */}
           <div className="text-center mb-6">
@@ -147,7 +188,7 @@ export default async function Home() {
       </section>
 
       {/* Features Grid */}
-      <section className="px-4 py-6 bg-muted/30">
+      <section>
         <div className="max-w-4xl mx-auto">
           <h2 className="text-lg font-bold text-center mb-4">
             Наши преимущества
@@ -180,7 +221,7 @@ export default async function Home() {
       </section>
 
       {/* Platforms Grid */}
-      <section className="px-4 py-6">
+      <section>
         <div className="max-w-4xl mx-auto">
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-lg font-bold">Площадки для поиска</h2>
@@ -190,37 +231,49 @@ export default async function Home() {
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
             {platformList.map((platform, index) => (
-              <Button
-                key={index}
-                variant="outline"
-                asChild
-                className="h-12 relative justify-start text-left p-3"
-              >
-                <Link target="_blank" href={platform.url}>
-                  <div className="flex items-center w-full">
-                    <Search className="h-4 w-4 mr-2 text-muted-foreground" />
-                    <span className="text-sm font-medium">
-                      {platform.title_ru}
-                    </span>
-                    {platform.hot && (
-                      <Badge className="ml-auto bg-red-500 text-white text-xs py-0 px-1">
-                        HOT
-                      </Badge>
-                    )}
-                  </div>
-                </Link>
-              </Button>
+              <Card key={index} className="">
+                <CardHeader>
+                  {platform.logo && (
+                    <div
+                      className={cn(
+                        `${platform.logoBackgroundClass}`,
+                        platform.logoBackgroundClass ? "w-fit px-8" : "w-full",
+                        "h-8 relative "
+                      )}
+                    >
+                      <Image
+                        src={`/platforms/${platform.logo}`}
+                        alt={platform.title_ru}
+                        fill
+                        className="object-contain object-left"
+                      />
+                    </div>
+                  )}
+                  <CardTitle>{platform.title_ru}</CardTitle>
+                </CardHeader>
+                <CardContent className="text-sm text-muted-foreground">
+                  {platform.description}
+                </CardContent>
+                <CardFooter>
+                  <Button asChild variant="outline" size="sm">
+                    <Link target="_blank" href={platform.url}>
+                      <Link2 />
+                      Перейти
+                    </Link>
+                  </Button>
+                </CardFooter>
+              </Card>
             ))}
           </div>
         </div>
       </section>
       {/* Compact Process Timeline */}
-      <section className="px-4 py-6 bg-muted/30">
+      <section>
         <div className="max-w-4xl mx-auto">
           <h2 className="text-xl font-bold text-center mb-4">
             Как это работает
           </h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {processSteps.map((step, index) => (
               <div key={index} className="relative">
                 <Card className="p-3 h-full">
@@ -250,7 +303,7 @@ export default async function Home() {
       </section>
 
       {/* Contact CTA */}
-      <section className="px-4 py-6">
+      <section>
         <div className="max-w-4xl mx-auto">
           <Alert className="border-primary/20 bg-primary/5">
             <CheckCircle className="h-5 w-5 text-primary" />
@@ -277,7 +330,7 @@ export default async function Home() {
       </section>
 
       {/* Footer Info */}
-      <section className="px-4 py-4 border-t bg-muted/30">
+      <section>
         <div className="max-w-4xl mx-auto text-center">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
             <div>

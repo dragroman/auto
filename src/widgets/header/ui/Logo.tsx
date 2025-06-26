@@ -12,7 +12,7 @@ export const Logo = () => {
         className="hidden md:block"
       />
       <Image
-        src="/logo-square.svg"
+        src="/logo1x1.svg"
         alt="Автомобили из Китая"
         className="md:hidden"
         width={40}
