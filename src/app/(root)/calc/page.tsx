@@ -2,8 +2,15 @@ import { TNodeCalculationTeaser } from "@entities/node-calculation"
 import { authOptions } from "@features/auth/session"
 import { PriceCalc } from "@features/price-calc"
 import { drupal } from "@shared/lib/drupal"
+import { PageTitle } from "@shared/ui/page-title"
 import { ViewsCalculation } from "@widgets/views-calculation"
+import { Metadata } from "next"
 import { getServerSession } from "next-auth"
+
+export const metadata: Metadata = {
+  title: "Калькулятор стоимости автомобиля из Китая",
+  description: "Покупка и доставка автомобилей из Китая напрямую",
+}
 
 export default async function CalcPage() {
   const session = await getServerSession(authOptions)
@@ -17,6 +24,7 @@ export default async function CalcPage() {
 
   return (
     <>
+      <PageTitle title="Калькулятор стоимости автомобиля" />
       <PriceCalc />
       <ViewsCalculation nodes={nodes} currentUserID={session?.user.id} />
     </>

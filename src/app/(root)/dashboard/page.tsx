@@ -9,6 +9,16 @@ import { SignOut } from "@features/auth/sign-out"
 import { User } from "@entities/user"
 import { TNodeCalculationTeaser } from "@entities/node-calculation"
 import { ViewsCalculation } from "@widgets/views-calculation"
+import { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Личный кабинет",
+  description: "Личный кабинет пользователя",
+  robots: {
+    index: false,
+    follow: false,
+  },
+}
 
 export default async function Dashboard() {
   const session = await getServerSession(authOptions)

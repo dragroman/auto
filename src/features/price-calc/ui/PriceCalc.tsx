@@ -19,11 +19,7 @@ export const PriceCalc = () => {
   } = useCalculator()
 
   return (
-    <div className="">
-      <h1 className="text-2xl font-bold mb-6">
-        Калькулятор стоимости автомобиля
-      </h1>
-
+    <>
       <div>
         <PriceCalculatorForm
           onSubmit={handleFormSubmit}
@@ -49,6 +45,6 @@ export const PriceCalc = () => {
           }
         />
       )}
-    </div>
+    </>
   )
 }

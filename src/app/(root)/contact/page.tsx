@@ -1,6 +1,14 @@
+import { PageTitle } from "@shared/ui/page-title"
 import { Mail, MapPinIcon, PhoneCall } from "lucide-react"
+import { Metadata } from "next"
 import { getTranslations } from "next-intl/server"
 import { ElementType, ReactElement } from "react"
+
+export const metadata: Metadata = {
+  title: "Контакты",
+  description:
+    "Свяжитесь с компанией 1xauto для импорта автомобилей из Китая. Наши специалисты помогут подобрать и доставить автомобиль. Офис в Владивостоке, работаем по всей России.",
+}
 
 const Item = ({
   icon: Icon,
@@ -23,11 +31,11 @@ const Item = ({
 export default async function ContactPage() {
   const t = await getTranslations("contact")
   return (
-    <div className="text-center">
-      <h1 className="text-2xl font-bold mb-8">Контакты</h1>
+    <div className="">
+      <PageTitle title="Контакты" />
       <p>Общество с ограниченной ответственностью «Чайна Авто»</p>
       <p>Основной государственный регистрационный номер 1232500027506</p>
-      <div className="flex flex-col mt-20 gap-20">
+      <div className="flex flex-col mt-20 gap-20 text-center">
         <Item
           icon={MapPinIcon}
           label={t("addressRussia.label")}
