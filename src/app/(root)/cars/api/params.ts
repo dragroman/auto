@@ -15,6 +15,8 @@ export const getBaseCarParams = () => {
       "variations",
       "field_car_info",
       "field_images",
+      "field_mileage",
+      "field_production_date",
     ])
     .addFields("node--car", ["field_images"])
     .addFields("commerce_product_variation--car", ["price"])

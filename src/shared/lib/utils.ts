@@ -18,6 +18,11 @@ export const formatNumber = (num: number) => {
   return new Intl.NumberFormat("ru-RU").format(Math.round(num))
 }
 
+export const getYearFromDate = (dateString: string) => {
+  if (!dateString) return null
+  return dateString.split("-")[0]
+}
+
 export function absoluteUrl(input: string) {
   if (input.startsWith("http://") || input.startsWith("https://")) {
     return input
