@@ -14,7 +14,6 @@ export default async function MainLayout({
       <Toaster position="top-right" />
       <main className="container mx-auto">{children}</main>
       <BottomNav />
-      <Footer />
     </div>
   )
 }

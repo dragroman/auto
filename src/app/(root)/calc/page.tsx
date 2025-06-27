@@ -17,7 +17,10 @@ export default async function CalcPage() {
   const nodes = await drupal.getResourceCollection<TNodeCalculationTeaser[]>(
     "node--calculation",
     {
-      params: { sort: "-created" },
+      params: {
+        sort: "-created",
+        "page[limit]": 10,
+      },
       next: { revalidate: 3600, tags: ["calculations"] },
     }
   )

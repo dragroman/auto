@@ -1,7 +1,14 @@
 "use client"
 
 import React from "react"
-import { Home, Calculator, MessageCircle, Phone, User } from "lucide-react"
+import {
+  Home,
+  Calculator,
+  MessageCircle,
+  Phone,
+  User,
+  CarIcon,
+} from "lucide-react"
 import { cn } from "@shared/lib/utils"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
@@ -31,10 +38,10 @@ const MobileBottomNav = () => {
       href: "/calc",
     },
     {
-      id: "callback",
-      label: "Заявка",
-      icon: MessageCircle,
-      href: "/callback",
+      id: "cars",
+      label: "Авто",
+      icon: CarIcon,
+      href: "/cars",
       badge: 2,
     },
     {

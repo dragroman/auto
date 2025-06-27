@@ -7,6 +7,7 @@ export interface NodeCarTeaserType extends DrupalNode {
   field_car_info?: {
     field_images?: DrupalMedia[]
   }
+  field_mileage: number
   variations: {
     price: {
       number: number
