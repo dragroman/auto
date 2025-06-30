@@ -18,7 +18,7 @@ import {
 import { TableCell, TableRow } from "@shared/ui/table"
 import { Button } from "@shared/ui/button"
 import Link from "next/link"
-
+import { useTranslations } from "next-intl"
 const formatNumber = (num: number) => {
   return new Intl.NumberFormat("ru-RU").format(Math.round(num))
 }
@@ -42,6 +42,7 @@ export const ResultsTableRow = ({
   url?: string | string[]
   document?: boolean
 }) => {
+  const t = useTranslations("formResults")
   return (
     <TableRow>
       <TableCell className="break-words whitespace-normal px-4">
@@ -73,7 +74,7 @@ export const ResultsTableRow = ({
               {info && (
                 <Alert variant="info">
                   <AlertCircleIcon />
-                  <AlertTitle>Примечание:</AlertTitle>
+                  <AlertTitle>{t("info.title")}</AlertTitle>
                   <AlertDescription className="overflow-y-auto max-h-[200px] text-gray-700">
                     <p>{info}</p>
                     {url_name &&

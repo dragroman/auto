@@ -32,9 +32,9 @@ export default async function ContactPage() {
   const t = await getTranslations("contact")
   return (
     <div className="">
-      <PageTitle title="Контакты" />
-      <p>Общество с ограниченной ответственностью «Чайна Авто»</p>
-      <p>Основной государственный регистрационный номер 1232500027506</p>
+      <PageTitle title={t("title")} />
+      <p>{t("company")}</p>
+      <p>{t("ogrn")}</p>
       <div className="flex flex-col mt-20 gap-20 text-center">
         <Item
           icon={MapPinIcon}
