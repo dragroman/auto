@@ -44,8 +44,8 @@ export default function FAQPage() {
                 <AccordionTrigger className="items-center px-6 py-4  bg-white">
                   {item.question}
                 </AccordionTrigger>
-                <AccordionContent className="px-6 py-4 ">
-                  <div className="leading-relaxed bg-white">
+                <AccordionContent className="px-6 py-4 bg-white ">
+                  <div className="leading-relaxed ">
                     {renderAnswer(item.answer)}
                   </div>
                 </AccordionContent>
