@@ -5,25 +5,6 @@ import {
   AccordionTrigger,
 } from "@shared/ui/accordion"
 import { faqData } from "./faqData"
-import Link from "next/link"
-
-function renderAnswer(
-  answer: string | Array<string | { text: string; href: string }>
-) {
-  if (typeof answer === "string") return answer
-  return answer.map((part, idx) => {
-    if (typeof part === "string") return part
-    return (
-      <Link
-        key={idx}
-        href={part.href}
-        className="text-blue-600 underline hover:text-blue-800"
-      >
-        {part.text}
-      </Link>
-    )
-  })
-}
 
 export default function FAQPage() {
   return (
@@ -41,13 +22,11 @@ export default function FAQPage() {
                 value={`${item.question}`}
                 className="border border-gray-200 rounded-lg bg-white shadow-sm hover:shadow-md transition-shadow"
               >
-                <AccordionTrigger className="items-center px-6 py-4  ">
+                <AccordionTrigger className="items-center px-6 py-4">
                   {item.question}
                 </AccordionTrigger>
-                <AccordionContent className="px-6 py-4  ">
-                  <div className="leading-relaxed ">
-                    {renderAnswer(item.answer)}
-                  </div>
+                <AccordionContent className="px-6 py-4 prose prose-sm max-w-full">
+                  <div dangerouslySetInnerHTML={{ __html: item.answer }} />
                 </AccordionContent>
               </AccordionItem>
             ))}
