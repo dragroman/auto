@@ -39,12 +39,12 @@ export default function FAQPage() {
               <AccordionItem
                 key={`${item.question}`}
                 value={`${item.question}`}
-                className="border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow"
+                className="border border-gray-200 rounded-lg bg-white shadow-sm hover:shadow-md transition-shadow"
               >
-                <AccordionTrigger className="items-center px-6 py-4  bg-white">
+                <AccordionTrigger className="items-center px-6 py-4  ">
                   {item.question}
                 </AccordionTrigger>
-                <AccordionContent className="px-6 py-4 bg-white ">
+                <AccordionContent className="px-6 py-4  ">
                   <div className="leading-relaxed ">
                     {renderAnswer(item.answer)}
                   </div>
