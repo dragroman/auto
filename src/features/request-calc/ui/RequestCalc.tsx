@@ -44,7 +44,7 @@ export const RequestCalc = ({
 
   const owner = node?.uid.id
   const nodeId = node?.id
-  const nodeType = "calculation"
+  const nodeType = "node--calculation"
 
   const t = useTranslations()
 
