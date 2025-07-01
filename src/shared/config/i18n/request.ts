@@ -1,9 +1,10 @@
 import { getRequestConfig } from "next-intl/server"
+import { getServerSession } from "next-auth/next"
+import { authOptions } from "@features/auth/session"
 
 export default getRequestConfig(async () => {
-  // Provide a static locale, fetch a user setting,
-  // read from `cookies()`, `headers()`, etc.
-  const locale = "ru"
+  const session = await getServerSession(authOptions)
+  const locale = session?.user?.preferred_langcode || "ru"
 
   return {
     locale,
