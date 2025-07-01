@@ -12,7 +12,7 @@ export default async function SignUpPage() {
   const t = await getTranslations("dashboard")
   return (
     <>
-      <PageTitle title={t("sign.title")} />
+      <PageTitle title={t("signUp.title")} />
       <SignUp />
     </>
   )

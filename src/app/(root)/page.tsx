@@ -231,7 +231,7 @@ export default async function Home() {
                     <Button asChild variant="outline" size="sm">
                       <Link target="_blank" href={platform.url}>
                         <Link2 />
-                        Перейти
+                        {t("platformList.url")}
                       </Link>
                     </Button>
                   </CardFooter>
