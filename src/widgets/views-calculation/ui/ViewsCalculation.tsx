@@ -14,7 +14,7 @@ export const ViewsCalculation = async ({
   currentUserID?: string
 }) => {
   return (
-    <div className="grid gap-4">
+    <div className="grid gap-2">
       {!nodes || nodes.length === 0 ? (
         <div className="border p-4 rounded-2xl text-center bg-gray-100">
           <div className="mb-4">{"Вы не добавили ещё расчётов"}</div>

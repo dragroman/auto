@@ -39,7 +39,7 @@ export const NodeCalculationTeaser = ({
             </Badge>
             <Badge variant="outline">
               {currentUserID && isOwner(owner, currentUserID)
-                ? t("nodeCalculation.my")
+                ? node.field_model || "Неизвестно"
                 : t("nodeCalculation.anonymous")}
             </Badge>
           </div>
