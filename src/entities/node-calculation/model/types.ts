@@ -14,7 +14,7 @@ export interface TNodeCalculationTeaser extends DrupalNode {
   field_price_actual: number
   field_cny_rub: number
   field_status: string
-  field_model: string
+  field_model?: string
 }
 
 export interface TNodeCalculationFull extends DrupalNode {
