@@ -64,15 +64,14 @@ export default async function Dashboard({ searchParams }: DashboardProps) {
   const session = await getServerSession(authOptions)
 
   if (!session) {
+    const t = await getTranslations("dashboard")
     return (
       <div className="space-y-4">
-        <PageTitle title="Личный кабинет" />
+        <PageTitle title={t("profile.title")} />
         <div className="text-center py-8">
-          <p className="mb-4">
-            Для доступа к личному кабинету необходимо войти в систему
-          </p>
+          <p className="mb-4">{t("signIn.helpText")}</p>
           <Button asChild>
-            <Link href="/signin">Войти</Link>
+            <Link href="/signin">{t("signIn.entrance")}</Link>
           </Button>
         </div>
       </div>
@@ -99,10 +98,10 @@ export default async function Dashboard({ searchParams }: DashboardProps) {
     const hasFilters = Object.values(resolvedSearchParams).some(
       (value) => value && value !== "all" && value !== ""
     )
-
+    const t = await getTranslations("dashboard")
     return (
       <div className="space-y-6">
-        <PageTitle title="Личный кабинет" />
+        <PageTitle title={t("profile.title")} />
 
         {/* Информация о пользователе */}
         <User user={session.user} />
@@ -116,7 +115,9 @@ export default async function Dashboard({ searchParams }: DashboardProps) {
         <div className="space-y-4">
           <div className="flex items-center justify-between">
             <h2 className="text-xl font-semibold">
-              {hasFilters ? "Результаты поиска" : "Мои расчёты"}
+              {hasFilters
+                ? t("profile.resultsTitle")
+                : t("profile.myCalculations")}
             </h2>
             <div className="text-sm text-muted-foreground"></div>
           </div>
@@ -125,20 +126,22 @@ export default async function Dashboard({ searchParams }: DashboardProps) {
             <div className="text-center py-12">
               <div className="text-4xl mb-4">🔍</div>
               <h3 className="text-lg font-medium mb-2">
-                {hasFilters ? "Ничего не найдено" : "У вас пока нет расчётов"}
+                {hasFilters
+                  ? t("profile.nothingFound")
+                  : t("profile.noCalculations")}
               </h3>
               <p className="text-muted-foreground mb-4">
                 {hasFilters
-                  ? "Попробуйте изменить параметры поиска или сбросить фильтры"
-                  : "Создайте свой первый расчёт стоимости автомобиля"}
+                  ? t("profile.tryChangeParams")
+                  : t("profile.createFirstCalculation")}
               </p>
               <div className="flex gap-2 justify-center">
                 <Button asChild>
-                  <Link href="/calc">Создать расчёт</Link>
+                  <Link href="/calc">{t("profile.calculate")}</Link>
                 </Button>
                 {hasFilters && (
                   <Button variant="outline" asChild>
-                    <Link href="/dashboard">Сбросить фильтры</Link>
+                    <Link href="/dashboard">{t("profile.resetFilters")}</Link>
                   </Button>
                 )}
               </div>
@@ -153,20 +156,20 @@ export default async function Dashboard({ searchParams }: DashboardProps) {
     )
   } catch (error) {
     console.error("Ошибка загрузки данных Dashboard:", error)
-
+    const t = await getTranslations("dashboard")
     return (
       <div className="space-y-4">
-        <PageTitle title="Личный кабинет" />
+        <PageTitle title={t("profile.title")} />
         <User user={session.user} />
 
         <div className="text-center py-12">
           <div className="text-4xl mb-4">⚠️</div>
-          <h3 className="text-lg font-medium mb-2">Ошибка загрузки данных</h3>
+          <h3 className="text-lg font-medium mb-2">{t("profile.error")}</h3>
           <p className="text-muted-foreground mb-4">
-            Не удалось загрузить ваши расчёты. Попробуйте обновить страницу.
+            {t("profile.errorDescription")}
           </p>
           <Button onClick={() => window.location.reload()}>
-            Обновить страницу
+            {t("profile.tryAgain")}
           </Button>
         </div>
       </div>

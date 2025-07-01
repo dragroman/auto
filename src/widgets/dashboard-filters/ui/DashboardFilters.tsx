@@ -14,30 +14,30 @@ import { Label } from "@shared/ui/label"
 import { Card, CardContent, CardHeader, CardTitle } from "@shared/ui/card"
 import { Badge } from "@shared/ui/badge"
 import { FilterIcon, XIcon, SearchIcon } from "lucide-react"
+import { useTranslations } from "next-intl"
 
 interface FilterState {
   status: string
   engineType: string
 }
 
-const statusOptions = [
-  { value: "all", label: "Все статусы" },
-  { value: "draft", label: "Черновик" },
-  { value: "requested", label: "На рассмотрении" },
-  { value: "completed", label: "Завершен" },
-]
-
-const engineTypeOptions = [
-  { value: "all", label: "Все типы" },
-  { value: "gas", label: "Бензин" },
-  { value: "hybrid", label: "Гибрид" },
-  { value: "electric", label: "Электро" },
-]
-
 export const DashboardFilters = () => {
+  const t = useTranslations("dashboard")
   const router = useRouter()
   const pathname = usePathname()
   const searchParams = useSearchParams()
+  const statusOptions = [
+    { value: "all", label: t("filters.statusAll") },
+    { value: "draft", label: t("filters.statusDraft") },
+    { value: "requested", label: t("filters.statusRequested") },
+    { value: "completed", label: t("filters.statusCompleted") },
+  ]
+  const engineTypeOptions = [
+    { value: "all", label: t("filters.all") },
+    { value: "gas", label: t("filters.gas") },
+    { value: "hybrid", label: t("filters.hybrid") },
+    { value: "electric", label: t("filters.electric") },
+  ]
 
   // Инициализация состояния из URL параметров
   const [filters, setFilters] = useState<FilterState>({
@@ -96,7 +96,7 @@ export const DashboardFilters = () => {
         <div className="flex items-center justify-between">
           <CardTitle className="flex items-center gap-2">
             <FilterIcon className="h-5 w-5" />
-            Фильтры
+            {t("filters.title")}
             {activeFiltersCount > 0 && (
               <Badge variant="secondary" className="ml-2">
                 {activeFiltersCount}
@@ -108,7 +108,7 @@ export const DashboardFilters = () => {
             size="sm"
             onClick={() => setShowFilters(!showFilters)}
           >
-            {showFilters ? "Скрыть" : "Показать"}
+            {showFilters ? t("filters.hide") : t("filters.show")}
           </Button>
         </div>
       </CardHeader>
@@ -118,13 +118,13 @@ export const DashboardFilters = () => {
           {/* Статус и тип двигателя */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-2">
-              <Label>Статус расчёта</Label>
+              <Label>{t("filters.calculationStatus")}</Label>
               <Select
                 value={filters.status}
                 onValueChange={(value) => updateFilter("status", value)}
               >
                 <SelectTrigger>
-                  <SelectValue placeholder="Выберите статус" />
+                  <SelectValue placeholder={t("filters.chooseStatus")} />
                 </SelectTrigger>
                 <SelectContent>
                   {statusOptions.map((option) => (
@@ -137,13 +137,13 @@ export const DashboardFilters = () => {
             </div>
 
             <div className="space-y-2">
-              <Label>Тип двигателя</Label>
+              <Label>{t("filters.engineType")}</Label>
               <Select
                 value={filters.engineType}
                 onValueChange={(value) => updateFilter("engineType", value)}
               >
                 <SelectTrigger>
-                  <SelectValue placeholder="Выберите тип" />
+                  <SelectValue placeholder={t("filters.chooseEngineType")} />
                 </SelectTrigger>
                 <SelectContent>
                   {engineTypeOptions.map((option) => (
@@ -159,7 +159,7 @@ export const DashboardFilters = () => {
           {/* Кнопки действий */}
           <div className="flex gap-2 pt-4">
             <Button onClick={applyFilters} className="flex-1">
-              Применить фильтры
+              {t("filters.applyFilters")}
             </Button>
             <Button
               variant="outline"
@@ -167,7 +167,7 @@ export const DashboardFilters = () => {
               disabled={activeFiltersCount === 0}
             >
               <XIcon className="h-4 w-4 mr-2" />
-              Сбросить
+              {t("filters.resetFilters")}
             </Button>
           </div>
 
@@ -176,13 +176,13 @@ export const DashboardFilters = () => {
             <div className="flex flex-wrap gap-2 pt-2 border-t">
               {filters.status !== "all" && (
                 <Badge variant="secondary">
-                  Статус:{" "}
+                  {t("filters.status")}:{" "}
                   {statusOptions.find((o) => o.value === filters.status)?.label}
                 </Badge>
               )}
               {filters.engineType !== "all" && (
                 <Badge variant="secondary">
-                  Двигатель:{" "}
+                  {t("filters.engine")}:{" "}
                   {
                     engineTypeOptions.find(
                       (o) => o.value === filters.engineType

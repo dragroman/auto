@@ -18,13 +18,58 @@
   },
   "dashboard": {
     "back": "返回网站",
+    "user": {
+      "email": "你的邮箱",
+      "statsAll": "所有计算",
+      "statsCompleted": "已完成计算",
+      "statsPending": "待处理计算"
+    },
+    "filters": {
+      "title": "筛选器",
+      "show": "隐藏",
+      "hide": "显示",
+      "calculationStatus": "计算状态",
+      "chooseStatus": "请选择状态",
+      "engineType": "发动机类型",
+      "chooseEngineType": "请选择发动机类型",
+      "applyFilters": "应用筛选器",
+      "resetFilters": "重置筛选器",
+      "status": "状态",
+      "engine": "发动机",
+      "all": "所有",
+      "gas": "汽油",
+      "hybrid": "混合动力",
+      "electric": "电动汽车",
+      "statusAll": "所有状态",
+      "statusDraft": "草稿",
+      "statusRequested": "审核中",
+      "statusCompleted": " 已完成"
+    },
+    "profile": {
+      "title": "个人账户",
+      "resultsTitle": "搜索结果",
+      "myCalculations": "我的计算",
+      "noCalculations": "您目前没有计算",
+      "nothingFound": "没有找到任何内容",
+      "tryChangeParams": "请尝试更改搜索参数或重置筛选器",
+      "createFirstCalculation": "创建您的第一次汽车成本计算",
+      "calculate": "进行计算",
+      "resetFilters": "重置筛选器",
+      "error": "数据加载错误",
+      "errorDescription": "无法加载您的计算。请尝试刷新页面。",
+      "tryAgain": "刷新页面"
+    },
+    "signOut": {
+      "exit": "退出"
+    },
     "signIn": {
       "title": "登录",
       "email": "电子邮件",
       "password": "密码",
       "createAccount": "创建账户",
       "entrance": "登录",
-      "enter": "登录"
+      "enter": "登录",
+      "helpText": "访问个人账户需要登录系统"
     },
     "signUp": {
       "title": "登录",
