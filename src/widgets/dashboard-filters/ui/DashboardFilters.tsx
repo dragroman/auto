@@ -1,4 +1,3 @@
-// src/widgets/dashboard-filters/ui/DashboardFilters.tsx
 "use client"
 
 import { useState, useEffect } from "react"
@@ -11,7 +10,6 @@ import {
   SelectValue,
 } from "@shared/ui/select"
 import { Button } from "@shared/ui/button"
-import { Input } from "@shared/ui/input"
 import { Label } from "@shared/ui/label"
 import { Card, CardContent, CardHeader, CardTitle } from "@shared/ui/card"
 import { Badge } from "@shared/ui/badge"
@@ -20,9 +18,6 @@ import { FilterIcon, XIcon, SearchIcon } from "lucide-react"
 interface FilterState {
   status: string
   engineType: string
-  priceFrom: string
-  priceTo: string
-  search: string
 }
 
 const statusOptions = [
@@ -48,9 +43,6 @@ export const DashboardFilters = () => {
   const [filters, setFilters] = useState<FilterState>({
     status: "all",
     engineType: "all",
-    priceFrom: "",
-    priceTo: "",
-    search: "",
   })
 
   const [showFilters, setShowFilters] = useState(false)
@@ -60,9 +52,6 @@ export const DashboardFilters = () => {
     setFilters({
       status: searchParams.get("status") || "all",
       engineType: searchParams.get("engine_type") || "all",
-      priceFrom: searchParams.get("price_from") || "",
-      priceTo: searchParams.get("price_to") || "",
-      search: searchParams.get("search") || "",
     })
   }, [searchParams])
 
@@ -71,8 +60,6 @@ export const DashboardFilters = () => {
     let count = 0
     if (filters.status !== "all") count++
     if (filters.engineType !== "all") count++
-    if (filters.priceFrom || filters.priceTo) count++
-    if (filters.search) count++
     return count
   }
 
@@ -83,9 +70,6 @@ export const DashboardFilters = () => {
     if (filters.status !== "all") params.set("status", filters.status)
     if (filters.engineType !== "all")
       params.set("engine_type", filters.engineType)
-    if (filters.priceFrom) params.set("price_from", filters.priceFrom)
-    if (filters.priceTo) params.set("price_to", filters.priceTo)
-    if (filters.search) params.set("search", filters.search)
 
     router.push(`${pathname}?${params.toString()}`)
   }
@@ -95,9 +79,6 @@ export const DashboardFilters = () => {
     setFilters({
       status: "all",
       engineType: "all",
-      priceFrom: "",
-      priceTo: "",
-      search: "",
     })
     router.push(pathname)
   }
@@ -134,21 +115,6 @@ export const DashboardFilters = () => {
 
       {showFilters && (
         <CardContent className="space-y-4">
-          {/* Поиск */}
-          <div className="space-y-2">
-            <Label htmlFor="search">Поиск по расчётам</Label>
-            <div className="relative">
-              <SearchIcon className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
-              <Input
-                id="search"
-                placeholder="Поиск по модели, году..."
-                value={filters.search}
-                onChange={(e) => updateFilter("search", e.target.value)}
-                className="pl-10"
-              />
-            </div>
-          </div>
-
           {/* Статус и тип двигателя */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-2">
@@ -190,25 +156,6 @@ export const DashboardFilters = () => {
             </div>
           </div>
 
-          {/* Диапазон цен */}
-          <div className="space-y-2">
-            <Label>Диапазон цен (₽)</Label>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <Input
-                placeholder="От"
-                type="number"
-                value={filters.priceFrom}
-                onChange={(e) => updateFilter("priceFrom", e.target.value)}
-              />
-              <Input
-                placeholder="До"
-                type="number"
-                value={filters.priceTo}
-                onChange={(e) => updateFilter("priceTo", e.target.value)}
-              />
-            </div>
-          </div>
-
           {/* Кнопки действий */}
           <div className="flex gap-2 pt-4">
             <Button onClick={applyFilters} className="flex-1">
@@ -242,14 +189,6 @@ export const DashboardFilters = () => {
                     )?.label
                   }
                 </Badge>
-              )}
-              {(filters.priceFrom || filters.priceTo) && (
-                <Badge variant="secondary">
-                  Цена: {filters.priceFrom || "0"} - {filters.priceTo || "∞"} ₽
-                </Badge>
-              )}
-              {filters.search && (
-                <Badge variant="secondary">Поиск: {filters.search}</Badge>
               )}
             </div>
           )}

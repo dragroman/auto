@@ -6,13 +6,8 @@ import {
   CardTitle,
 } from "@shared/ui/card"
 import { TNodeCalculationTeaser } from "../model/types"
-import { Button, buttonVariants } from "@shared/ui/button"
-import {
-  Calendar,
-  ChartCandlestick,
-  ChevronRightIcon,
-  FileEdit,
-} from "lucide-react"
+import { buttonVariants } from "@shared/ui/button"
+import { Calendar, ChartCandlestick, ChevronRightIcon } from "lucide-react"
 import Link from "next/link"
 import { formatNumber, isOwner } from "@shared/lib/utils"
 import { Badge } from "@shared/ui/badge"
@@ -79,12 +74,12 @@ export const NodeCalculationTeaser = ({
               : node.field_vehicle_age &&
                 mapper.vehicleAge(node.field_vehicle_age)}
           </Badge>
-          {node.field_capacity_ml != 0 && (
+          {node.field_capacity_ml && (
             <Badge variant="outline">
               {node.field_capacity_ml} {"ml"}
             </Badge>
           )}
-          {node.field_horsepower != 0 && (
+          {node.field_horsepower && (
             <Badge variant="outline">
               {node.field_horsepower} {"hp"}
             </Badge>

@@ -6,7 +6,7 @@ import { Button } from "@shared/ui/button"
 import { drupal } from "@shared/lib/drupal"
 import { authOptions } from "@features/auth/session"
 import { SignOut } from "@features/auth/sign-out"
-import { User } from "@entities/user"
+import { User, UserStats } from "@entities/user"
 import { TNodeCalculationTeaser } from "@entities/node-calculation"
 import { ViewsCalculation } from "@widgets/views-calculation"
 import { DashboardFilters } from "@widgets/dashboard-filters"
@@ -25,22 +25,8 @@ interface DashboardProps {
   searchParams: Promise<{
     status?: string
     engine_type?: string
-    date_from?: string
-    date_to?: string
-    price_from?: string
-    price_to?: string
-    search?: string
     page?: string
   }>
-}
-
-interface TotalCountProps {
-  data: {
-    attributes: TNodeCalculationTeaser[]
-  }
-  meta: {
-    count: number
-  }
 }
 
 // Функция для построения фильтров API
@@ -62,38 +48,6 @@ function buildApiFilters(
   // Фильтр по типу двигателя
   if (searchParams.engine_type && searchParams.engine_type !== "all") {
     api.addFilter("field_car_type", searchParams.engine_type)
-  }
-
-  // Фильтр по диапазону дат
-  if (searchParams.date_from) {
-    api.addFilter("created", searchParams.date_from, ">=")
-  }
-  if (searchParams.date_to) {
-    // Добавляем время до конца дня
-    const endDate = new Date(searchParams.date_to)
-    endDate.setHours(23, 59, 59, 999)
-    api.addFilter("created", endDate.toISOString(), "<=")
-  }
-
-  // Фильтр по диапазону цен
-  if (searchParams.price_from) {
-    api.addFilter(
-      "field_total_price_round",
-      parseInt(searchParams.price_from),
-      ">="
-    )
-  }
-  if (searchParams.price_to) {
-    api.addFilter(
-      "field_total_price_round",
-      parseInt(searchParams.price_to),
-      "<="
-    )
-  }
-
-  // Поиск по тексту (поиск в заголовке)
-  if (searchParams.search) {
-    api.addFilter("title", searchParams.search, "CONTAINS")
   }
 
   // Пагинация
@@ -141,21 +95,6 @@ export default async function Dashboard({ searchParams }: DashboardProps) {
       }
     )
 
-    // Подсчитываем общее количество для отображения статистики
-    const totalApiParams = new DrupalJsonApiParams()
-      .addFilter("status", "1")
-      .addFilter("uid.id", currentUser)
-      .addPageLimit(1)
-
-    const totalResponse = await drupal.getResourceCollection<TotalCountProps>(
-      "node--calculation",
-      {
-        params: totalApiParams.getQueryObject(),
-        deserialize: false,
-        next: { revalidate: 300 },
-      }
-    )
-
     const hasFilters = Object.values(resolvedSearchParams).some(
       (value) => value && value !== "all" && value !== ""
     )
@@ -167,31 +106,7 @@ export default async function Dashboard({ searchParams }: DashboardProps) {
         {/* Информация о пользователе */}
         <User user={session.user} />
 
-        {/* Статистика */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div className="bg-white rounded-lg border p-4">
-            <div className="text-2xl font-bold text-primary">
-              {totalResponse.meta.count}
-            </div>
-            <div className="text-sm text-muted-foreground">Всего расчётов</div>
-          </div>
-          <div className="bg-white rounded-lg border p-4">
-            <div className="text-2xl font-bold text-green-600">
-              {
-                totalResponse.data.attributes.filter(
-                  (n) => n.field_status === "completed"
-                ).length
-              }
-            </div>
-            <div className="text-sm text-muted-foreground">Завершенных</div>
-          </div>
-          <div className="bg-white rounded-lg border p-4">
-            <div className="text-2xl font-bold text-orange-600">
-              {nodes.filter((n) => n.field_status === "requested").length}
-            </div>
-            <div className="text-sm text-muted-foreground">На рассмотрении</div>
-          </div>
-        </div>
+        <UserStats currentUser={currentUser} />
 
         {/* Фильтры */}
         <DashboardFilters />
@@ -232,23 +147,7 @@ export default async function Dashboard({ searchParams }: DashboardProps) {
           )}
         </div>
 
-        {/* Дополнительные действия */}
-        <div className="border-t pt-6">
-          <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
-            <div className="flex gap-2">
-              <Button asChild>
-                <Link href="/calc">Новый расчёт</Link>
-              </Button>
-              <Button variant="outline" asChild>
-                <Link href="/contact">Поддержка</Link>
-              </Button>
-            </div>
-
-            <div className="text-center">
-              <SignOut />
-            </div>
-          </div>
-        </div>
+        <SignOut />
       </div>
     )
   } catch (error) {

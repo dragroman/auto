@@ -53,6 +53,7 @@ export async function updateNodeDataAction(
 
     // Инвалидируем кэш для этой страницы
     revalidateTag("calculations")
+    revalidateTag("user_stats")
 
     return { success: true, node: updatedNode }
   } catch (error) {
