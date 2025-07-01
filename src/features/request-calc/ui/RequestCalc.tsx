@@ -41,10 +41,13 @@ export const RequestCalc = ({
 
   const isAuthenticated = !!currentUserID
   const isRequested = node?.field_status === "requested"
+  const isCompleted = node?.field_status === "completed"
 
   const owner = node?.uid.id
   const nodeId = node?.id
-  const nodeType = "calculation"
+  const nodeType = "node--calculation"
+
+  const model = node.field_model
 
   const t = useTranslations()
 
@@ -63,26 +66,17 @@ export const RequestCalc = ({
     setOpen(false)
   }
 
-  const triggerButton = !isAuthenticated ? (
-    // Если не авторизован - показываем кнопку входа
-    <>
-      <Link href="/signin" className={buttonVariants({ variant: "outline" })}>
-        {t("form.request")}
-      </Link>
-    </>
-  ) : currentUserID && isOwner(owner, currentUserID) ? (
-    // Существующая логика для владельца
-    isRequested ? (
-      <Button className={className} variant="outline" disabled>
-        {t("form.requested")}
-      </Button>
-    ) : (
-      <Button variant="secondary" className={className}>
-        {t("form.request")}
-      </Button>
-    )
-  ) : // Для авторизованного пользователя, который не владелец
-  null
+  const triggerButton = (
+    <TriggerButton
+      isAuthenticated={isAuthenticated}
+      currentUserID={currentUserID}
+      owner={owner}
+      isRequested={isRequested}
+      isCompleted={isCompleted}
+      className={className}
+      t={t}
+    />
+  )
 
   if (!isAuthenticated) {
     return triggerButton
@@ -119,7 +113,7 @@ export const RequestCalc = ({
           <RequestCalcForm
             nodeId={nodeId}
             nodeType={nodeType}
-            onClose={handleClose} // Передаем функцию закрытия
+            onClose={handleClose}
           />
         </div>
         <DrawerFooter className="pt-2">
@@ -129,5 +123,60 @@ export const RequestCalc = ({
         </DrawerFooter>
       </DrawerContent>
     </Drawer>
+  )
+}
+
+interface TriggerButtonProps {
+  isAuthenticated: boolean
+  currentUserID?: string
+  owner: string
+  isRequested: boolean
+  isCompleted: boolean
+  className?: string
+  t: (key: string) => string
+}
+
+const TriggerButton: React.FC<TriggerButtonProps> = ({
+  isAuthenticated,
+  currentUserID,
+  owner,
+  isRequested,
+  isCompleted,
+  className,
+  t,
+}) => {
+  // Неавторизованный пользователь
+  if (!isAuthenticated) {
+    return (
+      <Link href="/signin" className={buttonVariants({ variant: "outline" })}>
+        {t("form.request")}
+      </Link>
+    )
+  }
+
+  // Проверяем, является ли пользователь владельцем
+  const isUserOwner = currentUserID && isOwner(owner, currentUserID)
+
+  if (!isUserOwner) {
+    return null
+  }
+
+  // Состояния для владельца
+  if (isRequested) {
+    return (
+      <Button className={className} variant="outline" disabled>
+        {t("form.requested")}
+      </Button>
+    )
+  }
+
+  if (isCompleted) {
+    return <span className="text-green-600 font-medium">Completed</span>
+  }
+
+  return (
+    <Button variant="secondary" className={className}>
+      {t("form.request")}
+    </Button>
   )
 }
