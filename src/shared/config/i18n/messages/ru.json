@@ -16,6 +16,28 @@
       "more": "Еще"
     }
   },
+  "dashboard": {
+    "signIn": {
+      "title": "Вход в систему",
+      "email": "Почтовый аддрес",
+      "password": "Пароль",
+      "createAccount": "Создать аккаунт",
+      "entrance": "Войти",
+      "enter": "Вход"
+    },
+    "signUp": {
+      "title": "Вход в систему",
+      "email": "Email",
+      "password": "Пароль",
+      "enterPassword": "Введите пароль",
+      "phone": "Номер телефона",
+      "name": "Имя",
+      "surname": "Фамилия",
+      "button": "Продождить",
+      "nonRequired": "Необязательно",
+      "account": "Уже есть акккаунт?"
+    }
+  },
   "bottomMenu": {
     "main": {
       "title": "Главная"

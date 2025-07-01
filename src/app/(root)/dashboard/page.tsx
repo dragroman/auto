@@ -10,6 +10,7 @@ import { User } from "@entities/user"
 import { TNodeCalculationTeaser } from "@entities/node-calculation"
 import { ViewsCalculation } from "@widgets/views-calculation"
 import { Metadata } from "next"
+import { getTranslations } from "next-intl/server"
 
 export const metadata: Metadata = {
   title: "Личный кабинет",
@@ -37,9 +38,10 @@ export default async function Dashboard() {
       next: { revalidate: 3600, tags: ["calculations"] },
     }
   )
+  const t = await getTranslations("dashboard")
   return (
     <div className="space-y-4">
-      <PageTitle title="Личный кабинет" />
+      <PageTitle title={t("title")} />
       <User user={session.user} />
       <ViewsCalculation nodes={nodes} currentUserID={currentUser} />
       <hr className="my-10" />

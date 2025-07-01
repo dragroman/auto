@@ -16,6 +16,28 @@
       "more": "更多"
     }
   },
+  "dashboard": {
+    "signIn": {
+      "title": "登录",
+      "email": "电子邮件",
+      "password": "密码",
+      "createAccount": "创建账户",
+      "entrance": "登录",
+      "enter": "登录"
+    },
+    "signUp": {
+      "title": "登录",
+      "email": "电子邮件",
+      "password": "密码",
+      "enterPassword": "输入密码",
+      "phone": "电话号码",
+      "name": "名字",
+      "surname": "姓",
+      "button": "继续",
+      "nonRequired": "(不一定)",
+      "account": "已经有账号了吗?"
+    }
+  },
   "bottomMenu": {
     "main": {
       "title": "主页"
