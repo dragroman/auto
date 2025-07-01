@@ -17,6 +17,7 @@ declare module "next-auth" {
       lastName?: string
       phone?: string
       created?: string
+      langcode: string
     }
   }
 
@@ -46,6 +47,7 @@ declare module "next-auth/jwt" {
       lastName?: string
       phone?: string
       created: string
+      langcode: string
     }
   }
 }
