@@ -19,43 +19,43 @@ interface NavItem {
   icon: React.ComponentType<{ className?: string }>
   href: string
   badge?: number
-  key?: string
+  title?: string
 }
 
 const MobileBottomNav = () => {
   const pathname = usePathname()
-
+  const t = useTranslations("bottomMenu")
   const navItems: NavItem[] = [
     {
       id: "home",
       icon: Home,
       href: "/",
-      key: "main",
+      title: t("main.title"),
     },
     {
       id: "calculator",
       icon: Calculator,
       href: "/calc",
-      key: "calculator",
+      title: t("calculator.title"),
     },
     {
       id: "cars",
       icon: CarIcon,
       href: "/cars",
       badge: 2,
-      key: "auto",
+      title: t("auto.title"),
     },
     {
       id: "contacts",
       icon: Phone,
       href: "/contact",
-      key: "contacts",
+      title: t("contacts.title"),
     },
     {
       id: "profile",
       icon: User,
       href: "/dashboard",
-      key: "profile",
+      title: t("profile.title"),
     },
   ]
 
@@ -66,7 +66,6 @@ const MobileBottomNav = () => {
     }
     return pathname.startsWith(href)
   }
-  const t = useTranslations("bottomMenu")
   return (
     <>
       {/* Spacer для контента, чтобы он не перекрывался меню */}
@@ -117,7 +116,7 @@ const MobileBottomNav = () => {
                     "transition-colors duration-200"
                   )}
                 >
-                  {t(`${item.key}.title`)}
+                  {item.title}
                 </span>
               </Link>
             )
