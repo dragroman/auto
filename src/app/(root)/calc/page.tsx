@@ -6,6 +6,7 @@ import { PageTitle } from "@shared/ui/page-title"
 import { ViewsCalculation } from "@widgets/views-calculation"
 import { Metadata } from "next"
 import { getServerSession } from "next-auth"
+import { getTranslations } from "next-intl/server"
 
 export const metadata: Metadata = {
   title: "Калькулятор стоимости автомобиля из Китая",
@@ -24,10 +25,10 @@ export default async function CalcPage() {
       next: { revalidate: 3600, tags: ["calculations"] },
     }
   )
-
+  const t = await getTranslations("form")
   return (
     <>
-      <PageTitle title="Калькулятор стоимости автомобиля" />
+      <PageTitle title={t("title")} />
       <PriceCalc />
       <ViewsCalculation nodes={nodes} currentUserID={session?.user.id} />
     </>

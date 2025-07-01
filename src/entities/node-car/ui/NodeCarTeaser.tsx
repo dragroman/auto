@@ -16,7 +16,7 @@ export const NodeCarTeaser = async ({ node }: { node: NodeCarTeaserType }) => {
     <div className="group bg-white rounded-lg border border-gray-200 hover:border-gray-300 transition-all duration-200 hover:shadow-md overflow-hidden">
       <div className="flex">
         {/* Изображение слева */}
-        <div className="relative w-32 h-32 flex-shrink-0 overflow-hidden">
+        <div className="relative w-40 h-32 flex-shrink-0 overflow-hidden">
           {imageSrc ? (
             <Image
               src={imageSrc}

@@ -19,7 +19,7 @@ export const PriceCalc = () => {
   } = useCalculator()
 
   return (
-    <>
+    <div className="mb-4">
       <div>
         <PriceCalculatorForm
           onSubmit={handleFormSubmit}
@@ -45,6 +45,6 @@ export const PriceCalc = () => {
           }
         />
       )}
-    </>
+    </div>
   )
 }

@@ -1,0 +1,480 @@
+{
+  "header": {
+    "nav": {
+      "callback": "回电",
+      "calc": "计算器",
+      "auction": "拍卖",
+      "new": "无里程",
+      "used": "有里程",
+      "contacts": "联系方式",
+      "about": "关于我们",
+      "news": "新闻",
+      "faq": "常见问题",
+      "howtobuy": "如何购买",
+      "contract": "合同",
+      "document": "文件",
+      "more": "更多"
+    }
+  },
+  "bottomMenu": {
+    "main": {
+      "title": "主页"
+    },
+    "calculator": {
+      "title": "计算器"
+    },
+    "auto": {
+      "title": "汽车"
+    },
+    "contacts": {
+      "title": "联系方式"
+    },
+    "profile": {
+      "title": "个人资料"
+    }
+  },
+  "main": {
+    "title": "来自中国的汽车",
+    "footerInfo": {
+      "officeRussia": {
+        "title": "俄罗斯办事处",
+        "description": "符拉迪沃斯托克"
+      },
+      "officeChina": {
+        "title": "中国办事处",
+        "description": "哈尔滨"
+      },
+      "phone": {
+        "title": "联系电话",
+        "description": "+7(914)700-88-48"
+      },
+      "email": {
+        "title": "电子邮件",
+        "description": "info@86007auto.com"
+      }
+    },
+    "upperPart": {
+      "calculator": "计算价格",
+      "backcall": "回电",
+      "contact": "联系方式"
+    },
+    "features": {
+      "title": "我们的优势",
+      "qualityGuarantee": {
+        "title": "质量保证",
+        "description": "发货前检查"
+      },
+      "transparentPrice": {
+        "title": "透明价格",
+        "description": "准确的汽车价格计算"
+      },
+      "fastDelivery": {
+        "title": "快速配送",
+        "description": " 到乌苏里江需要7-14天"
+      },
+      "instantCalculation": {
+        "title": "即时计算",
+        "description": "几次点击计算"
+      }
+    },
+    "platformList": {
+      "title": "搜索网站",
+      "country": "中国",
+      "renrenche": {
+        "title": "人人车",
+        "description": "中国首个C2C二手车平台"
+      },
+      "taocheche": {
+        "title": "淘车车",
+        "description": "B2C二手车市场，配备AI诊断"
+      },
+      "dongchedi": {
+        "title": "懂车帝",
+        "description": "汽车媒体平台与经销商价格"
+      },
+      "autohome": {
+        "title": "汽车之家",
+        "description": "中国领先的汽车生态系统，68百万+用户"
+      },
+      "guazi": {
+        "title": "瓜子二手车",
+        "description": "主导二手车在线销售（占市场份额80%）"
+      },
+      "che168": {
+        "title": "汽车之家二手车",
+        "description": "Autohome为经销商提供的B2B二手车市场"
+      }
+    },
+    "processSteps": {
+      "title": "它是如何工作的",
+      "step01": {
+        "step": "01",
+        "title": "选择",
+        "description": "根据您的标准为您挑选汽车",
+        "time": "一天"
+      },
+      "step02": {
+        "step": "02",
+        "title": "计算",
+        "description": "所有费用的精确计算 ",
+        "time": "三十分钟"
+      },
+      "step03": {
+        "step": "03",
+        "title": "协议",
+        "description": "办理手续和预付款60,000卢布",
+        "time": "一小时"
+      },
+      "step04": {
+        "step": "04",
+        "title": "送货",
+        "description": "运输到乌苏里江",
+        "time": "七-十四天"
+      }
+    },
+    "consultation": {
+      "title": "准备好购买了吗？",
+      "description": "免费咨询与计算",
+      "button": "开始"
+    }
+  },
+  "footer": {
+    "copyright": "© China Auto. 版权所有"
+  },
+  "contact": {
+    "title": "联系我们",
+    "company": "有限责任公司“China Auto”",
+    "ogrn": "主要国家注册号码1232500027506",
+    "phone": {
+      "label": "联系电话",
+      "value": "+7(914)700-88-48",
+      "raw": "79147008848"
+    },
+    "email": {
+      "label": "电子邮件",
+      "value": "info@86007auto.com"
+    },
+    "addressChina": {
+      "label": "中国办公室",
+      "value": "中国，哈尔滨，富水路99-5"
+    },
+    "addressRussia": {
+      "label": "俄罗斯办公室",
+      "value": "俄罗斯，符拉迪沃斯托克，达尔扎沃茨卡亚街4号，办公楼530"
+    }
+  },
+  "social": {
+    "instagram": {
+      "title": "Instagram",
+      "url": "https://www.instagram.com/auto86007/"
+    },
+    "youtube": {
+      "title": "Youtube",
+      "url": "https://www.youtube.com/channel/UCzA-HhJ7NYj7novx8RKX7Hw/about"
+    },
+    "telegram": {
+      "title": "telegram",
+      "url": "https://t.me/auto86007"
+    }
+  },
+  "formRequest": {
+    "title": "提交申请",
+    "button": "提交",
+    "success": "申请成功提交",
+    "fields": {
+      "price": {
+        "label": "汽车价格",
+        "placeholder": "例如，1 500 000 ₽",
+        "error": "请输入汽车价格",
+        "help": "请输入汽车的大致价格"
+      },
+      "name": {
+        "label": "姓名",
+        "placeholder": "伊凡·伊万诺夫",
+        "error": "请输入姓名",
+        "help": "请输入姓名"
+      },
+      "phone": {
+        "label": "联系方式",
+        "placeholder": "+7 (999) 123-45-67",
+        "error": "请输入电话",
+        "help": "请输入联系电话"
+      }
+    }
+  },
+  "pageCars": {
+    "title": "中国汽车",
+    "subtitle": "来自中国的汽车"
+  },
+  "pageNew": {
+    "title": "无里程",
+    "subtitle": "在中国购买新车"
+  },
+  "pageUsed": {
+    "title": "有里程",
+    "subtitle": "在中国购买二手车"
+  },
+  "carTeaser": {
+    "noPhoto": "无照片",
+    "noTitle": "无名称",
+    "noDescription": "无描述",
+    "noPrice": "未标明价格",
+    "noYear": "未标明年份",
+    "noKm": "未标明里程",
+    "noEngine": "未标明引擎",
+    "noTransmission": "未标明变速器"
+  },
+  "auth": {
+    "login": "登录"
+  },
+  "form": {
+    "title": "汽车价格计算器",
+    "rateLimit": {
+      "anonymous": {
+        "title": "超过计算次数限制",
+        "description": "您已超过免费计算次数限制。请注册以获取更多计算次数或登录账户。",
+        "registerButton": "注册",
+        "loginButton": "登录"
+      },
+      "registered": {
+        "title": "今日计算次数已用完",
+        "description": "您已用完今日账户的计算次数。请与我们联系以扩展限制或等待明天。",
+        "contactButton": "联系我们",
+        "waitButton": "等到明天"
+      },
+      "premium": {
+        "title": "超过高级账户的限制",
+        "description": "您已达到高级账户的最大计算次数。请联系支持解决此问题。",
+        "contactButton": "联系支持"
+      }
+    },
+    "error": "错误",
+    "submitting": "计算中...",
+    "submit": "计算",
+    "reset": "重置",
+    "request": "请求",
+    "requested": "正在处理",
+    "more": "更多",
+
+    "vehicle": {
+      "condition": {
+        "label": "车辆状态",
+        "new": {
+          "title": "无里程",
+          "description": "新车"
+        },
+        "used": {
+          "title": "有里程",
+          "description": "二手车"
+        }
+      },
+      "production_date": {
+        "label": "生产日期",
+        "specify_date": "指定生产日期",
+        "category_vehicle_age": "车辆类别",
+        "month_placeholder": "选择月份",
+        "year_placeholder": "选择年份",
+        "under3": "3年以内",
+        "from3to5": "3到5年",
+        "from5to7": "5到7年",
+        "use_range": "指定日期范围",
+        "months": [
+          "一月",
+          "二月",
+          "三月",
+          "四月",
+          "五月",
+          "六月",
+          "七月",
+          "八月",
+          "九月",
+          "十月",
+          "十一月",
+          "十二月"
+        ]
+      }
+    },
+    "engine": {
+      "label": "引擎类型",
+      "gas": {
+        "title": "汽油",
+        "description": "经典内燃机"
+      },
+      "hybrid": {
+        "title": "混合动力",
+        "description": "内燃机和电动机的组合"
+      },
+      "electric": {
+        "title": "电动",
+        "description": "完全电动机"
+      },
+      "capacity": {
+        "title": "发动机排量（毫升）",
+        "description": "如果您不清楚准确的值，请输入一个近似值。请注意：如果排量为1.5升，请输入小于1500毫升的值（例如1499），因为排量为1500毫升或以上时将适用不同的收费标准。"
+      },
+      "power": {
+        "title": "功率（马力）",
+        "description": "请输入发动机的马力（HP）"
+      }
+    },
+    "price": {
+      "actual": {
+        "title": "汽车价格",
+        "description": "请输入汽车的价格（人民币）。请注意：中国的价格通常以‘万’为单位，其中1万=10,000人民币。例如，26.6万的价格就是266,000人民币。"
+      },
+      "retail": {
+        "title": "零售价格",
+        "description": "请提供汽车在汽车销售商处的价格，不包括折扣和促销。此价格用于计算海关清关费用，因为它被认为是官方零售价格，无论实际购买价格如何。"
+      },
+      "profit": "佣金",
+      "shipping": "运输费用",
+      "additional": "附加费用"
+    }
+  },
+  "formResults": {
+    "finalPrice": {
+      "title": "最终价格",
+      "description": "包括所有费用后的计算价格",
+      "tooltip": "不包括佣金和税费的汽车价格"
+    },
+    "exactPrice": {
+      "title": "准确价格"
+    },
+    "requiredPayments": {
+      "title": "必付费用"
+    },
+    "expenseItem": {
+      "title": "费用项目"
+    },
+    "amount": {
+      "title": "金额"
+    },
+    "carCost": {
+      "title": "汽车成本",
+      "tooltip": "显示的车辆成本是指车辆的实际购买价格，包括在中国境内的实际车辆价格，不包括任何海关费用、经纪人佣金、车辆检查、代理公司服务及其他费用。",
+      "info": "在某些情况下，车辆的成本可能已包括强制性道路保险费用。如果车辆在购买时已办理有效的保险，则无需支付额外的强制道路保险费用。"
+    },
+    "commission": {
+      "title": "汽车购买服务"
+    },
+    "taxChina": {
+      "title": "中国海关税"
+    },
+    "taxRussia": {
+      "title": "俄罗斯海关税",
+      "tooltip": "进口到俄罗斯的汽车海关税是由欧亚经济联盟（EAEU）海关法规规定的。个人使用的车辆进口有不同的关税，根据车辆类型、年龄、价值和发动机排量的不同而有所不同。",
+      "info": "显示的海关税为预估值，可能会根据汇率波动有所变化。最终价格在海关清关时确定。完整的信息和相关文件，您可以在下方查阅。",
+      "url_name1": "欧亚经济联盟海关法典",
+      "url_name2": "ПП РФ от 26.12.2013 № 1291",
+      "url_name3": "ПП РФ от 06.02.2016 № 81"
+    },
+    "customsDeclaration": {
+      "title": "海关申报",
+      "tooltip": "对于新车和二手车，车辆从中国过境到俄罗斯时，设有一个统一的海关申报费用，费用为每辆车6,000人民币，包含在中国境内的海关申报及从中国到俄罗斯的运输费用。",
+      "info": "此项服务由俄罗斯经纪人提供"
+    },
+    "customsClearance": {
+      "title": "海关清关",
+      "tooltip": "包括提交海关申报、检查和分析文件、计算并支付海关费用（关税、增值税、消费税等）以及支付海关清关服务费用。",
+      "info": "此项服务由俄罗斯经纪人提供"
+    },
+
+    "domesticShippingChina": {
+      "title": "中国国内运输",
+      "tooltip": "包括从买车地点到俄罗斯边境的运输费用。",
+      "info": "根据购买地点与俄罗斯边境之间的距离，运输费用可能有所不同。运输地点不可更改，始终为中国边境城市。",
+      "url_name": "绥芬河"
+    },
+    "additionalExpenses": {
+      "title": "附加费用"
+    },
+    "additionalInfo": {
+      "title": "更多信息"
+    },
+    "exchangeRates": {
+      "title": "汇率"
+    },
+    "cnyRub": {
+      "title": "CNY/RUB"
+    },
+    "eurRub": {
+      "title": "EUR/RUB"
+    },
+    "taxRefund": {
+      "title": "税务退款"
+    },
+    "refundAmount": {
+      "title": "退款金额"
+    },
+    "overallProfit": {
+      "title": "总体利润"
+    },
+    "costInDifferentCurrencies": {
+      "title": "不同货币的价格"
+    },
+
+    "priceRmb": {
+      "title": "价格 (人民币)"
+    },
+    "priceUsd": {
+      "title": "价格 (美元)"
+    },
+    "priceRub": {
+      "title": "价格 (卢布)"
+    },
+    "retailPriceEur": {
+      "title": "价格 (欧元)"
+    },
+    "vehicleInfo": {
+      "title": "车辆信息"
+    },
+    "vehicleAge": {
+      "title": "年龄 (年)"
+    },
+    "insurance": {
+      "title": "保险",
+      "tooltip": "对于中国的轿车，强制道路保险费用通常在1,000到3,000人民币之间，具体费用会根据车辆类型和特征有所不同。对于小型车辆（如排量小于2升的汽车），费用大约为1,000到1,500人民币。对于排量较大的车辆或电动汽车，费用可能会更高，达到2,000到3,000人民币。",
+      "info": "如果车辆在转移期间结束前已经拥有强制道路保险，则无需支付强制道路保险费用。"
+    },
+    "info": {
+      "title": "注释"
+    },
+    "employeeTravelCost": {
+      "title": "员工差旅费",
+      "tooltip": "费用包括交通票、食宿费等，用于在购车地点的员工差旅费用。",
+      "info": "费用依据我们办公室与购车地点之间的距离不同而变化。",
+      "url_name": "哈尔滨市富水路99-5号"
+    },
+    "brokerFee": {
+      "title": "经纪人佣金",
+      "tooltip": "俄罗斯经纪人佣金为海关申报中声明价值的1.5%."
+    },
+    "inspection": {
+      "title": "车辆检查",
+      "tooltip": "在购买前进行强制性车辆检查，确保车辆符合预定规格。检查费用为600人民币。",
+      "info": "检查费用固定，不受车辆型号影响。"
+    }
+  },
+
+  "nodeCalculation": {
+    "my": "我的",
+    "anonymous": "匿名",
+    "carType": {
+      "sedan": "轿车",
+      "hatchback": "掀背车",
+      "suv": "SUV",
+      "coupe": "轿跑"
+    },
+    "newCondition": {
+      "new": "新车",
+      "used": "二手车",
+      "certified": "认证车"
+    },
+    "fields": {
+      "carType": "汽车类型",
+      "newCondition": "状态",
+      "productionDate": "生产年份",
+      "totalPrice": "总价"
+    }
+  }
+}

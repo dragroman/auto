@@ -12,13 +12,14 @@ import {
 import { cn } from "@shared/lib/utils"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
+import { useTranslations } from "next-intl"
 
 interface NavItem {
   id: string
-  label: string
   icon: React.ComponentType<{ className?: string }>
   href: string
   badge?: number
+  key?: string
 }
 
 const MobileBottomNav = () => {
@@ -27,34 +28,34 @@ const MobileBottomNav = () => {
   const navItems: NavItem[] = [
     {
       id: "home",
-      label: "Главная",
       icon: Home,
       href: "/",
+      key: "main",
     },
     {
       id: "calculator",
-      label: "Калькулятор",
       icon: Calculator,
       href: "/calc",
+      key: "calculator",
     },
     {
       id: "cars",
-      label: "Авто",
       icon: CarIcon,
       href: "/cars",
       badge: 2,
+      key: "auto",
     },
     {
       id: "contacts",
-      label: "Контакты",
       icon: Phone,
       href: "/contact",
+      key: "contacts",
     },
     {
       id: "profile",
-      label: "Профиль",
       icon: User,
       href: "/dashboard",
+      key: "profile",
     },
   ]
 
@@ -65,7 +66,7 @@ const MobileBottomNav = () => {
     }
     return pathname.startsWith(href)
   }
-
+  const t = useTranslations("bottomMenu")
   return (
     <>
       {/* Spacer для контента, чтобы он не перекрывался меню */}
@@ -90,7 +91,6 @@ const MobileBottomNav = () => {
                     ? "text-red-600"
                     : "text-gray-500 hover:text-gray-700 active:text-red-500"
                 )}
-                aria-label={item.label}
               >
                 <div className="relative">
                   <Icon
@@ -117,7 +117,7 @@ const MobileBottomNav = () => {
                     "transition-colors duration-200"
                   )}
                 >
-                  {item.label}
+                  {t(`${item.key}.title`)}
                 </span>
               </Link>
             )
