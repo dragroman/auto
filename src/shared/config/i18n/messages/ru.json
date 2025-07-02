@@ -10,7 +10,8 @@
       "about": "О нас",
       "news": "Новости",
       "faq": "Вопросы и ответы",
-      "howtobuy": "Как купить",
+      "howToBuy": "Как купить",
+      "howToBuy": "Как купить",
       "contract": "Договор",
       "document": "Документы",
       "more": "Еще"
@@ -20,8 +21,8 @@
     "back": "Вернуться на сайт",
     "user": {
       "email": "ваш почтовый ящик",
-      "statsAll": "Вего рассчетов",
-      "statsCompleted": "Заверщенных",
+      "statsAll": "Всего расчетов",
+      "statsCompleted": "Завершенных",
       "statsPending": "На рассмотрении"
     },
     "filters": {
@@ -64,9 +65,10 @@
     },
     "signIn": {
       "title": "Вход в систему",
-      "email": "Почтовый аддрес",
+      "email": "Почтовый адрес",
       "password": "Пароль",
       "createAccount": "Создать аккаунт",
+      "forgotPassword": "Забыл пароль",
       "entrance": "Войти",
       "enter": "Вход",
       "helpText": "Для доступа к личному кабинету необходимо войти в систему"
@@ -79,9 +81,22 @@
       "phone": "Номер телефона",
       "name": "Имя",
       "surname": "Фамилия",
-      "button": "Продождить",
+      "button": "Продолжить",
+      "button": "Продолжить",
       "nonRequired": "Необязательно",
-      "account": "Уже есть акккаунт?"
+      "account": "Уже есть аккаунт?"
+    },
+    "forgotPassword": {
+      "title": "Восстановление пароля",
+      "description": "Введите email, указанный при регистрации",
+      "sendOtp": "Отправить код",
+      "inputEmail": "Введите email, указанный при регистрации",
+      "attemptsLeft": "Осталось попыток",
+      "backToLogin": "Вернуться к входу",
+      "passwordChanged": "Пароль изменен",
+      "passwordChangedDescription": "Теперь вы можете войти с новым паролем",
+      "goToLogin": "Перейти к входу",
+      "automaticRedirect": "Автоматический переход через..."
     }
   },
   "bottomMenu": {

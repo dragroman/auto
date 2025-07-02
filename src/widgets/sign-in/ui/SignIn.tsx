@@ -1,4 +1,5 @@
 import { SignInForm } from "@features/auth/sign-in"
+import { Button } from "@shared/ui/button"
 import { PageTitle } from "@shared/ui/page-title"
 import { getTranslations } from "next-intl/server"
 import Link from "next/link"
@@ -8,13 +9,17 @@ export const SignIn = async () => {
   return (
     <>
       <SignInForm />
-      <div className="mt-4 text-center">
-        <Link
-          href="/signup"
-          className="text-sm text-muted-foreground hover:text-primary underline-offset-4 hover:underline"
-        >
-          {t("signIn.createAccount")}
-        </Link>
+      <div className="flex flex-col mt-4 gap-2 items-center">
+        <div>
+          <Button asChild variant="link">
+            <Link href="/signup">{t("signIn.createAccount")}</Link>
+          </Button>
+        </div>
+        <div>
+          <Button asChild variant="link">
+            <Link href="/forgot-password">Забыли пароль?</Link>
+          </Button>
+        </div>
       </div>
     </>
   )
