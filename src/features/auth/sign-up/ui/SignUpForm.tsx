@@ -67,7 +67,6 @@ export function SignUpForm({
   }
 
   const passwordStrength = getPasswordStrength(password || "")
-  const t = useTranslations("dashboard")
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
