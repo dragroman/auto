@@ -35,7 +35,7 @@ export const SignInForm = ({ onSuccess }: { onSuccess?: () => void }) => {
         if (onSuccess) {
           onSuccess()
         } else {
-          router.push("/")
+          router.push("/dashboard")
         }
       }
     } catch (error) {

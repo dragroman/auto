@@ -75,6 +75,7 @@ export const RequestCalc = ({
       isCompleted={isCompleted}
       className={className}
       t={t}
+      onClick={() => setOpen(true)}
     />
   )
 
@@ -134,6 +135,7 @@ interface TriggerButtonProps {
   isCompleted: boolean
   className?: string
   t: (key: string) => string
+  onClick?: () => void
 }
 
 const TriggerButton: React.FC<TriggerButtonProps> = ({
@@ -144,6 +146,7 @@ const TriggerButton: React.FC<TriggerButtonProps> = ({
   isCompleted,
   className,
   t,
+  onClick,
 }) => {
   // Неавторизованный пользователь
   if (!isAuthenticated) {
@@ -175,7 +178,7 @@ const TriggerButton: React.FC<TriggerButtonProps> = ({
   }
 
   return (
-    <Button variant="secondary" className={className}>
+    <Button variant="secondary" className={className} onClick={onClick}>
       {t("form.request")}
     </Button>
   )

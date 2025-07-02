@@ -1,21 +1,111 @@
 {
-  "name": "MyWebSite",
-  "short_name": "MySite",
+  "name": "1xAuto - Автомобили из Китая",
+  "short_name": "1xAuto",
+  "description": "Новые и подержанные автомобили из Китая с доставкой в Россию. Подбор, расчёт стоимости и оформление под ключ",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f1f2f3",
+  "theme_color": "#facc00",
+  "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "/web-app-manifest-192x192.png",
-      "sizes": "192x192",
+      "src": "/favicon/favicon-72x72.png",
+      "sizes": "72x72",
       "type": "image/png",
-      "purpose": "maskable"
+      "purpose": "any"
     },
     {
-      "src": "/web-app-manifest-512x512.png",
+      "src": "/favicon/favicon-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon/favicon-128x128.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon/favicon-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon/favicon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon/favicon-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon/favicon-512x512.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "maskable"
+      "purpose": "any"
     }
   ],
-  "theme_color": "#ffffff",
-  "background_color": "#ffffff",
-  "display": "standalone"
+  "shortcuts": [
+    {
+      "name": "Калькулятор стоимости",
+      "short_name": "Калькулятор",
+      "description": "Рассчитать стоимость автомобиля с доставкой",
+      "url": "/calculator",
+      "icons": [{ "src": "/favicon/shortcut-calc.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Ответы на часто задаваемые вопросы",
+      "short_name": "Помощь",
+      "description": "Подробнее о наших услугах",
+      "url": "/catalog",
+      "icons": [{ "src": "/favicon/shortcut-faq.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Контакты",
+      "short_name": "Контакты",
+      "description": "Связаться с нами",
+      "url": "/contacts",
+      "icons": [{ "src": "/favicon/shortcut-contact.png", "sizes": "96x96" }]
+    }
+  ],
+  "lang": "ru",
+  "dir": "ltr",
+  "prefer_related_applications": false,
+  "categories": ["automotive", "business", "shopping"],
+  "screenshots": [
+    {
+      "src": "/screenshots/desktop-home.jpg",
+      "sizes": "1280x800",
+      "type": "image/jpeg",
+      "form_factor": "wide",
+      "label": "Главная страница 86007Auto на десктопе"
+    },
+    {
+      "src": "/screenshots/mobile-home.jpg",
+      "sizes": "390x844",
+      "type": "image/jpeg",
+      "form_factor": "narrow",
+      "label": "86007Auto на мобильных устройствах"
+    },
+    {
+      "src": "/screenshots/desktop-calc.jpg",
+      "sizes": "1280x800",
+      "type": "image/jpeg",
+      "form_factor": "wide",
+      "label": "Калькулятор стоимости автомобиля"
+    },
+    {
+      "src": "/screenshots/mobile-calc.jpg",
+      "sizes": "390x844",
+      "type": "image/jpeg",
+      "form_factor": "narrow",
+      "label": "Каталог автомобилей на мобильном"
+    }
+  ]
 }

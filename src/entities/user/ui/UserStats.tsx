@@ -1,5 +1,6 @@
 import { TNodeCalculationTeaser } from "@entities/node-calculation"
 import { drupal } from "@shared/lib/drupal"
+import { cn } from "@shared/lib/utils"
 import { DrupalJsonApiParams } from "drupal-jsonapi-params"
 import { getTranslations } from "next-intl/server"
 interface TotalCountProps {
@@ -9,6 +10,32 @@ interface TotalCountProps {
   meta: {
     count: number
   }
+}
+
+const StatBlock = ({
+  value,
+  name,
+  description,
+}: {
+  value: number
+  name: string
+  description: string
+}) => {
+  return (
+    <div className="bg-white rounded-lg border p-4">
+      <div
+        className={cn(
+          "text-2xl font-bold",
+          name === "total" && "text-black-600",
+          name === "completed" && "text-green-600",
+          name === "requested" && "text-amber-600"
+        )}
+      >
+        {value}
+      </div>
+      <div className="text-sm text-muted-foreground">{description}</div>
+    </div>
+  )
 }
 
 export const UserStats = async ({ currentUser }: { currentUser: string }) => {
@@ -69,28 +96,21 @@ export const UserStats = async ({ currentUser }: { currentUser: string }) => {
     <>
       {/* Статистика */}
       <div className="grid grid-cols-3 gap-2">
-        <div className="bg-white rounded-lg border p-4">
-          <div className="text-2xl font-bold">{stats.total}</div>
-          <div className="text-sm text-muted-foreground">
-            {t("user.statsAll")}
-          </div>
-        </div>
-        <div className="bg-white rounded-lg border p-4">
-          <div className="text-2xl font-bold text-green-600">
-            {stats.completed}
-          </div>
-          <div className="text-sm text-muted-foreground">
-            {t("user.statsCompleted")}
-          </div>
-        </div>
-        <div className="bg-white rounded-lg border p-4">
-          <div className="text-2xl font-bold text-orange-600">
-            {stats.requested}
-          </div>
-          <div className="text-sm text-muted-foreground">
-            {t("user.statsPending")}
-          </div>
-        </div>
+        <StatBlock
+          name="total"
+          value={stats.total}
+          description={t("user.statsAll")}
+        />
+        <StatBlock
+          name="completed"
+          value={stats.completed}
+          description={t("user.statsCompleted")}
+        />
+        <StatBlock
+          name="requested"
+          value={stats.requested}
+          description={t("user.statsPending")}
+        />
       </div>
     </>
   )
