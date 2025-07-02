@@ -78,7 +78,7 @@ export function SignUpForm({
 
       {/* Email Field */}
       <div className="space-y-2">
-        <Label htmlFor="email">{t("signUp.email")}</Label>
+        <Label htmlFor="email">{t("email")}</Label>
         <div className="relative">
           <Mail className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
           <Input
@@ -96,7 +96,7 @@ export function SignUpForm({
 
       {/* Phone Field */}
       <div className="space-y-2">
-        <Label htmlFor="phone">{t("signUp.phone")}</Label>
+        <Label htmlFor="phone">{t("phone")}</Label>
         <div className="relative">
           <Phone className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
           <Input
@@ -113,14 +113,14 @@ export function SignUpForm({
 
       {/* Password Field */}
       <div className="space-y-2">
-        <Label htmlFor="password">{t("signUp.password")}</Label>
+        <Label htmlFor="password">{t("password")}</Label>
         <div className="relative">
           <Lock className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
           <Input
             id="password"
             {...register("password")}
             type={showPassword ? "text" : "password"}
-            placeholder={t("signUp.enterPassword")}
+            placeholder={t("enterPassword")}
             className="pl-10 pr-10"
           />
           <Button
@@ -167,30 +167,28 @@ export function SignUpForm({
       <div className="grid grid-cols-2 gap-4">
         <div className="space-y-2">
           <Label htmlFor="firstName" className="text-muted-foreground">
-            {t("signUp.name")}{" "}
-            <span className="text-xs">{t("signUp.nonRequired")}</span>
+            {t("name")} <span className="text-xs">{t("nonRequired")}</span>
           </Label>
           <Input
             id="firstName"
             {...register("firstName")}
-            placeholder={t("signUp.name")}
+            placeholder={t("name")}
           />
         </div>
         <div className="space-y-2">
           <Label htmlFor="lastName" className="text-muted-foreground">
-            {t("signUp.surname")}{" "}
-            <span className="text-xs">{t("signUp.nonRequired")}</span>
+            {t("surname")} <span className="text-xs">{t("nonRequired")}</span>
           </Label>
           <Input
             id="lastName"
             {...register("lastName")}
-            placeholder={t("signUp.surname")}
+            placeholder={t("surname")}
           />
         </div>
       </div>
 
       <Button type="submit" className="w-full" disabled={!isValid || isLoading}>
-        {isLoading ? "Отправка..." : t("signUp.button")}
+        {isLoading ? "Отправка..." : t("button")}
       </Button>
 
       <p className="text-xs text-center text-muted-foreground">
