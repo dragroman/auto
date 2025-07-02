@@ -37,6 +37,7 @@ export function SignUpForm({
   })
 
   const password = watch("password")
+  const t = useTranslations("dashboard.signUp")
 
   // Password strength indicator
   const getPasswordStrength = (password: string) => {
@@ -204,12 +205,9 @@ export function SignUpForm({
         </a>
       </p>
       <div className="mt-4 text-center">
-        <Link
-          href="/signin"
-          className="text-sm text-muted-foreground hover:text-primary underline-offset-4 hover:underline"
-        >
-          {t("signUp.account")}
-        </Link>
+        <Button asChild variant="link">
+          <Link href="/signin">{t("account")}</Link>
+        </Button>
       </div>
     </form>
   )
