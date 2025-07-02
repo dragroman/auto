@@ -16,6 +16,74 @@
       "more": "Еще"
     }
   },
+  "dashboard": {
+    "back": "Вернуться на сайт",
+    "user": {
+      "email": "ваш почтовый ящик",
+      "statsAll": "Вего рассчетов",
+      "statsCompleted": "Заверщенных",
+      "statsPending": "На рассмотрении"
+    },
+    "filters": {
+      "title": "Фильтры",
+      "show": "Показать",
+      "hide": "Скрыть",
+      "calculationStatus": "Статус расчёта",
+      "chooseStatus": "Выберите статус",
+      "engineType": "Тип двигателя",
+      "chooseEngineType": "Выбрать тип двигателя",
+      "applyFilters": "Применить фильтры",
+      "resetFilters": "Сбросить",
+      "status": "Статус",
+      "engine": "Двигатель",
+      "all": "Все типы",
+      "gas": "Бензин",
+      "hybrid": "Гибрид",
+      "electric": "Электро",
+      "statusAll": "Все статусы",
+      "statusDraft": "Черновик",
+      "statusRequested": "На рассмотрении",
+      "statusCompleted": "Завершен"
+    },
+    "profile": {
+      "title": "Личный кабинет",
+      "resultsTitle": "Результаты поиска",
+      "myCalculations": "Мои расчёты",
+      "noCalculations": "У вас пока нет расчётов",
+      "nothingFound": "Ничего не найдено",
+      "tryChangeParams": "Попробуйте изменить параметры поиска или сбросить фильтры",
+      "createFirstCalculation": "Создайте свой первый расчёт стоимости автомобиля",
+      "calculate": "Рассчитать стоимость",
+      "resetFilters": "Сбросить фильтры",
+      "error": "Ошибка загрузки данных",
+      "errorDescription": "Не удалось загрузить ваши расчёты. Попробуйте обновить страницу.",
+      "tryAgain": "Обновить страницу"
+    },
+    "signOut": {
+      "exit": "Выйти"
+    },
+    "signIn": {
+      "title": "Вход в систему",
+      "email": "Почтовый аддрес",
+      "password": "Пароль",
+      "createAccount": "Создать аккаунт",
+      "entrance": "Войти",
+      "enter": "Вход",
+      "helpText": "Для доступа к личному кабинету необходимо войти в систему"
+    },
+    "signUp": {
+      "title": "Вход в систему",
+      "email": "Email",
+      "password": "Пароль",
+      "enterPassword": "Введите пароль",
+      "phone": "Номер телефона",
+      "name": "Имя",
+      "surname": "Фамилия",
+      "button": "Продождить",
+      "nonRequired": "Необязательно",
+      "account": "Уже есть акккаунт?"
+    }
+  },
   "bottomMenu": {
     "main": {
       "title": "Главная"
@@ -80,6 +148,7 @@
     "platformList": {
       "title": "Площадки для поиска",
       "country": "Китай",
+      "url": "Перейти",
       "renrenche": {
         "title": "Жэньжэньчэ",
         "description": "Первая C2C площадка подержанных авто в Китае"

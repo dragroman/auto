@@ -8,6 +8,7 @@ import { Input } from "@shared/ui/input"
 import { Label } from "@shared/ui/label"
 import { Alert, AlertDescription } from "@shared/ui/alert"
 import { Lock, User } from "lucide-react"
+import { useTranslations } from "next-intl"
 
 export const SignInForm = ({ onSuccess }: { onSuccess?: () => void }) => {
   const [username, setUsername] = useState("")
@@ -43,13 +44,13 @@ export const SignInForm = ({ onSuccess }: { onSuccess?: () => void }) => {
       setLoading(false)
     }
   }
-
+  const t = useTranslations("dashboard")
   return (
     <>
       <form onSubmit={handleSubmit} className="space-y-4">
         {/* Username Field */}
         <div className="space-y-2">
-          <Label htmlFor="username">Почтовый адрес</Label>
+          <Label htmlFor="username">{t("signIn.email")}</Label>
           <div className="relative">
             <User className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
             <Input
@@ -64,14 +65,14 @@ export const SignInForm = ({ onSuccess }: { onSuccess?: () => void }) => {
         </div>
 
         <div className="space-y-2">
-          <Label htmlFor="password">Пароль</Label>
+          <Label htmlFor="password">{t("signIn.password")}</Label>
           <div className="relative">
             <Lock className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
             <Input
               id="password"
               type="password"
               className="pl-10 pr-10"
-              placeholder="Пароль"
+              placeholder={t("signIn.password")}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
@@ -85,7 +86,7 @@ export const SignInForm = ({ onSuccess }: { onSuccess?: () => void }) => {
         )}
 
         <Button type="submit" className="w-full" disabled={loading}>
-          {loading ? "Вход..." : "Войти"}
+          {loading ? t("signIn.enter") : t("signIn.entrance")}
         </Button>
       </form>
     </>

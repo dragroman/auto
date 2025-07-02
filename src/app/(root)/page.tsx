@@ -37,88 +37,111 @@ export const metadata: Metadata = {
   description: "Покупка и доставка автомобилей из Китая напрямую",
 }
 
-const processSteps = [
-  {
-    key: "step01",
-    icon: Search,
-    color: "bg-blue-500",
-  },
-  {
-    key: "step02",
-    icon: Calculator,
-    color: "bg-green-500",
-  },
-  {
-    key: "step03",
-    icon: FileText,
-    color: "bg-orange-500",
-  },
-  {
-    key: "step04",
-    icon: Truck,
-    color: "bg-purple-500",
-  },
-]
-
-const platformList = [
-  {
-    url: "https://www.renrenche.com/",
-    logo: "renrenche.png",
-    key: "renrenche",
-  },
-  {
-    url: "https://m.taocheche.com/",
-    logo: "taocheche.png",
-    key: "taocheche",
-    logoBackgroundClass: "bg-blue-800",
-  },
-  {
-    url: "https://www.dongchedi.com/",
-    logo: "donchedi.svg",
-    key: "dongchedi",
-  },
-  {
-    url: "https://www.autohome.com.cn/",
-    logo: "qichezhijia.png",
-    key: "autohome",
-  },
-  {
-    url: "https://www.guazi.com/",
-    logo: "guazi.png",
-    key: "guazi",
-  },
-  {
-    url: "https://www.che168.com/",
-    logo: "2sclogo@2x.png",
-    key: "che168",
-  },
-]
-
-const features = [
-  {
-    icon: Shield,
-    key: "qualityGuarantee",
-    highlight: true,
-  },
-  {
-    icon: DollarSign,
-    key: "transparentPrice",
-    highlight: false,
-  },
-  {
-    icon: Truck,
-    key: "fastDelivery",
-    highlight: true,
-  },
-  {
-    icon: Zap,
-    key: "instantCalculation",
-    highlight: false,
-  },
-]
-
-export default async function Home() {
+export default async function Page() {
   const t = await getTranslations("main")
+
+  const processSteps = [
+    {
+      icon: Search,
+      color: "bg-blue-500",
+      step: t("processSteps.step01.step"),
+      label: t("processSteps.step01.title"),
+      description: t("processSteps.step01.description"),
+      time: t("processSteps.step01.time"),
+    },
+    {
+      icon: Calculator,
+      color: "bg-green-500",
+      step: t("processSteps.step02.step"),
+      label: t("processSteps.step02.title"),
+      description: t("processSteps.step02.description"),
+      time: t("processSteps.step02.time"),
+    },
+    {
+      icon: FileText,
+      color: "bg-orange-500",
+      step: t("processSteps.step03.step"),
+      label: t("processSteps.step03.title"),
+      description: t("processSteps.step03.description"),
+      time: t("processSteps.step03.time"),
+    },
+    {
+      icon: Truck,
+      color: "bg-purple-500",
+      step: t("processSteps.step04.step"),
+      label: t("processSteps.step04.title"),
+      description: t("processSteps.step04.description"),
+      time: t("processSteps.step04.time"),
+    },
+  ]
+
+  const platformList = [
+    {
+      url: "https://www.renrenche.com/",
+      logo: "renrenche.png",
+      label: t("platformList.renrenche.title"),
+      description: t("platformList.renrenche.description"),
+    },
+    {
+      url: "https://m.taocheche.com/",
+      logo: "taocheche.png",
+      logoBackgroundClass: "bg-blue-800",
+      label: t("platformList.taocheche.title"),
+      description: t("platformList.taocheche.description"),
+    },
+    {
+      url: "https://www.dongchedi.com/",
+      logo: "donchedi.svg",
+      label: t("platformList.dongchedi.title"),
+      description: t("platformList.dongchedi.description"),
+    },
+    {
+      url: "https://www.autohome.com.cn/",
+      logo: "qichezhijia.png",
+      label: t("platformList.autohome.title"),
+      description: t("platformList.autohome.description"),
+    },
+    {
+      url: "https://www.guazi.com/",
+      logo: "guazi.png",
+      label: t("platformList.guazi.title"),
+      description: t("platformList.guazi.description"),
+    },
+    {
+      url: "https://www.che168.com/",
+      logo: "2sclogo@2x.png",
+      label: t("platformList.che168.title"),
+      description: t("platformList.che168.description"),
+    },
+  ]
+
+  const features = [
+    {
+      icon: Shield,
+      highlight: true,
+      label: t("features.qualityGuarantee.title"),
+      description: t("features.qualityGuarantee.description"),
+    },
+    {
+      icon: DollarSign,
+      highlight: false,
+      label: t("features.transparentPrice.title"),
+      description: t("features.transparentPrice.description"),
+    },
+    {
+      icon: Truck,
+      highlight: true,
+      label: t("features.fastDelivery.title"),
+      description: t("features.fastDelivery.description"),
+    },
+    {
+      icon: Zap,
+      highlight: false,
+      label: t("features.instantCalculation.title"),
+      description: t("features.instantCalculation.description"),
+    },
+  ]
+
   return (
     <>
       <Header title={t("title")} />
@@ -176,10 +199,10 @@ export default async function Home() {
                     </div>
                     <div className="flex-1 min-w-0">
                       <h3 className="font-semibold text-sm leading-tight">
-                        {t(`features.${feature.key}.title`)}
+                        {feature.label}
                       </h3>
                       <p className="text-xs text-muted-foreground mt-1">
-                        {t(`features.${feature.key}.description`)}
+                        {feature.description}
                       </p>
                     </div>
                   </div>
@@ -214,24 +237,22 @@ export default async function Home() {
                       >
                         <Image
                           src={`/platforms/${platform.logo}`}
-                          alt={t(`platformList.${platform.key}.title`)}
+                          alt={platform.label}
                           fill
                           className="object-contain object-left"
                         />
                       </div>
                     )}
-                    <CardTitle>
-                      {t(`platformList.${platform.key}.title`)}
-                    </CardTitle>
+                    <CardTitle>{platform.label}</CardTitle>
                   </CardHeader>
                   <CardContent className="text-sm text-muted-foreground">
-                    {t(`platformList.${platform.key}.description`)}
+                    {platform.description}
                   </CardContent>
                   <CardFooter>
                     <Button asChild variant="outline" size="sm">
                       <Link target="_blank" href={platform.url}>
                         <Link2 />
-                        Перейти
+                        {t("platformList.url")}
                       </Link>
                     </Button>
                   </CardFooter>
@@ -255,16 +276,16 @@ export default async function Home() {
                         <step.icon className="h-4 w-4 text-primary-foreground" />
                       </div>
                       <div className="text-xs font-bold text-primary mb-1">
-                        {t(`processSteps.${step.key}.step`)}
+                        {step.step}
                       </div>
                       <h3 className="font-semibold text-sm mb-1">
-                        {t(`processSteps.${step.key}.title`)}
+                        {step.label}
                       </h3>
                       <p className="text-xs text-muted-foreground mb-2">
-                        {t(`processSteps.${step.key}.description`)}
+                        {step.description}
                       </p>
                       <Badge variant="secondary" className="text-xs py-0">
-                        {t(`processSteps.${step.key}.time`)}
+                        {step.time}
                       </Badge>
                     </div>
                   </Card>

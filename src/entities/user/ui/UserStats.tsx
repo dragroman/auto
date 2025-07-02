@@ -1,7 +1,7 @@
 import { TNodeCalculationTeaser } from "@entities/node-calculation"
 import { drupal } from "@shared/lib/drupal"
 import { DrupalJsonApiParams } from "drupal-jsonapi-params"
-
+import { getTranslations } from "next-intl/server"
 interface TotalCountProps {
   data: {
     attributes: TNodeCalculationTeaser[]
@@ -12,6 +12,7 @@ interface TotalCountProps {
 }
 
 export const UserStats = async ({ currentUser }: { currentUser: string }) => {
+  const t = await getTranslations("dashboard")
   // Подсчитываем общее количество для отображения статистики
   const totalApiParams = new DrupalJsonApiParams()
     .addFilter("status", "1")
@@ -70,19 +71,25 @@ export const UserStats = async ({ currentUser }: { currentUser: string }) => {
       <div className="grid grid-cols-3 gap-2">
         <div className="bg-white rounded-lg border p-4">
           <div className="text-2xl font-bold">{stats.total}</div>
-          <div className="text-sm text-muted-foreground">Всего расчётов</div>
+          <div className="text-sm text-muted-foreground">
+            {t("user.statsAll")}
+          </div>
         </div>
         <div className="bg-white rounded-lg border p-4">
           <div className="text-2xl font-bold text-green-600">
             {stats.completed}
           </div>
-          <div className="text-sm text-muted-foreground">Завершенных</div>
+          <div className="text-sm text-muted-foreground">
+            {t("user.statsCompleted")}
+          </div>
         </div>
         <div className="bg-white rounded-lg border p-4">
           <div className="text-2xl font-bold text-orange-600">
             {stats.requested}
           </div>
-          <div className="text-sm text-muted-foreground">На рассмотрении</div>
+          <div className="text-sm text-muted-foreground">
+            {t("user.statsPending")}
+          </div>
         </div>
       </div>
     </>

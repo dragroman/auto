@@ -11,6 +11,7 @@ import { Label } from "@shared/ui/label"
 import { Alert, AlertDescription } from "@shared/ui/alert"
 import { Eye, EyeOff, User, Mail, Lock, UserCheck, Phone } from "lucide-react"
 import Link from "next/link"
+import { useTranslations } from "next-intl"
 
 interface RegistrationFormProps {
   onSubmit: (data: RegistrationData) => Promise<void>
@@ -65,6 +66,7 @@ export function SignUpForm({
   }
 
   const passwordStrength = getPasswordStrength(password || "")
+  const t = useTranslations("dashboard")
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
@@ -76,7 +78,7 @@ export function SignUpForm({
 
       {/* Email Field */}
       <div className="space-y-2">
-        <Label htmlFor="email">Email</Label>
+        <Label htmlFor="email">{t("signUp.email")}</Label>
         <div className="relative">
           <Mail className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
           <Input
@@ -94,7 +96,7 @@ export function SignUpForm({
 
       {/* Phone Field */}
       <div className="space-y-2">
-        <Label htmlFor="phone">Номер телефона</Label>
+        <Label htmlFor="phone">{t("signUp.phone")}</Label>
         <div className="relative">
           <Phone className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
           <Input
@@ -111,14 +113,14 @@ export function SignUpForm({
 
       {/* Password Field */}
       <div className="space-y-2">
-        <Label htmlFor="password">Пароль</Label>
+        <Label htmlFor="password">{t("signUp.password")}</Label>
         <div className="relative">
           <Lock className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
           <Input
             id="password"
             {...register("password")}
             type={showPassword ? "text" : "password"}
-            placeholder="Введите пароль"
+            placeholder={t("signUp.enterPassword")}
             className="pl-10 pr-10"
           />
           <Button
@@ -165,24 +167,30 @@ export function SignUpForm({
       <div className="grid grid-cols-2 gap-4">
         <div className="space-y-2">
           <Label htmlFor="firstName" className="text-muted-foreground">
-            Имя <span className="text-xs">(необязательно)</span>
+            {t("signUp.name")}{" "}
+            <span className="text-xs">{t("signUp.nonRequired")}</span>
           </Label>
-          <Input id="firstName" {...register("firstName")} placeholder="Имя" />
+          <Input
+            id="firstName"
+            {...register("firstName")}
+            placeholder={t("signUp.name")}
+          />
         </div>
         <div className="space-y-2">
           <Label htmlFor="lastName" className="text-muted-foreground">
-            Фамилия <span className="text-xs">(необязательно)</span>
+            {t("signUp.surname")}{" "}
+            <span className="text-xs">{t("signUp.nonRequired")}</span>
           </Label>
           <Input
             id="lastName"
             {...register("lastName")}
-            placeholder="Фамилия"
+            placeholder={t("signUp.surname")}
           />
         </div>
       </div>
 
       <Button type="submit" className="w-full" disabled={!isValid || isLoading}>
-        {isLoading ? "Отправка..." : "Продолжить"}
+        {isLoading ? "Отправка..." : t("signUp.button")}
       </Button>
 
       <p className="text-xs text-center text-muted-foreground">
@@ -200,7 +208,7 @@ export function SignUpForm({
           href="/signin"
           className="text-sm text-muted-foreground hover:text-primary underline-offset-4 hover:underline"
         >
-          Уже есть аккаунт?
+          {t("signUp.account")}
         </Link>
       </div>
     </form>
