@@ -8,6 +8,7 @@ import {
   Phone,
   User,
   CarIcon,
+  LucideMessageCircleQuestion,
 } from "lucide-react"
 import { cn } from "@shared/lib/utils"
 import Link from "next/link"
@@ -39,11 +40,11 @@ const MobileBottomNav = () => {
       title: t("calculator.title"),
     },
     {
-      id: "cars",
-      icon: CarIcon,
-      href: "/cars",
+      id: "faq",
+      icon: LucideMessageCircleQuestion,
+      href: "/faq",
       badge: 2,
-      title: t("auto.title"),
+      title: t("faq.title"),
     },
     {
       id: "contacts",
