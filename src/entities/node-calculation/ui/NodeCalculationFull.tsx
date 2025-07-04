@@ -38,7 +38,7 @@ export const NodeCalculationFull = ({
         {formatNumber(results.field_total_price_round)} ₽
       </div>
       <div
-        className={`${scroll ? "max-h-[300px] overflow-y-auto overflow-x-hidden" : "-mx-4"}`}
+        className={`${scroll ? "max-h-[400px] overflow-y-auto overflow-x-hidden" : "-mx-4"}`}
       >
         <Table>
           <TableHeader>

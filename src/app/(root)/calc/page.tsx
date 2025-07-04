@@ -29,7 +29,7 @@ export default async function CalcPage() {
   return (
     <>
       <PageTitle title={t("title")} />
-      <PriceCalc />
+      <PriceCalc currentUserID={session ? session.user.id : ""} />
       <ViewsCalculation nodes={nodes} currentUserID={session?.user.id} />
     </>
   )

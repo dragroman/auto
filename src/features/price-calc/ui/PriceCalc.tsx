@@ -3,8 +3,9 @@
 import { PriceCalculatorForm } from "./PriceCalculatorForm"
 import { useCalculator } from "../api/useCalculator"
 import { NodeCalculationDrawer } from "@entities/node-calculation"
+import { RequestCalc } from "@features/request-calc"
 
-export const PriceCalc = () => {
+export const PriceCalc = ({ currentUserID }: { currentUserID: string }) => {
   const {
     calculationResults,
     isCalculating,
@@ -39,9 +40,11 @@ export const PriceCalc = () => {
           onClose={closeResultsDrawer}
           actions={
             // Можно добавить кнопку "Сохранить расчет" или другие действия
-            <div className="text-sm text-muted-foreground">
-              Расчет выполнен успешно!
-            </div>
+            <RequestCalc
+              className="w-full"
+              node={calculationResults}
+              currentUserID={currentUserID}
+            />
           }
         />
       )}
