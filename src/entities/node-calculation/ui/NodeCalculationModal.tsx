@@ -12,7 +12,7 @@ import { useSession } from "next-auth/react"
 
 export function NodeCalculationModal({ id }: { id: string }) {
   const router = useRouter()
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(true) // Сразу true!
   const [loading, setLoading] = useState(true)
   const [calc, setCalc] = useState<TNodeCalculationFull | null>(null)
   const [error, setError] = useState<string | null>(null)
@@ -21,10 +21,7 @@ export function NodeCalculationModal({ id }: { id: string }) {
 
   const currentUserID = session?.user.id
 
-  useEffect(() => {
-    setIsOpen(true)
-  }, [])
-
+  // Запускаем загрузку данных сразу
   useEffect(() => {
     if (!id) return
 
@@ -57,24 +54,23 @@ export function NodeCalculationModal({ id }: { id: string }) {
     setTimeout(() => router.back(), 300)
   }
 
+  // Показываем Drawer всегда, независимо от состояния calc
   return (
-    <>
-      {calc && (
-        <NodeCalculationDrawer
-          calc={calc}
-          loading={loading}
-          error={error}
-          isOpen={isOpen}
-          onClose={onClose}
-          actions={
-            <RequestCalc
-              className="w-full"
-              node={calc}
-              currentUserID={currentUserID}
-            />
-          }
-        />
-      )}
-    </>
+    <NodeCalculationDrawer
+      calc={calc}
+      loading={loading}
+      error={error}
+      isOpen={isOpen}
+      onClose={onClose}
+      actions={
+        calc && !loading && !error ? (
+          <RequestCalc
+            className="w-full"
+            node={calc}
+            currentUserID={currentUserID}
+          />
+        ) : null
+      }
+    />
   )
 }
