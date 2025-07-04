@@ -5,7 +5,7 @@ import { useCalculator } from "../api/useCalculator"
 import { NodeCalculationDrawer } from "@entities/node-calculation"
 import { RequestCalc } from "@features/request-calc"
 
-export const PriceCalc = ({ currentUserID }: { currentUserID: string }) => {
+export const PriceCalc = ({ currentUserID }: { currentUserID?: string }) => {
   const {
     calculationResults,
     isCalculating,
