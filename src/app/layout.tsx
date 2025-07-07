@@ -6,7 +6,11 @@ import "@shared/styles/globals.css"
 import { NextIntlClientProvider } from "next-intl"
 import { getLocale } from "next-intl/server"
 import { Providers } from "@features/auth/session"
-import { Toaster } from "@shared/ui/sonner"
+import { GoogleTagManager } from "@next/third-parties/google"
+
+import { Inter } from "next/font/google"
+
+const rootFont = Inter({ subsets: ["cyrillic"] })
 
 export const metadata: Metadata = {
   title: {
@@ -26,6 +30,8 @@ export const viewport: Viewport = {
   userScalable: false,
 }
 
+const gtmId = process.env.NEXT_PUBLIC_GTM_ID
+
 export default async function RootLayout({
   // Layouts must accept a children prop.
   // This will be populated with nested layouts or pages
@@ -36,7 +42,10 @@ export default async function RootLayout({
   const locale = await getLocale()
   return (
     <html lang={locale}>
-      <body>
+      {gtmId && <GoogleTagManager gtmId={gtmId} />}
+      <body
+        className={`${rootFont.className} antialiased scroll-smooth h-full`}
+      >
         <Providers>
           <NextIntlClientProvider>
             <DraftAlert />
