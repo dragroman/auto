@@ -36,6 +36,7 @@ export async function submitWebformAction(data: CallbackFormSchema) {
       body: JSON.stringify({
         webform_id: "callback",
         phone: validatedData.phone,
+        name: validatedData.name,
       }),
       headers,
     })
