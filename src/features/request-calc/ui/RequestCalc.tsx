@@ -242,7 +242,7 @@ export const RequestCalc = ({
             "Оставьте свои контакты, и мы свяжемся с вами для консультации по данному расчету",
           content: (
             <div className="space-y-6">
-              <WebformCallback />
+              <WebformCallback nodeId={node.id} />
             </div>
           ),
         }

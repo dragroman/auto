@@ -24,7 +24,7 @@ import { Button } from "@shared/ui/button"
 import { Input } from "@shared/ui/input"
 import { PhoneInput } from "@shared/ui/phone-input"
 
-export function WebformCallback() {
+export function WebformCallback({ nodeId }: { nodeId?: string }) {
   const { submitForm } = useCallbackForm()
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
@@ -40,7 +40,7 @@ export function WebformCallback() {
       setIsSubmitting(true)
       setError(null)
 
-      await submitForm(values)
+      await submitForm({ ...values, nodeId })
 
       setIsSuccess(true)
       form.reset()

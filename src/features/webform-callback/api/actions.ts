@@ -1,6 +1,7 @@
 "use server"
 
 import { drupal } from "@shared/lib/drupal"
+import { sendTelegramMessage } from "@shared/lib/telegram"
 import {
   callbackFormSchema,
   type CallbackFormSchema,
@@ -21,10 +22,12 @@ export async function submitWebformAction(data: CallbackFormSchema) {
     }
 
     // Попытка получить токен из сессии (NextAuth.js)
+    let currentUser = null
     try {
       const session = await getServerSession(authOptions)
       if (session?.accessToken) {
         headers.Authorization = `Bearer ${session.accessToken}`
+        currentUser = session.user
       }
     } catch {
       // Если не удалось получить сессию, продолжаем без токена
@@ -37,6 +40,7 @@ export async function submitWebformAction(data: CallbackFormSchema) {
         webform_id: "callback",
         phone: validatedData.phone,
         name: validatedData.name,
+        node_id: validatedData.nodeId,
       }),
       headers,
     })
@@ -47,6 +51,9 @@ export async function submitWebformAction(data: CallbackFormSchema) {
       throw new Error("Ошибка при отправке формы в Drupal")
     }
 
+    // Отправляем уведомление в Telegram (без ожидания)
+    sendCallbackNotificationToTelegram(validatedData, currentUser)
+
     return { success: true }
   } catch (error) {
     console.error("Ошибка при обработке запроса:", error)
@@ -56,5 +63,37 @@ export async function submitWebformAction(data: CallbackFormSchema) {
     }
 
     return { success: false, error: "Произошла неизвестная ошибка" }
+  }
+}
+
+async function sendCallbackNotificationToTelegram(
+  formData: CallbackFormSchema,
+  user: any
+) {
+  const userName = user?.name || user?.email || "Анонимный пользователь"
+  const customerName = formData.name || "Не указано"
+  const nodeInfo = formData.nodeId
+    ? `\n🚗 <b>Расчет ID:</b> ${formData.nodeId}`
+    : ""
+
+  const message = `
+📞 <b>Запрос обратного звонка!</b>
+
+👤 <b>Пользователь:</b> ${userName}
+📝 <b>Имя клиента:</b> ${customerName}
+📱 <b>Телефон:</b> ${formData.phone}
+<b>Node id:</b> ${nodeInfo}
+
+#обратныйзвонок #заявка
+  `.trim()
+
+  try {
+    await sendTelegramMessage(message)
+    console.log("Уведомление о callback в Telegram отправлено успешно")
+  } catch (error) {
+    console.error(
+      "Не удалось отправить уведомление callback в Telegram:",
+      error
+    )
   }
 }

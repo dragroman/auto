@@ -2,6 +2,7 @@
 
 import { authOptions } from "@features/auth/session"
 import { drupal } from "@shared/lib/drupal"
+import { sendTelegramMessage } from "@shared/lib/telegram"
 import { getServerSession } from "next-auth"
 import { revalidateTag } from "next/cache"
 
@@ -38,6 +39,7 @@ export async function updateNodeDataAction(
       ...updateData,
       field_status: "requested",
     }
+
     const updatedNode = await drupal.updateResource(
       nodeType,
       nodeId,
@@ -50,6 +52,9 @@ export async function updateNodeDataAction(
         withAuth: () => `Bearer ${session.accessToken}`,
       }
     )
+
+    // Отправляем уведомление в Telegram (без ожидания)
+    sendNotificationToTelegram(updatedNode, session.user)
 
     // Инвалидируем кэш для этой страницы
     revalidateTag("calculations")
@@ -64,5 +69,35 @@ export async function updateNodeDataAction(
     }
 
     return { success: false, error: "Произошла ошибка при обновлении" }
+  }
+}
+
+async function sendNotificationToTelegram(node: any, user: any) {
+  const chatId = process.env.TELEGRAM_CHAT_ID
+
+  if (!chatId) {
+    console.warn("TELEGRAM_CHAT_ID не настроен")
+    return
+  }
+
+  const userName = user?.name || user?.email || "Неизвестный пользователь"
+  const nodeName = node.title || `Расчет #${node.id}`
+
+  const message = `
+🚗 <b>Новая заявка на расчет!</b>
+
+👤 <b>Пользователь:</b> ${userName}
+📋 <b>Расчет:</b> ${nodeName}
+🚙 <b>Модель:</b> ${node.field_model || "Не указана"}
+💬 <b>Примечания:</b> ${node.field_remarks || "Отсутствуют"}
+
+#заявка #расчет
+  `.trim()
+
+  try {
+    await sendTelegramMessage(message)
+    console.log("Уведомление в Telegram отправлено успешно")
+  } catch (error) {
+    console.error("Не удалось отправить уведомление в Telegram:", error)
   }
 }
