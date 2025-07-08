@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react"
 import { PriceCalculatorFormData } from "../model/types"
 import { TNodeCalculationFull } from "@entities/node-calculation"
 import { useRouter } from "next/navigation"
+import { sendGTMEvent } from "@next/third-parties/google"
 
 interface RateLimitError {
   type: "rate_limit"
@@ -122,12 +123,18 @@ export const useCalculator = () => {
       })
 
       if (!response.ok) {
+        console.log(response)
         const error = await parseErrorResponse(response)
         throw error
       }
 
       const data = await response.json()
       router.refresh()
+
+      sendGTMEvent({
+        event: "form_submit_success",
+        form_name: "priceCalcForm",
+      })
 
       // Загружаем полные данные для Drawer
       try {

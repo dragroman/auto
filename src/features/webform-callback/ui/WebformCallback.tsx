@@ -46,8 +46,8 @@ export function WebformCallback({ nodeId }: { nodeId?: string }) {
       form.reset()
 
       sendGTMEvent({
-        event: "calculate_application",
-        form_name: "requestForm",
+        event: "form_submit_success",
+        form_name: "callbackForm",
       })
     } catch (error) {
       console.error("Ошибка при отправке формы:", error)
