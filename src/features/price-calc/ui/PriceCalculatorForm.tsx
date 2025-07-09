@@ -13,6 +13,7 @@ import { Form } from "@shared/ui/form"
 import { PriceCalculatorFormData } from "../model/types"
 import { formSchema } from "../model/schema"
 import {
+  CapacityField,
   EngineTypeField,
   NumberInputField,
   ProductionDateField,
@@ -180,12 +181,10 @@ export const PriceCalculatorForm: React.FC<PriceCalculatorFormProps> = ({
           )}
           {/* Объем двигателя (для бензиновых и гибридных) */}
           {(engineType === "gas" || engineType === "hybrid") && (
-            <NumberInputField
+            <CapacityField
               name="capacity_ml"
               label={t("engine.capacity.title")}
               description={t("engine.capacity.description")}
-              min={0}
-              step={100}
             />
           )}
           {/* Мощность двигателя (для электрических и гибридных) */}

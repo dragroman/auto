@@ -76,7 +76,8 @@ export const NodeCalculationTeaser = ({
           </Badge>
           {node.field_capacity_ml && (
             <Badge variant="outline">
-              {node.field_capacity_ml} {"ml"}
+              {(node.field_capacity_ml / 1000).toFixed(1)}
+              {"L"}
             </Badge>
           )}
           {node.field_horsepower && (

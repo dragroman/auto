@@ -37,11 +37,13 @@ export const NumberInputField = ({
       name={name}
       render={({ field }) => (
         <FormItem>
-          <FormLabel>
+          <FormLabel className="flex justify-between">
             {label}
             <Popover>
               <PopoverTrigger asChild>
-                <Button variant="outline">?</Button>
+                <Button variant="outline" className="h-6 w-6 p-0">
+                  ?
+                </Button>
               </PopoverTrigger>
               <PopoverContent className="w-80">
                 <div className="grid gap-4">{description}</div>
