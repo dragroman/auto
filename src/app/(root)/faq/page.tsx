@@ -5,14 +5,16 @@ import {
   AccordionTrigger,
 } from "@shared/ui/accordion"
 import { PageTitle } from "@shared/ui/page-title"
-import { useTranslations } from "next-intl"
 import { faqData } from "./faqData"
-export default function FAQPage() {
-  const t = useTranslations("faq")
+import { getTranslations } from "next-intl/server"
+
+export default async function FAQPage() {
+  const t = await getTranslations("faq")
+  const data = await faqData()
   return (
     <>
       <PageTitle title={t("title")} />
-      {faqData().map((section) => (
+      {data.map((section) => (
         <div key={section.category} className="mb-8">
           <h2 className="text-xl font-semibold mb-6 border-b-2 pb-2">
             {section.category}

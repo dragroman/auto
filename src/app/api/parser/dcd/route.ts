@@ -77,19 +77,20 @@ export async function POST(request: NextRequest) {
       session.accessToken
     )
 
+    // Создаем расчет (node calculation)
+    console.log("[PARSER] Создание расчета...")
+    const calculationNode = await createCalculationNode(
+      carData,
+      session.accessToken
+    )
+
     // Создаем товар (commerce_product car)
     console.log("[PARSER] Создание товара...")
     const carProduct = await createCarProduct(
       carData,
       carInfoNodeId,
       carProductVariation,
-      session.accessToken
-    )
-
-    // Создаем расчет (node calculation)
-    console.log("[PARSER] Создание расчета...")
-    const calculationNode = await createCalculationNode(
-      carData,
+      calculationNode.node_id,
       session.accessToken
     )
 
@@ -238,6 +239,7 @@ async function createCarProduct(
   carData: DCDCarData,
   carInfoId: string,
   carVariationId: string,
+  calculationNodeId: string,
   accessToken: string
 ) {
   // Создаем изображения
@@ -249,7 +251,8 @@ async function createCarProduct(
     carData,
     carInfoId,
     carVariationId,
-    carImages
+    carImages,
+    calculationNodeId
   )
 
   const response = await drupal.createResource(
