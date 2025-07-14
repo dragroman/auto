@@ -60,8 +60,8 @@ export async function POST(request: NextRequest) {
       body: JSON.stringify(formData),
     })
 
-    console.log("Client IP being sent to Drupal:", clientIp)
-    console.log("Form data:", formData)
+    // console.log("Client IP being sent to Drupal:", clientIp)
+    // console.log("Form data:", formData)
 
     if (!response.ok) {
       // Попытка получить сообщение об ошибке из ответа

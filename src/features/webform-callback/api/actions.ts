@@ -89,7 +89,6 @@ async function sendCallbackNotificationToTelegram(
 
   try {
     await sendTelegramMessage(message)
-    console.log("Уведомление о callback в Telegram отправлено успешно")
   } catch (error) {
     console.error(
       "Не удалось отправить уведомление callback в Telegram:",

@@ -4,6 +4,7 @@ import Image from "next/image"
 
 import { CalendarArrowDownIcon } from "lucide-react"
 import { getTranslations } from "next-intl/server"
+import Link from "next/link"
 
 export const NodeCarTeaser = async ({ node }: { node: NodeCarTeaserType }) => {
   const t = await getTranslations("carTeaser")
@@ -76,6 +77,9 @@ export const NodeCarTeaser = async ({ node }: { node: NodeCarTeaserType }) => {
               </span>
             )}
           </div>
+          <Link href={`/cars/${node.drupal_internal__product_id}`}>
+            Перейти
+          </Link>
         </div>
       </div>
     </div>

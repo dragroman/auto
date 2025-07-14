@@ -7,6 +7,7 @@ import { getResource } from "next-drupal"
 import { notFound } from "next/navigation"
 import Link from "next/link"
 import { Metadata } from "next"
+import { drupal } from "@shared/lib/drupal"
 
 export async function generateMetadata({
   params,
@@ -16,12 +17,8 @@ export async function generateMetadata({
   const { id } = await params
 
   try {
-    const node = await getResource<TNodeCalculationFull>(
-      "node--calculation",
-      id,
-      {
-        params: { withAuth: false },
-      }
+    const node = await drupal.getResourceByPath<TNodeCalculationFull>(
+      `/node/${id}`
     )
 
     return {
@@ -58,9 +55,7 @@ export default async function CalcFullPage({
   let node: TNodeCalculationFull
 
   try {
-    node = await getResource<TNodeCalculationFull>("node--calculation", id, {
-      params: { withAuth: false },
-    })
+    node = await drupal.getResourceByPath<TNodeCalculationFull>(`/node/${id}`)
   } catch (error) {
     notFound()
   }

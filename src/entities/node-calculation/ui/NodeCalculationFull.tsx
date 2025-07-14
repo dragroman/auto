@@ -31,7 +31,6 @@ export const NodeCalculationFull = ({
   scroll?: boolean
 }) => {
   const t = useTranslations("formResults")
-  console.log(results)
   return (
     <div className="space-y-6">
       <div className={cn(`text-4xl font-bold mb-2`, scroll && "px-4")}>

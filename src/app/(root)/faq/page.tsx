@@ -4,14 +4,15 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@shared/ui/accordion"
-import { faqData } from "./faqData"
 import { PageTitle } from "@shared/ui/page-title"
-
+import { useTranslations } from "next-intl"
+import { faqData } from "./faqData"
 export default function FAQPage() {
+  const t = useTranslations("faq")
   return (
     <>
-      <PageTitle title="Часто задаваемые вопросы" />
-      {faqData.map((section) => (
+      <PageTitle title={t("title")} />
+      {faqData().map((section) => (
         <div key={section.category} className="mb-8">
           <h2 className="text-xl font-semibold mb-6 border-b-2 pb-2">
             {section.category}
