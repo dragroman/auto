@@ -12,7 +12,6 @@ import { Alert, AlertDescription } from "@shared/ui/alert"
 import { Eye, EyeOff, User, Mail, Lock, UserCheck, Phone } from "lucide-react"
 import Link from "next/link"
 import { useTranslations } from "next-intl"
-import { useTranslations } from "next-intl"
 
 interface RegistrationFormProps {
   onSubmit: (data: RegistrationData) => Promise<void>
