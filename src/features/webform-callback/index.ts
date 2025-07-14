@@ -1,1 +1,1 @@
-export { WebformCallback } from "./ui/WebformCallback"
+export { WebformCallbackForm } from "./ui/WebformCallbackForm"

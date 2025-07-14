@@ -21,7 +21,7 @@ import {
   DrawerTrigger,
 } from "@shared/ui/drawer"
 import { RequestCalcForm } from "./RequestForm"
-import { WebformCallback } from "@features/webform-callback"
+import { WebformCallbackForm } from "@features/webform-callback"
 import Link from "next/link"
 import { useTranslations } from "next-intl"
 import { isOwner } from "@shared/lib/utils"
@@ -85,7 +85,7 @@ const AuthButtons = () => (
 
 const CallbackContent = () => (
   <div className="space-y-6">
-    <WebformCallback />
+    <WebformCallbackForm />
     <AuthButtons />
   </div>
 )
@@ -242,7 +242,7 @@ export const RequestCalc = ({
             "Оставьте свои контакты, и мы свяжемся с вами для консультации по данному расчету",
           content: (
             <div className="space-y-6">
-              <WebformCallback nodeId={node.id} />
+              <WebformCallbackForm nodeId={node.id} />
             </div>
           ),
         }

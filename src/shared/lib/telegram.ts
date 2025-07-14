@@ -32,8 +32,6 @@ export async function sendTelegramMessage(message: string): Promise<boolean> {
       const agent =
         proxyUrl.startsWith("socks") && new SocksProxyAgent(proxyUrl)
 
-      console.log(`Используем прокси для Telegram API: ${proxyUrl}`)
-
       const response = await fetch(
         `https://api.telegram.org/bot${botToken}/sendMessage`,
         {
@@ -71,7 +69,6 @@ export async function sendTelegramMessage(message: string): Promise<boolean> {
       }
     }
 
-    console.log("Сообщение в Telegram отправлено успешно")
     return true
   } catch (error) {
     console.error("Ошибка при отправке сообщения в Telegram:", error)

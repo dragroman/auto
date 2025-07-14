@@ -40,11 +40,11 @@ const MobileBottomNav = () => {
       title: t("calculator.title"),
     },
     {
-      id: "faq",
-      icon: LucideMessageCircleQuestion,
-      href: "/faq",
+      id: "cars",
+      icon: CarIcon,
+      href: "/cars",
       badge: 2,
-      title: t("faq.title"),
+      title: t("auto.title"),
     },
     {
       id: "contacts",

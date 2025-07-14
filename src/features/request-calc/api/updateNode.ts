@@ -96,7 +96,6 @@ async function sendNotificationToTelegram(node: any, user: any) {
 
   try {
     await sendTelegramMessage(message)
-    console.log("Уведомление в Telegram отправлено успешно")
   } catch (error) {
     console.error("Не удалось отправить уведомление в Telegram:", error)
   }

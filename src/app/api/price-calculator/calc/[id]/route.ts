@@ -26,7 +26,7 @@ export async function GET(
 const fetchProduct = async (id: string) => {
   const request = new DrupalJsonApiParams().addFilter("status", "1")
 
-  const product = await drupal.getResource("node--calculation", `${id}`, {
+  const product = await drupal.getResourceByPath(`/node/${id}`, {
     params: request.getQueryObject(),
     next: { revalidate: 3600 },
   })

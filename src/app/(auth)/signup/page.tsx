@@ -13,6 +13,7 @@ export default async function SignUpPage() {
   return (
     <>
       <PageTitle title={t("signUp.title")} />
+      <PageTitle title={t("signUp.title")} />
       <SignUp />
     </>
   )

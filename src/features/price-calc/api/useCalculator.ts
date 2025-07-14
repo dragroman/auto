@@ -123,7 +123,6 @@ export const useCalculator = () => {
       })
 
       if (!response.ok) {
-        console.log(response)
         const error = await parseErrorResponse(response)
         throw error
       }

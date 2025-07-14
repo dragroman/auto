@@ -92,7 +92,7 @@ export const NodeCalculationTeaser = ({
           <div>{actions}</div>
           <div>
             <Link
-              href={`/calc/${node.id}`}
+              href={`/calc/${node.drupal_internal__nid}`}
               className={buttonVariants({ variant: "outline", size: "sm" })}
             >
               {t("form.more")}
