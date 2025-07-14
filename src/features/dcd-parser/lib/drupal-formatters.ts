@@ -113,7 +113,8 @@ export function formatCarProductData(
   carData: DCDCarData,
   carInfoId: string,
   carVariationId: string,
-  carImages: Array<{ type: string; id: string }> = [] // добавили параметр
+  carImages: Array<{ type: string; id: string }> = [],
+  calculationNodeId: string
 ) {
   const relationships: any = {
     commerce_product_type: {
@@ -141,6 +142,12 @@ export function formatCarProductData(
       data: {
         type: "node--car",
         id: carInfoId,
+      },
+    },
+    field_calculation: {
+      data: {
+        type: "node--calculation",
+        id: calculationNodeId,
       },
     },
   }

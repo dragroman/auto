@@ -14,7 +14,10 @@ export const NodeCarTeaser = async ({ node }: { node: NodeCarTeaserType }) => {
   const imageSrc = rawImageUrl ? absoluteUrl(rawImageUrl) : ""
 
   return (
-    <div className="group bg-white rounded-lg border border-gray-200 hover:border-gray-300 transition-all duration-200 hover:shadow-md overflow-hidden">
+    <Link
+      href={`/cars/${node.drupal_internal__product_id}`}
+      className="group bg-white rounded-lg border border-gray-200 hover:border-gray-300 transition-all duration-200 hover:shadow-md overflow-hidden"
+    >
       <div className="flex">
         {/* Изображение слева */}
         <div className="relative w-40 h-32 flex-shrink-0 overflow-hidden">
@@ -68,9 +71,9 @@ export const NodeCarTeaser = async ({ node }: { node: NodeCarTeaserType }) => {
 
           {/* Цена */}
           <div className="font-bold text-lg text-red-600">
-            {node.variations?.[0]?.price?.number &&
+            {node.field_calculation &&
             node.variations[0]?.price?.currency_code ? (
-              `${Number(node.variations[0].price.number).toLocaleString("ru-RU")} ${node.variations[0].price.currency_code}`
+              `${Number(node.field_calculation.field_total_price_round).toLocaleString("ru-RU")} ${node.variations[0].price.currency_code}`
             ) : (
               <span className="text-gray-400 font-normal text-sm">
                 {t("noPrice")}
@@ -82,6 +85,6 @@ export const NodeCarTeaser = async ({ node }: { node: NodeCarTeaserType }) => {
           </Link>
         </div>
       </div>
-    </div>
+    </Link>
   )
 }

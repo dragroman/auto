@@ -11,6 +11,13 @@ export interface NodeCarTeaserType extends DrupalNode {
       name: string
     }
   }
+  field_calculation: {
+    id: string
+    field_total_price_round: number
+    resourceIdObjMeta: {
+      drupal_internal__target_id: number
+    }
+  }
 
   field_mileage: number
   variations: {
@@ -41,10 +48,4 @@ export interface TNodeCarFull extends NodeCarTeaserType {
   field_new: boolean
   field_mileage: number
   field_model: string
-  field_calculation: {
-    id: string
-    resourceIdObjMeta: {
-      drupal_internal__target_id: number
-    }
-  }
 }

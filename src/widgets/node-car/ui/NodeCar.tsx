@@ -15,9 +15,9 @@ export const NodeCar = ({ node }: { node: TNodeCarFull }) => {
   const t = useTranslations("nodeCarFull")
 
   let price = ""
-  node.variations?.[0]?.price?.number &&
+  node.field_calculation.field_total_price_round &&
   node.variations[0]?.price?.currency_code ? (
-    (price = `${Number(node.variations[0].price.number).toLocaleString("ru-RU")} ${node.variations[0].price.currency_code}`)
+    (price = `${Number(node.field_calculation.field_total_price_round).toLocaleString("ru-RU")} ${node.variations[0].price.currency_code}`)
   ) : (
     <span className="text-gray-400 font-normal text-sm">
       price = {t("noPrice")}

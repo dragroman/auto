@@ -1,7 +1,7 @@
-import { useTranslations } from "next-intl"
+import { getTranslations } from "next-intl/server"
 
-export function faqData() {
-  const t = useTranslations("faq")
+export async function faqData() {
+  const t = await getTranslations("faq")
   return [
     {
       category: t("chooseAuto.title"),
